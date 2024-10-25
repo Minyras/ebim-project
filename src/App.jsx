@@ -8,10 +8,13 @@ import Appeal from "./pages/Appeal/Appeal";
 import CommunalPayments from "./pages/CommunalPayments/CommunalPayments";
 import ComendantPayments from "./pages/ComendantPayments/ComendantPayments";
 import UserAccount from "./pages/UserAccount/UserAccount";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <div className="App">
+      <ToastContainer />
       <Router>
         <Routes>
           <Route element={<Layout />}>
@@ -29,6 +32,7 @@ function App() {
             />
           </Route>
           <Route path="/" element={<LoginRegister />} />
+          <Route path="/verify" element={<LoginRegister />} />
         </Routes>
       </Router>
     </div>

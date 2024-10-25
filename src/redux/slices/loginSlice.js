@@ -25,8 +25,26 @@ export const LoginUser = createAsyncThunk(
   }
 );
 
-export const VerifyUser = createAsyncThunk(
-  "user/verifyUser",
+export const VerifyUser = createAsyncThunk("user/verifyUser", async (token) => {
+  try {
+    const response = await toast.promise(
+      axios.get(
+        `https://ebim-mtk-dashboard.azurewebsites.net/api/User/verify?token=${token}`
+      ),
+      {
+        pending: "İstifadəçi təsdiqlənir.",
+        success: "İstifadəçi təsdiqləndi.",
+        error: "İstifadəçi təsdiqlənən zaman problem yaşandı.",
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+export const ChangeUserPassword = createAsyncThunk(
+  "user/changeUserPassword",
   async (userData) => {
     try {
       const response = await toast.promise(

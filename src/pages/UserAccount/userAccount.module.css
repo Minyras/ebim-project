@@ -11,6 +11,17 @@
   margin-top: 30px;
   border-radius: 20px;
 }
+
+.privateInformation form > button {
+  font-size: 16px;
+  align-self: flex-end;
+  padding: 12px 40px;
+  background-color: #0071ce;
+  color: white;
+  border: none;
+  border-radius: 20px;
+}
+
 .account p {
   font-size: 32px;
   margin-bottom: 10px;
@@ -26,6 +37,9 @@
   margin-bottom: 10px;
   gap: 10px;
   color: #0066b9;
+  border: none;
+  background: transparent;
+  font-size: 16px;
 }
 .privateInformation form,
 .flatInformation form {

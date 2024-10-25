@@ -18,6 +18,12 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
   font-size: 20px;
   color: #0066b9;
-  padding: 94px 10px;
+  min-height: 230px;
   font-weight: 600;
+  transition: 0.3s all;
+}
+
+.payment .container button:hover {
+  background: #eaf6ff;
+  font-size: 24px;
 }

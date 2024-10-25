@@ -22,6 +22,10 @@
   color: #0066b9;
 }
 
+.communals a:hover {
+  background: linear-gradient(0deg, #c5e5ff, #c5e5ff);
+}
+
 .communals {
   margin-top: 80px;
   width: 100%;

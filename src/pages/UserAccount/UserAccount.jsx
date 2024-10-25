@@ -1,21 +1,37 @@
 import Header from "../../components/Header/Header";
 import style from "./userAccount.module.css";
-import updateSvg from "../../assets/svg/update.svg";
+import updateSvg from "../../assets/svg/NotePencil.svg";
+import { useState } from "react";
 const UserAccount = () => {
+  const [isEditingPersonalInfo, setIsEditingPersonalInfo] = useState(false);
+
+  const handleEditingPersonalInfo = () => {
+    setIsEditingPersonalInfo(true);
+  };
+
+  const handleSavePersonalInfo = () => {
+    setIsEditingPersonalInfo(false);
+  };
+
   return (
     <div className={style.account}>
       <Header name={"Hesabım"} />
       <div className={style.privateInformation}>
         <p>Şəxsi məlumatlar</p>
-        <div className={style.update}>
-          <img src={updateSvg} alt="" />
-          <span>Redaktə et</span>
-        </div>
+        {!isEditingPersonalInfo && (
+          <button className={style.update} onClick={handleEditingPersonalInfo}>
+            <img src={updateSvg} alt="" />
+            <span>Redaktə et</span>
+          </button>
+        )}
         <form action="">
-          <input type="text" placeholder="Ad" />
-          <input type="text" placeholder="Soyadı" />
-          <input type="text" placeholder="Telefon nömrəsi" />
-          <input type="email" placeholder="Email" />
+          <input type="text" placeholder="Ad" disabled />
+          <input type="text" placeholder="Soyadı" disabled />
+          <input type="text" placeholder="Telefon nömrəsi" disabled />
+          <input type="email" placeholder="Email" disabled />
+          {isEditingPersonalInfo && (
+            <button onClick={handleSavePersonalInfo}>Saxla</button>
+          )}
         </form>
       </div>
       <div className={style.flatInformation}>

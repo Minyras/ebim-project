@@ -19,15 +19,25 @@ const Login = ({ setShowLogin }) => {
   const queryParams = new URLSearchParams(location.search);
   const token = queryParams.get("token");
 
+  const { pathname } = useLocation();
+  const pathLocations = pathname.split("/");
+  pathLocations?.shift();
+
   const dispatch = useDispatch();
 
   const verifyUser = async (token) => {
     await dispatch(VerifyUser(token)).unwrap();
   };
 
-  if (token) {
-    verifyUser(token);
+  if (pathLocations[0] == "verify") {
+    if (token) {
+      verifyUser(token);
+    }
   }
+
+  // if (token) {
+  //   verifyUser(token);
+  // }
 
   const navigate = useNavigate();
 

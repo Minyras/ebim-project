@@ -13,7 +13,6 @@ const Header = ({ name }) => {
   const { pathname } = useLocation();
   const pathLocations = pathname.split("/");
   pathLocations?.shift();
-  console.log(pathLocations);
 
   return (
     <div
