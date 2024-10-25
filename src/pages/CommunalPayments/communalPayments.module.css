@@ -1,0 +1,35 @@
+.communalPayments {
+  height: 100vh;
+  padding: 0 50px;
+  font-size: 20px;
+  width: 100%;
+}
+
+.communals a {
+  text-align: center;
+  border: 1px solid #eaeaea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 10%;
+  border-radius: 15px;
+  padding: 25px 5px;
+  width: 20%;
+  gap: 15px;
+  min-width: 170px;
+  text-decoration: none;
+  color: #0066b9;
+}
+
+.communals {
+  margin-top: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 1px 10px 0 rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}

@@ -1,0 +1,98 @@
+.mainSide {
+  background-color: #0071ce;
+  width: 50%;
+  padding: 10px 0 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  min-height: 100vh;
+}
+
+.logo {
+  position: absolute;
+  top: 50px;
+  left: 60px;
+}
+
+.login,
+.register {
+  width: 250px;
+  height: 70px;
+  border: none;
+  border-radius: 10px;
+  background-color: #0071ce;
+  color: white;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.active {
+  background-color: white;
+  color: #0071ce;
+}
+
+.mobileLogo {
+  display: none;
+}
+
+@media screen and (max-width: 900px) {
+  .mainSide {
+    background-color: transparent;
+    text-align: center;
+    width: 100%;
+    justify-content: center;
+    padding: 0;
+  }
+  .logo {
+    position: static;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .buttons {
+    width: 100%;
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .buttons > .login,
+  .buttons > .register {
+    text-transform: none;
+    width: 90%;
+    max-width: 400px;
+    height: 45px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    font-size: 20px;
+  }
+
+  .login {
+    background-color: transparent;
+    color: #0071ce;
+    border: 1px solid #0071ce;
+  }
+
+  .register {
+    background-color: #0071ce;
+    color: white;
+  }
+
+  .pcLogo {
+    display: none;
+  }
+
+  .mobileLogo {
+    display: block;
+  }
+}

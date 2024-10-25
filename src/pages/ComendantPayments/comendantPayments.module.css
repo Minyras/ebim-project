@@ -1,0 +1,122 @@
+.comendantPayments {
+  height: 100vh;
+  padding: 0 50px;
+  color: #0071ce;
+}
+
+.container {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+/* .container img {
+  width: 20px;
+} */
+.paymentForm,
+.newRequestContainer {
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 20px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+}
+.form {
+  width: 60%;
+}
+.form span {
+  font-size: 24px;
+  display: inline-block;
+  margin-bottom: 15px;
+  font-weight: 400;
+}
+.paymentMethods {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+.paymentMethods p {
+  font-size: 30px;
+}
+
+.methodsContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 20px;
+}
+.paymentForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.newRequest h2 {
+  font-size: 40px;
+  font-weight: 500;
+}
+.newRequest .form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.card,
+.comendantPayments input {
+  border: 1px solid #0071ce;
+  border-radius: 10px;
+  padding: 15px 20px;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 300;
+}
+.container input::placeholder {
+  font-size: 20px;
+  font-weight: 300;
+}
+/* .paymentForm div input[type="text"] {
+  width: 100%;
+} */
+.bankCard {
+  position: relative;
+}
+.copy {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  width: 25px;
+}
+
+.newRequest .dates {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.dates input {
+  border-radius: 8px;
+  padding: 15px 10px;
+  width: 20%;
+}
+
+.newRequest {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 60%;
+}
+.newRequest button {
+  font-size: 18px;
+  align-self: flex-end;
+  padding: 10px 30px;
+  background-color: #0071ce;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.anipay {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 24px;
+  margin: 30px 0;
+  font-weight: 700;
+}

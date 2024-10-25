@@ -1,0 +1,42 @@
+.loginConfirm {
+  text-align: center;
+}
+
+.loginConfirm p {
+  font-size: 48px;
+  color: #0071ce;
+}
+
+.loginConfirm img {
+  margin-bottom: 30px;
+}
+
+.loginConfirm a {
+  display: none;
+}
+
+@media screen and (max-width: 900px) {
+  .loginConfirm img {
+    width: 80px;
+    margin-bottom: 20px;
+  }
+
+  .loginConfirm p {
+    font-size: 24px;
+    font-weight: 500;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .loginConfirm a {
+    display: block;
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    color: #0071ce;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}

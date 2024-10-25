@@ -1,0 +1,51 @@
+.sidebar {
+  font-family: Lato, sans-serif;
+  background-color: #0071ce;
+  width: 20%;
+  height: 100vh;
+  padding: 50px 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.navLink {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 10px;
+  font-weight: 400;
+  font-size: 20px;
+  padding: 12px 8px;
+  border-radius: 15px;
+  position: relative;
+}
+
+.active {
+  background-color: #1f81d2;
+}
+
+.active::before {
+  content: "";
+  width: 17px;
+  height: 56px;
+  position: absolute;
+  left: -30px;
+  background-color: white;
+  border-radius: 0 8px 8px 0;
+}

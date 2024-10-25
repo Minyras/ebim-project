@@ -1,0 +1,121 @@
+.dashboard {
+  height: 100vh;
+  color: #0066b9;
+  background-color: white;
+  border-radius: 16px 16px 0 0;
+  padding: 0 8px;
+}
+
+.container {
+  border-radius: 0 0 20px 20px;
+  margin-top: 32px;
+}
+
+.communals a {
+  text-align: center;
+  border: 1px solid #eaeaea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 10%;
+  border-radius: 15px;
+  padding: 25px 5px;
+  width: 20%;
+  gap: 15px;
+  min-width: 170px;
+  text-decoration: none;
+  color: #0066b9;
+}
+
+.communals {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  border-radius: 16px;
+  box-shadow: 0px 2px 4px 0px #00000040;
+  padding: 30px;
+  margin-bottom: 20px;
+  padding: 35px 130px;
+}
+
+.dashboard h2 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding: 0 40px;
+}
+.historyTable {
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 20px 0 rgba(0, 0, 0, 0.1);
+  padding: 35px 130px;
+  border-radius: 20px;
+  color: #2899f6;
+  text-align: center;
+}
+
+.historyTable table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.historyTable table tr td {
+  border: 1px solid #6db6ee;
+  padding: 10px;
+}
+.historyTable table thead {
+  font-size: 20px;
+}
+.historyTable table td:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.historyTable table td:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  padding: 35px 20px 40px;
+  gap: 45px;
+  font-weight: 500;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 1px 4px 4px 0px #00000040;
+}
+.debtContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.debt {
+  font-size: 16px;
+  padding: 6px 13px;
+  border-radius: 5px;
+  border: 1px solid #0066b9;
+  color: #e70500;
+}
+.debtContainer button {
+  font-size: 16px;
+  padding: 9px 28px;
+  color: white;
+  background-color: #0071ce;
+  border: none;
+  border-radius: 5px;
+}
+
+.paymentMethods {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.methodsContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 15px;
+}

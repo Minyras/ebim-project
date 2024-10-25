@@ -1,0 +1,88 @@
+.appeal {
+  padding: 0 50px;
+  color: #0066b9;
+}
+.mainAppeal {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 60%;
+}
+.select {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 90%;
+  margin: 30px auto 0;
+}
+.select div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.select label {
+  font-size: 20px;
+}
+input[type="radio"] {
+  transform: scale(1.3);
+}
+
+.appeal textarea {
+  width: 100%;
+  height: 30vh;
+  border-radius: 20px;
+  padding: 20px;
+  border: none;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 20px 0 rgba(0, 0, 0, 0.1);
+  resize: none;
+}
+
+.appeal .mainAppeal button {
+  font-size: 16px;
+  align-self: flex-end;
+  padding: 12px 40px;
+  background-color: #0071ce;
+  color: white;
+  border: none;
+  border-radius: 20px;
+}
+
+.appeal h2 {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  margin-left: 44px;
+}
+.historyTable {
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 20px 0 rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 20px;
+  color: #2899f6;
+  background-color: white;
+}
+
+.historyTable table {
+  font-weight: 600;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.historyTable table tr td {
+  border: 1px solid #6db6ee;
+  padding: 10px;
+}
+.historyTable table thead {
+  font-size: 20px;
+}
+.historyTable table td:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.historyTable table td:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}

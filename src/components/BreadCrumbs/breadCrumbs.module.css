@@ -1,0 +1,10 @@
+.breadcrumb {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  margin-top: 8px;
+}
+.breadcrumb h5 {
+  font-size: 16px;
+  font-weight: 400;
+}
