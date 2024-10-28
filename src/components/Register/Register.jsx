@@ -24,6 +24,7 @@ const Register = ({ setShowOnMobile, setShowLogin }) => {
 
   const initialValues = {
     name: "",
+    surname: "",
     email: "",
     mtk: "",
     building: "",
@@ -37,6 +38,7 @@ const Register = ({ setShowOnMobile, setShowLogin }) => {
 
   const validationSchema = Yup.object({
     name: Yup.string().required("Ad daxil edin."),
+    surname: Yup.string().required("Soyad daxil edin."),
     email: Yup.string()
       .email("E-mail yanlışdır.")
       .required("E-mail daxil edin."),
@@ -82,6 +84,15 @@ const Register = ({ setShowOnMobile, setShowLogin }) => {
               <Field type="text" name="name" placeholder="Ad" />
               <ErrorMessage
                 name="name"
+                component="p"
+                className={style.errorMessage}
+              />
+            </div>
+
+            <div className={style.registerName}>
+              <Field type="text" name="surname" placeholder="Soyad" />
+              <ErrorMessage
+                name="surname"
                 component="p"
                 className={style.errorMessage}
               />

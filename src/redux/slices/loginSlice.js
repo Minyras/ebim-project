@@ -77,14 +77,14 @@ export const loginSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(LoginUser.pending, (state) => {
-        state.loginInfo.status = "loading";
+        // state.loginInfo.status = "loading";
       })
       .addCase(LoginUser.fulfilled, (state, action) => {
-        state.loginInfo.status = "succeeded";
+        // state.loginInfo.status = "succeeded";
         state.loginInfo = action.payload;
       })
       .addCase(LoginUser.rejected, (state, action) => {
-        state.loginInfo.status = "failed";
+        // state.loginInfo.status = "failed";
         state.error = action.payload;
       });
   },

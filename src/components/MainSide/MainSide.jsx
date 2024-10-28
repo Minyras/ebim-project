@@ -25,13 +25,13 @@ const MainSide = ({ showLogin, setShowLogin, setShowOnMobile }) => {
           className={`${style.login} ${showLogin ? style.active : ""}`}
           onClick={handleLoginClick}
         >
-          Daxil ol
+          Daxİl ol
         </button>
         <button
           className={`${style.register} ${!showLogin ? style.active : ""}`}
           onClick={handleRegisterClick}
         >
-          Qeydiyyatdan keç
+          Qeydİyyatdan keç
         </button>
       </div>
     </div>

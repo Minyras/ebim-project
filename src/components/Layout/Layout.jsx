@@ -4,7 +4,7 @@ import style from "./layout.module.css";
 import Cookies from "js-cookie";
 
 const Layout = () => {
-  const userCookie = Cookies.get("user");
+  const userCookie = Cookies.get("userId");
 
   return (
     <div className={style.layout}>

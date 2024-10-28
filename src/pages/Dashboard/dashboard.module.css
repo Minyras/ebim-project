@@ -51,25 +51,27 @@
   margin-bottom: 20px;
   padding: 0 40px;
 }
+
+.Appealhistory {
+  margin-top: 50px;
+}
+
 .historyTable {
   box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 20px 0 rgba(0, 0, 0, 0.1);
-  padding: 35px 130px;
+  padding: 20px 50px;
   border-radius: 20px;
   color: #2899f6;
-  text-align: center;
+  font-weight: 600;
+  font-size: 20px;
 }
 
 .historyTable table {
   width: 100%;
-  border-collapse: separate;
   border-spacing: 0;
 }
+
 .historyTable table tr td {
-  border: 1px solid #6db6ee;
-  padding: 10px;
-}
-.historyTable table thead {
-  font-size: 20px;
+  padding: 9px;
 }
 .historyTable table td:first-child {
   border-top-left-radius: 10px;
@@ -85,7 +87,7 @@
   display: flex;
   align-items: center;
   font-size: 20px;
-  padding: 35px 20px 40px;
+  padding: 16px 40px 30px;
   gap: 45px;
   font-weight: 500;
   border-radius: 0 0 16px 16px;
@@ -99,18 +101,19 @@
 
 .debt {
   font-size: 16px;
-  padding: 6px 13px;
-  border-radius: 5px;
+  padding: 8px;
+  border-radius: 16px;
   border: 1px solid #0066b9;
   color: #e70500;
 }
 .debtContainer button {
-  font-size: 16px;
-  padding: 9px 28px;
+  font-size: 20px;
+  line-height: 24px;
+  padding: 10px 35px;
   color: white;
   background-color: #0071ce;
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
 }
 
 .paymentMethods {

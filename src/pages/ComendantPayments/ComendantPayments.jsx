@@ -57,12 +57,7 @@ const ComendantPaymentsUser = () => {
           <form className={style.form}>
             <span>Bank kartı</span>
             <div className={style.bankCard}>
-              <div
-                className={`${style.card} ${
-                  copiedField === cardRef ? style.copied : ""
-                }`}
-                ref={cardRef}
-              >
+              <div className={style.card} ref={cardRef}>
                 4169 7388 1234 5566
               </div>
               <button
@@ -72,7 +67,29 @@ const ComendantPaymentsUser = () => {
                 }}
                 className={style.copy}
               >
-                <img src={copySvg} alt="" />
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={copiedField === cardRef ? style.copied : ""}
+                >
+                  <path
+                    d="M20.25 17.25V3.75H6.75"
+                    stroke="#DBDBDB"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M17.25 6.75H3.75V20.25H17.25V6.75Z"
+                    stroke="#DBDBDB"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </button>
             </div>
             <div className={style.anipay}>
@@ -82,12 +99,7 @@ const ComendantPaymentsUser = () => {
             <div>
               <span htmlFor="">Telefon nömrəsi</span>
               <div className="phoneNumber">
-                <div
-                  className={`${style.card} ${
-                    copiedField === phoneRef ? style.copied : ""
-                  }`}
-                  ref={phoneRef}
-                >
+                <div className={style.card} ref={phoneRef}>
                   +994 55 123 45 67
                 </div>
                 <button
@@ -97,17 +109,34 @@ const ComendantPaymentsUser = () => {
                   }}
                   className={style.copy}
                 >
-                  <img src={copySvg} alt="" />
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className={copiedField === phoneRef ? style.copied : ""}
+                  >
+                    <path
+                      d="M20.25 17.25V3.75H6.75"
+                      stroke="#DBDBDB"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M17.25 6.75H3.75V20.25H17.25V6.75Z"
+                      stroke="#DBDBDB"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </button>
               </div>
               <span htmlFor="">Email</span>
               <div className="email">
-                <div
-                  className={`${style.card} ${
-                    copiedField === emailRef ? style.copied : ""
-                  }`}
-                  ref={emailRef}
-                >
+                <div className={style.card} ref={emailRef}>
                   hidayatalasgarli@mail.ru
                 </div>
                 <button
@@ -117,7 +146,29 @@ const ComendantPaymentsUser = () => {
                   }}
                   className={style.copy}
                 >
-                  <img src={copySvg} alt="" />
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className={copiedField === emailRef ? style.copied : ""}
+                  >
+                    <path
+                      d="M20.25 17.25V3.75H6.75"
+                      stroke="#DBDBDB"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M17.25 6.75H3.75V20.25H17.25V6.75Z"
+                      stroke="#DBDBDB"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </button>
               </div>
             </div>
@@ -129,53 +180,243 @@ const ComendantPaymentsUser = () => {
             <div className={style.dates}>
               <select>
                 <option>Ay</option>
-                <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
-                <option value={5}>5</option>
-                <option value={6}>6</option>
-                <option value={7}>7</option>
-                <option value={8}>8</option>
-                <option value={9}>9</option>
-                <option value={10}>10</option>
-                <option value={11}>11</option>
-                <option value={12}>12</option>
+                <option value={1}>Yanvar</option>
+                <option value={2}>Fevral</option>
+                <option value={3}>Mart</option>
+                <option value={4}>Aprel</option>
+                <option value={5}>May</option>
+                <option value={6}>İyun</option>
+                <option value={7}>İyul</option>
+                <option value={8}>Avqust</option>
+                <option value={9}>Sentyabr</option>
+                <option value={10}>Oktyabr</option>
+                <option value={11}>Noyabr</option>
+                <option value={12}>Dekabr</option>
               </select>
-              <select>
-                <option>İl</option>
-                <option value={2010}>2010</option>
-                <option value={2010}>2011</option>
-                <option value={2010}>2012</option>
-                <option value={2010}>2013</option>
-                <option value={2010}>2014</option>
-                <option value={2010}>2015</option>
-                <option value={2010}>2016</option>
-                <option value={2010}>2017</option>
-                <option value={2010}>2018</option>
-                <option value={2010}>2019</option>
-                <option value={2010}>2020</option>
-                <option value={2010}>2021</option>
-                <option value={2010}>2022</option>
-                <option value={2010}>2023</option>
-                <option value={2010}>2024</option>
-                <option value={2010}>2025</option>
-                <option value={2010}>2026</option>
-                <option value={2010}>2027</option>
-                <option value={2010}>2028</option>
-                <option value={2010}>2029</option>
-                <option value={2010}>2030</option>
-                <option value={2010}>2031</option>
-                <option value={2010}>2032</option>
-                <option value={2010}>2033</option>
-                <option value={2010}>2034</option>
-                <option value={2010}>2035</option>
-                <option value={2010}>2036</option>
-                <option value={2010}>2037</option>
-                <option value={2010}>2038</option>
-                <option value={2010}>2039</option>
-                <option value={2010}>2040</option>
-              </select>
+              <details className={style.customSelect}>
+                <summary className={style.radios}>
+                  <input
+                    type="radio"
+                    name="month"
+                    id="ay"
+                    title="Ay"
+                    defaultChecked
+                  />
+                  <input
+                    type="radio"
+                    name="month"
+                    id="january"
+                    title="Yanvar"
+                  />
+                  <input
+                    type="radio"
+                    name="month"
+                    id="february"
+                    title="Fevral"
+                  />
+                  <input type="radio" name="month" id="march" title="Mart" />
+                  <input type="radio" name="month" id="april" title="Aprel" />
+                  <input type="radio" name="month" id="may" title="May" />
+                  <input type="radio" name="month" id="june" title="İyun" />
+                  <input type="radio" name="month" id="july" title="İyul" />
+                  <input type="radio" name="month" id="augst" title="Avqust" />
+                  <input
+                    type="radio"
+                    name="month"
+                    id="september"
+                    title="Sentyabr"
+                  />
+                  <input
+                    type="radio"
+                    name="month"
+                    id="october"
+                    title="Oktyabr"
+                  />
+                  <input
+                    type="radio"
+                    name="month"
+                    id="november"
+                    title="Noyabr"
+                  />
+                  <input
+                    type="radio"
+                    name="month"
+                    id="december"
+                    title="Dekabr"
+                  />
+                </summary>
+                <ul className={style.list}>
+                  <li>
+                    <label htmlFor="january">
+                      Yanvar<span></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label htmlFor="february">
+                      Fevral<span></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label htmlFor="march">
+                      Mart<span></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label htmlFor="april">
+                      Aprel<span></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label htmlFor="may">
+                      May<span></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label htmlFor="june">
+                      İyun<span></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label htmlFor="july">
+                      İyul<span></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label htmlFor="august">
+                      Avqust<span></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label htmlFor="september">
+                      Sentyabr<span></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label htmlFor="october">
+                      Oktyabr<span></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label htmlFor="november">
+                      Noyabr<span></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label htmlFor="december">
+                      Dekabr<span></span>
+                    </label>
+                  </li>
+                </ul>
+              </details>
+              <details className={style.customSelect}>
+                <summary className={style.radios}>
+                  <input
+                    type="radio"
+                    name="year"
+                    id="year"
+                    title="İl"
+                    defaultChecked
+                  />
+                  <input type="radio" name="year" id="2010" title="2010" />
+                  <input type="radio" name="year" id="2011" title="2011" />
+                  <input type="radio" name="year" id="2012" title="2012" />
+                  <input type="radio" name="year" id="2013" title="2013" />
+                  <input type="radio" name="year" id="2014" title="2014" />
+                  <input type="radio" name="year" id="2015" title="2015" />
+                  <input type="radio" name="year" id="2016" title="2016" />
+                  <input type="radio" name="year" id="2017" title="2017" />
+                  <input type="radio" name="year" id="2018" title="2018" />
+                  <input type="radio" name="year" id="2019" title="2019" />
+                  <input type="radio" name="year" id="2020" title="2020" />
+                  <input type="radio" name="year" id="2021" title="2021" />
+                  <input type="radio" name="year" id="2022" title="2022" />
+                  <input type="radio" name="year" id="2023" title="2023" />
+                  <input type="radio" name="year" id="2024" title="2024" />
+                  <input type="radio" name="year" id="2025" title="2025" />
+                </summary>
+                <ul className={style.list}>
+                  <li>
+                    <label htmlFor="2010">
+                      2010<span></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label htmlFor="2011">
+                      2011<span></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label htmlFor="2012">
+                      2012<span></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label htmlFor="2013">
+                      2013<span></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label htmlFor="2014">
+                      2014<span></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label htmlFor="2015">
+                      2015<span></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label htmlFor="2016">
+                      2016<span></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label htmlFor="2017">
+                      2017<span></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label htmlFor="2018">
+                      2018<span></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label htmlFor="2019">
+                      2019<span></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label htmlFor="2020">
+                      2020<span></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label htmlFor="2021">
+                      2021<span></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label htmlFor="2022">
+                      2022<span></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label htmlFor="2023">
+                      2023<span></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label htmlFor="2024">
+                      2024<span></span>
+                    </label>
+                  </li>
+                  <li>
+                    <label htmlFor="2025">
+                      2025<span></span>
+                    </label>
+                  </li>
+                </ul>
+              </details>
             </div>
             <button className={style.fileInput} onClick={handleFileInputClick}>
               Şəkli seç

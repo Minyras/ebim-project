@@ -26,6 +26,7 @@ export const registerSlice = createSlice({
   initialState: {
     registerInfo: {
       name: "",
+      surname: "",
       email: "",
       mtk: "",
       building: "",

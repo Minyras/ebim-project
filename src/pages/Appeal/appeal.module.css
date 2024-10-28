@@ -7,6 +7,8 @@
   flex-direction: column;
   gap: 24px;
   width: 60%;
+  max-width: 800px;
+  min-width: 400px;
 }
 .select {
   display: flex;
@@ -62,16 +64,16 @@ input[type="radio"] {
   border-radius: 20px;
   color: #2899f6;
   background-color: white;
+  width: 60%;
+  max-width: 800px;
+  min-width: 400px;
 }
 
 .historyTable table {
   font-weight: 600;
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
 }
 .historyTable table tr td {
-  border: 1px solid #6db6ee;
   padding: 10px;
 }
 .historyTable table thead {

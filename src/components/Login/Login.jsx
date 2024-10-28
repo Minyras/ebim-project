@@ -61,8 +61,11 @@ const Login = ({ setShowLogin }) => {
     const result = await dispatch(LoginUser(values)).unwrap();
     if (result) {
       navigate("/dashboard");
-      Cookies.set("user", JSON.stringify(values.email), {
-        expires: 7,
+      Cookies.set("token", JSON.stringify(result.token), {
+        expires: 1,
+      });
+      Cookies.set("userId", JSON.stringify(result.userId), {
+        expires: 1,
       });
     }
   };

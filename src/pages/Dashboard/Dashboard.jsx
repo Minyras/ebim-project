@@ -63,7 +63,7 @@ const Dashboard = () => {
                 <tr>
                   <td>Tarix</td>
                   <td>Ay</td>
-                  <td>Məbləğ</td>
+                  <td>Miqdar</td>
                   <td>Status</td>
                   <td>Qəbz</td>
                 </tr>

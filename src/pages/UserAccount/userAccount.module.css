@@ -10,6 +10,11 @@
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 1px 20px 0 rgba(0, 0, 0, 0.1);
   margin-top: 30px;
   border-radius: 20px;
+  transition: 0.3s all;
+}
+
+.privateInformation * {
+  transition: 0.3s all;
 }
 
 .privateInformation form > button {
@@ -24,7 +29,6 @@
 
 .account p {
   font-size: 32px;
-  margin-bottom: 10px;
   font-weight: 700;
 }
 .flatInformation p {
@@ -34,28 +38,118 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-bottom: 10px;
   gap: 10px;
   color: #0066b9;
   border: none;
   background: transparent;
   font-size: 16px;
+  margin-top: 10px;
 }
+
+.privateInformation form {
+  margin: 10px 0 0;
+}
+
 .privateInformation form,
 .flatInformation form {
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
+
+.privateInformation form {
+  display: block;
+  text-align: end;
+}
+
+.privateInformation form input {
+  width: 100%;
+}
+
+.privateInformation form input:not(:first-child) {
+  margin-top: 30px;
+}
+
+.privateInformation form button {
+  margin-top: 30px;
+}
+
 .privateInformation form input,
 .flatInformation form input {
   border: none;
   border-bottom: 2px solid #6db6ee;
   padding: 15px 10px 15px;
+  color: #0071ce;
+  font-size: 20px;
 }
 
 .privateInformation form input::placeholder,
 .flatInformation form input::placeholder {
   color: #0071ce;
-  font-weight: 100;
+  font-weight: 300;
+}
+.error {
+  color: red;
+}
+
+/* Define fade-out animation for hiding the button */
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    height: auto;
+  }
+  90% {
+    margin: 0;
+    opacity: 0;
+    height: 0;
+    padding: 0;
+  }
+  100% {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    display: none;
+  }
+}
+
+/* Define fade-in animation for showing the button */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+  }
+  to {
+    opacity: 1;
+    height: auto;
+  }
+}
+
+/* Hide button with fade-out animation */
+.update.fadeOut {
+  animation: fadeOut 0.5s forwards;
+}
+
+/* Show "Saxla" button with fade-in animation */
+form button.fadeIn {
+  animation: fadeIn 0.3s forwards;
+}
+
+form button.fadeOut {
+  animation: fadeOut 0.3s forwards;
+}
+
+/* Adjust height change for the privateInformation container */
+.privateInformation.expandHeight {
+  animation: expandHeight 0.3s forwards;
+}
+
+@keyframes expandHeight {
+  from {
+    height: 50%;
+  }
+  to {
+    height: auto;
+  }
 }

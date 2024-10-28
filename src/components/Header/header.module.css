@@ -30,6 +30,9 @@
 }
 
 .dashboard {
-  margin-bottom: -15px;
+  box-shadow: 1px -3px 4px 0px #00000040;
+  border-bottom: none;
+  border-radius: 16px 16px 0 0;
   position: relative;
+  margin-bottom: -10px;
 }
