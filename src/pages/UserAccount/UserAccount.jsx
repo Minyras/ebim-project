@@ -35,8 +35,8 @@ const UserAccount = () => {
     surname: Yup.string().required("Soyad tələb olunur"),
     phoneNumber: Yup.string()
       .matches(
-        /^\+994\d{7}$/,
-        "Telefon nömrəsi +994XXXXXXX formatında olmalıdır"
+        /^\+994\d{9}$/,
+        "Telefon nömrəsi +994XXXXXXXXX formatında olmalıdır"
       )
       .required("Telefon nömrəsi tələb olunur"),
     email: Yup.string()
