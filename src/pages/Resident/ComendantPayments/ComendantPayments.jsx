@@ -1,9 +1,9 @@
-import Header from "../../components/Header/Header";
+import Header from "../../../components/Header/Header";
 import style from "./comendantPayments.module.css";
-import millionSvg from "../../assets/svg/million.svg";
-import anipaySvg from "../../assets/svg/anipay.svg";
-import hesabazSvg from "../../assets/svg/hesabAz.svg";
-import copySvg from "../../assets/svg/copy.svg";
+import millionSvg from "../../../assets/svg/million.svg";
+import anipaySvg from "../../../assets/svg/anipay.svg";
+import hesabazSvg from "../../../assets/svg/hesabAz.svg";
+import copySvg from "../../../assets/svg/copy.svg";
 import { useRef, useState } from "react";
 
 const ComendantPaymentsUser = () => {
@@ -178,21 +178,6 @@ const ComendantPaymentsUser = () => {
           <div className={style.newRequest}>
             <h2>Yeni sorğu</h2>
             <div className={style.dates}>
-              <select>
-                <option>Ay</option>
-                <option value={1}>Yanvar</option>
-                <option value={2}>Fevral</option>
-                <option value={3}>Mart</option>
-                <option value={4}>Aprel</option>
-                <option value={5}>May</option>
-                <option value={6}>İyun</option>
-                <option value={7}>İyul</option>
-                <option value={8}>Avqust</option>
-                <option value={9}>Sentyabr</option>
-                <option value={10}>Oktyabr</option>
-                <option value={11}>Noyabr</option>
-                <option value={12}>Dekabr</option>
-              </select>
               <details className={style.customSelect}>
                 <summary className={style.radios}>
                   <input
@@ -422,7 +407,7 @@ const ComendantPaymentsUser = () => {
               Şəkli seç
             </button>
             <input type="file" ref={fileInputRef} placeholder="Şəkli seç" />
-            <button>Göndər</button>
+            <button className={style.send}>Göndər</button>
           </div>
         </div>
       </div>

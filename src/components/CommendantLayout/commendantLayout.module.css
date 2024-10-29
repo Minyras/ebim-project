@@ -1,4 +1,4 @@
-.layout {
+.commendantLayout {
   display: flex;
   height: 100vh;
   overflow: hidden;
@@ -10,7 +10,7 @@
 }
 
 .outletContainer {
-  padding: 0 50px 60px;
+  padding: 0 25px;
   flex-grow: 1;
   overflow-y: auto;
   background: linear-gradient(180deg, #ffffff 0%, #ebf6ff 100%);

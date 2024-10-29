@@ -1,5 +1,4 @@
 .comendantPayments {
-  height: 100vh;
   padding: 0 50px;
   color: #0071ce;
 }
@@ -130,10 +129,14 @@ input[type="file"] {
   border-radius: 5px;
 }
 
+.newRequest button.send {
+  font-weight: 600;
+}
+
 .fileInput {
   width: 100%;
   background-color: transparent !important;
-  border: 1px solid #0071ce !important;
+  border: 1.5px solid #0071ce !important;
   color: #0071ce !important;
   padding: 10px !important;
 }
@@ -209,11 +212,11 @@ details[open] summary:after {
   transform: rotate(-45deg) translate(0%, 0%);
 }
 
-ul {
+details ul {
   width: 100%;
   background: #fff;
   position: absolute;
-  top: calc(100% + 0.5rem);
+  top: calc(100% - 4.5rem);
   left: 0;
   padding: 1rem;
   margin: 0;
@@ -223,17 +226,36 @@ ul {
   overflow-y: auto;
 }
 
-li {
+details ul::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+details ul::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+details ul::-webkit-scrollbar-thumb {
+  background: #0071ce;
+}
+
+/* Handle on hover */
+details ul::-webkit-scrollbar-thumb:hover {
+  background: #0066b9;
+}
+
+details li {
   margin: 0;
   padding: 1rem 0;
   border-bottom: 1px solid #0071ce;
 }
 
-li:first-child {
+details li:first-child {
   padding-top: 0;
 }
 
-li:last-child {
+details li:last-child {
   padding-bottom: 0;
   border-bottom: none;
 }
@@ -266,18 +288,18 @@ summary.radios:before {
   font-size: 1rem;
 }
 
-ul.list {
+details ul.list {
   counter-reset: labels;
 }
 
-label {
+details label {
   width: 100%;
   display: flex;
   cursor: pointer;
   justify-content: space-between;
 }
 
-label span {
+details label span {
   --display: none;
   display: var(--display);
   width: 1rem;

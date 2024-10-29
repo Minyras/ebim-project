@@ -1,0 +1,69 @@
+.home {
+  padding: 0 0 60px;
+  color: #0066b9;
+}
+.mainAppeal {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  max-width: 800px;
+  min-width: 400px;
+  margin-top: 40px;
+}
+
+.home textarea {
+  width: 100%;
+  height: 30vh;
+  border-radius: 20px;
+  padding: 20px;
+  border: none;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 20px 0 rgba(0, 0, 0, 0.1);
+  resize: none;
+}
+
+.home .mainAppeal button {
+  margin-top: 17px;
+  font-size: 16px;
+  align-self: flex-end;
+  padding: 12px 40px;
+  background-color: #0071ce;
+  color: white;
+  border: none;
+  border-radius: 20px;
+}
+
+.home h2 {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  margin-left: 27px;
+}
+.historyTable {
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 20px 0 rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 20px;
+  color: #2899f6;
+  background-color: white;
+  width: 100%;
+}
+
+.historyTable table {
+  font-weight: 600;
+  width: 100%;
+  text-align: center;
+}
+.historyTable table tr td {
+  padding: 9px;
+}
+.historyTable table thead {
+  font-size: 20px;
+}
+.historyTable table td:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.historyTable table td:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}

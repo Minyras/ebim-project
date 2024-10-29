@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import Header from "../../components/Header/Header";
+import Header from "../../../components/Header/Header";
 import style from "./userAccount.module.css";
-import updateSvg from "../../assets/svg/NotePencil.svg";
+import updateSvg from "../../../assets/svg/NotePencil.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { GetUserById, UpdateUserById } from "../../redux/slices/userSlice";
+import { GetUserById, UpdateUserById } from "../../../redux/slices/userSlice";
 import Cookies from "js-cookie";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";

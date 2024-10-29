@@ -1,15 +1,17 @@
 // import Login from "./pages/Login/Login";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LoginRegister from "./pages/LoginRegister/LoginRegister";
-import Dashboard from "./pages/Dashboard/Dashboard";
+import Dashboard from "./pages/Resident/Dashboard/Dashboard";
 import Layout from "./components/Layout/Layout";
-import Payment from "./pages/Payment/Payment";
-import Appeal from "./pages/Appeal/Appeal";
-import CommunalPayments from "./pages/CommunalPayments/CommunalPayments";
-import ComendantPayments from "./pages/ComendantPayments/ComendantPayments";
-import UserAccount from "./pages/UserAccount/UserAccount";
+import Payment from "./pages/Resident/Payment/Payment";
+import Appeal from "./pages/Resident/Appeal/Appeal";
+import CommunalPayments from "./pages/Resident/CommunalPayments/CommunalPayments";
+import ComendantPayments from "./pages/Resident/ComendantPayments/ComendantPayments";
+import UserAccount from "./pages/Resident/UserAccount/UserAccount";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Home from "./pages/Commendant/Home/Home";
+import CommendantLayout from "./components/CommendantLayout/CommendantLayout";
 
 function App() {
   return (
@@ -30,6 +32,9 @@ function App() {
               path="/payment/comendant-payments"
               element={<ComendantPayments />}
             />
+          </Route>
+          <Route path="/commendant" element={<CommendantLayout />}>
+            <Route path="" element={<Home />} />
           </Route>
           <Route path="/" element={<LoginRegister />} />
           <Route path="/verify" element={<LoginRegister />} />

@@ -1,9 +1,9 @@
-import Header from "../../components/Header/Header";
+import Header from "../../../components/Header/Header";
 import style from "./communalPayments.module.css";
-import gassSvg from "../../assets/svg/gass.svg";
-import lightSvg from "../../assets/svg/light.svg";
-import waterSvg from "../../assets/svg/water.svg";
-import equipmentSvg from "../../assets/svg/equipment.svg";
+import gassSvg from "../../../assets/svg/gass.svg";
+import lightSvg from "../../../assets/svg/light.svg";
+import waterSvg from "../../../assets/svg/water.svg";
+import equipmentSvg from "../../../assets/svg/equipment.svg";
 const CommunalPayments = () => {
   return (
     <div className={style.communalPayments}>

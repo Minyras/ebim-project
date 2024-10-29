@@ -1,13 +1,13 @@
-import Header from "../../components/Header/Header";
+import Header from "../../../components/Header/Header";
 import style from "./dashboard.module.css";
-import gassSvg from "../../assets/svg/gass.svg";
-import lightSvg from "../../assets/svg/light.svg";
-import waterSvg from "../../assets/svg/water.svg";
-import equipmentSvg from "../../assets/svg/equipment.svg";
-import checkSvg from "../../assets/svg/check.svg";
-import millionSvg from "../../assets/svg/million.svg";
-import anipaySvg from "../../assets/svg/anipay.svg";
-import hesabazSvg from "../../assets/svg/hesabAz.svg";
+import gassSvg from "../../../assets/svg/gass.svg";
+import lightSvg from "../../../assets/svg/light.svg";
+import waterSvg from "../../../assets/svg/water.svg";
+import equipmentSvg from "../../../assets/svg/equipment.svg";
+import checkSvg from "../../../assets/svg/check.svg";
+import millionSvg from "../../../assets/svg/million.svg";
+import anipaySvg from "../../../assets/svg/anipay.svg";
+import hesabazSvg from "../../../assets/svg/hesabAz.svg";
 const Dashboard = () => {
   return (
     <div className={style.dashboard}>

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Header from "../../components/Header/Header";
+import Header from "../../../components/Header/Header";
 import style from "./payment.module.css";
 
 // eslint-disable-next-line react/prop-types
