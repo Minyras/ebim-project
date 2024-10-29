@@ -12,6 +12,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Home from "./pages/Commendant/Home/Home";
 import CommendantLayout from "./components/CommendantLayout/CommendantLayout";
+import Appeals from "./pages/Commendant/Appeals/Appeals";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           </Route>
           <Route path="/commendant" element={<CommendantLayout />}>
             <Route path="" element={<Home />} />
+            <Route path="appeals" element={<Appeals />} />
           </Route>
           <Route path="/" element={<LoginRegister />} />
           <Route path="/verify" element={<LoginRegister />} />

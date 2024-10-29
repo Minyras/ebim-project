@@ -29,7 +29,7 @@ const Header = ({ name }) => {
           </button>
         </div>
       </div>
-      {pathLocations.length >= 2 ? (
+      {pathLocations.length >= 2 && pathLocations[0] === "payment" ? (
         <BreadCrumbs title={pathLocations[1]} />
       ) : (
         ""

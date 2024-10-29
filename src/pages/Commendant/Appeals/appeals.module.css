@@ -1,0 +1,77 @@
+.payments {
+  padding: 0 0 60px;
+  color: #0066b9;
+}
+
+.historyTable {
+  margin-top: 27px;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 20px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  color: #2899f6;
+  background-color: white;
+  width: 100%;
+}
+
+.historyTable table {
+  font-weight: 600;
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.historyTable table tbody tr:hover {
+  background: #70aee2;
+  cursor: pointer;
+  color: #fff;
+}
+
+.historyTable table tr td {
+  padding: 9px;
+}
+.historyTable table thead {
+  font-size: 20px;
+}
+
+.status {
+  display: inline-block;
+  border-radius: 8px;
+  padding: 4px 8px;
+  line-height: 24px;
+  min-width: 150px;
+}
+
+.status.waiting {
+  color: #fcb61a;
+  background-color: #fff9eb;
+}
+
+.status.accepted {
+  color: #04ad0f;
+  background-color: #effaef;
+}
+
+.status.denied {
+  color: #e70500;
+  background: #fff3f2;
+}
+
+.status::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 18px;
+  margin-right: 4px;
+}
+
+.status.waiting::before {
+  background-color: #fcb61a;
+}
+
+.status.accepted::before {
+  background-color: #04ad0f;
+}
+
+.status.denied::before {
+  background: #e70500;
+}

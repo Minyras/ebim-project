@@ -54,6 +54,7 @@ const Sidebar = () => {
           <>
             <NavLink
               to={"/commendant"}
+              end
               className={({ isActive }) =>
                 isActive ? `${style.navLink} ${style.active}` : style.navLink
               }
