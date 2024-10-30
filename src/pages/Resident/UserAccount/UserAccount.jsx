@@ -26,6 +26,7 @@ const UserAccount = () => {
   };
 
   const handleSavePersonalInfo = (values) => {
+    console.log(values);
     dispatch(UpdateUserById({ id: userId, userData: values }));
     setIsEditingPersonalInfo(false);
   };
@@ -70,7 +71,7 @@ const UserAccount = () => {
           validationSchema={validationSchema}
           onSubmit={handleSavePersonalInfo}
         >
-          {({ isSubmitting }) => (
+          {() => (
             <Form>
               <div>
                 <Field
@@ -135,7 +136,6 @@ const UserAccount = () => {
               {isEditingPersonalInfo && (
                 <button
                   type="submit"
-                  disabled={isSubmitting}
                   className={`${style.updating} ${style.fadeIn}`}
                 >
                   Saxla
