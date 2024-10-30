@@ -32,6 +32,7 @@ const Register = ({ setShowOnMobile, setShowLogin }) => {
     floor: "",
     apartmentNumber: "",
     ownerPhoneNumber: "",
+    squareMeters: "",
     password: "",
     confirmPassword: "",
   };
@@ -47,7 +48,15 @@ const Register = ({ setShowOnMobile, setShowLogin }) => {
     blockNumber: Yup.string().required("Blok nömrəsi daxil edin."),
     floor: Yup.string().required("Mərtəbə daxil edin."),
     apartmentNumber: Yup.string().required("Mənzil nömrəsi daxil edin."),
-    ownerPhoneNumber: Yup.string().required("Ev sahibinin nömrəsi daxil edin."),
+    ownerPhoneNumber: Yup.string()
+      .matches(
+        /^\+994\d{9}$/,
+        "Telefon nömrəsi +994XXXXXXXXX formatında olmalıdır"
+      )
+      .required("Ev sahibinin nömrəsi daxil edin."),
+    squareMeters: Yup.number()
+      .typeError("Yalnız rəqəmlər daxil edin.")
+      .required("Kvadrat metri daxil edin."),
     password: Yup.string().required("Parol daxil edin."),
     confirmPassword: Yup.string()
       .oneOf([Yup.ref("password"), null], "Parollar uyğun deyil")
@@ -176,6 +185,19 @@ const Register = ({ setShowOnMobile, setShowLogin }) => {
               />
               <ErrorMessage
                 name="ownerPhoneNumber"
+                component="p"
+                className={style.errorMessage}
+              />
+            </div>
+
+            <div>
+              <Field
+                type="number"
+                name="squareMeters"
+                placeholder="Kvadrat metri"
+              />
+              <ErrorMessage
+                name="squareMeters"
                 component="p"
                 className={style.errorMessage}
               />

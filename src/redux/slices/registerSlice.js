@@ -35,6 +35,7 @@ export const registerSlice = createSlice({
       apartmentNumber: "",
       ownerPhoneNumber: "",
       password: "",
+      squareMeters: "",
       status: null,
       error: null,
     },
