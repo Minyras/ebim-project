@@ -1,32 +1,70 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MainSide from "../../components/MainSide/MainSide";
 import Login from "../../components/Login/Login";
 import Register from "../../components/Register/Register";
-import style from "./loginRegister.module.css";
+import "./loginRegister.css";
+import ResetPassword from "../../components/ResetPassword/ResetPassword";
+import ChangePassword from "../../components/ChangePassword/ChangePassword";
+import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { VerifyUser } from "../../redux/slices/loginSlice";
+import LoginConfirm from "../../components/LoginConfirm/LoginConfirm";
 
 const LoginRegister = () => {
-  const [showLogin, setShowLogin] = useState(true);
+  const [showForms, setShowForms] = useState("login");
   const [showOnMobile, setShowOnMobile] = useState(false);
 
+  const { pathname } = useLocation();
+  const pathLocations = pathname.split("/");
+  pathLocations?.shift();
+
+  const dispatch = useDispatch();
+
+  const verifyUser = async (token) => {
+    await dispatch(VerifyUser(token)).unwrap();
+  };
+
+  const queryParams = new URLSearchParams(location.search);
+  const token = queryParams.get("token");
+
+  useEffect(() => {
+    if (pathLocations[0] == "verify") {
+      if (token) {
+        verifyUser(token);
+      }
+    } else if (pathLocations[0] == "resetpassword") {
+      if (token) {
+        setShowForms("resetpassword");
+      }
+    }
+  }, []);
+
   return (
-    <div className={style.container}>
+    <div className="container">
       <MainSide
-        showLogin={showLogin}
-        setShowLogin={setShowLogin}
+        showForms={showForms}
+        setShowForms={setShowForms}
         setShowOnMobile={setShowOnMobile}
       />
-      <div
-        className={`${style.formContainer} ${
-          showOnMobile ? style.showForm : ""
-        }`}
-      >
-        {showLogin ? (
-          <Login setShowLogin={setShowLogin} />
-        ) : (
-          <Register
+      <div className={`formContainer ${showOnMobile ? "showForm" : ""}`}>
+        {showForms == "login" && (
+          <Login
+            setShowForms={setShowForms}
             setShowOnMobile={setShowOnMobile}
-            setShowLogin={setShowLogin}
           />
+        )}
+        {showForms == "register" && <Register setShowForms={setShowForms} />}
+        {showForms == "resetpassword" && (
+          <ResetPassword
+            setShowForms={setShowForms}
+            setShowOnMobile={setShowOnMobile}
+          />
+        )}
+        {showForms == "changepassword" && (
+          <ChangePassword setShowForms={setShowForms} />
+        )}
+        {showForms == "successfullpasswordchange" && (
+          <LoginConfirm setShowForms={setShowForms} isPasswordChange />
         )}
       </div>
     </div>

@@ -3,40 +3,60 @@
 }
 
 .loginConfirm p {
-  font-size: 48px;
+  font-size: 36px;
   color: #0071ce;
+  font-weight: 600;
 }
 
-.loginConfirm img {
+.loginConfirm > img {
   margin-bottom: 30px;
+}
+.loginConfirm a {
+  cursor: pointer;
+  color: #0071ce;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .loginConfirm a {
   display: none;
 }
 
+.passwordChange {
+  display: flex !important;
+  margin-top: 20px;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700 !important;
+}
+
+.passwordChange img {
+  width: 24px;
+}
+
 @media screen and (max-width: 900px) {
-  .loginConfirm img {
+  .loginConfirm > img {
     width: 80px;
     margin-bottom: 20px;
   }
 
   .loginConfirm p {
     font-size: 24px;
-    font-weight: 500;
     width: 80%;
     margin: 0 auto;
   }
-
   .loginConfirm a {
     display: block;
     position: absolute;
     bottom: 40px;
     left: 0;
     right: 0;
-    color: #0071ce;
-    text-decoration: none;
+    font-weight: 600 !important;
     font-size: 16px;
-    font-weight: 600;
+  }
+  .passwordChange img {
+    display: none;
   }
 }

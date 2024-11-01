@@ -1,0 +1,93 @@
+/* General Styling */
+.loginPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%; /* More reasonable width for larger screens */
+  margin: auto;
+  color: #0071ce;
+  font-size: 18px;
+  padding: 20px; /* Added padding for better spacing */
+  box-sizing: border-box; /* Ensures padding doesn't exceed width */
+}
+
+.navigateRegister {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 16px; /* Reduced font size for mobile */
+  position: absolute;
+  bottom: 40px;
+  display: none;
+}
+
+.navigateRegister a {
+  color: #0071ce;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navigateRegister a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Styling for Mobile */
+@media screen and (max-width: 900px) {
+  .loginPage {
+    width: 90%; /* Full width for mobile screens */
+    padding: 20px; /* Add padding for breathing space */
+  }
+
+  .welcome {
+    font-size: 28px; /* Reduce heading size for mobile */
+  }
+
+  .loginButton {
+    width: 100%; /* Full-width button */
+  }
+  .navigateRegister {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  input::placeholder {
+    font-weight: 100;
+  }
+
+  .loginPage {
+    padding: 0;
+    margin: 0;
+  }
+
+  .welcome {
+    font-size: 36px; /* Smaller size for very small screens */
+  }
+
+  .email,
+  .password {
+    position: relative;
+    margin-bottom: 36px; /* Reduced spacing */
+  }
+
+  .save {
+    gap: 5px;
+  }
+
+  .save label,
+  .forgot a {
+    font-size: 16px;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    height: 40px; /* Smaller input size */
+    font-size: 14px; /* Adjust font size */
+  }
+
+  .loginButton {
+    width: 90%;
+    font-size: 20px; /* Smaller button text */
+    height: 45px; /* Adjusted button height */
+  }
+}

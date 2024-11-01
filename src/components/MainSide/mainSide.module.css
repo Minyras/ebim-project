@@ -41,6 +41,10 @@
   display: none;
 }
 
+.buttons .lowercase {
+  display: none;
+}
+
 @media screen and (max-width: 900px) {
   .mainSide {
     background-color: transparent;
@@ -94,5 +98,12 @@
 
   .mobileLogo {
     display: block;
+  }
+  .buttons .lowercase {
+    display: inline;
+  }
+
+  .buttons .uppercase {
+    display: none;
   }
 }

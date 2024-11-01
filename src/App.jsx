@@ -40,6 +40,7 @@ function App() {
           </Route>
           <Route path="/" element={<LoginRegister />} />
           <Route path="/verify" element={<LoginRegister />} />
+          <Route path="/resetpassword" element={<LoginRegister />} />
         </Routes>
       </Router>
     </div>

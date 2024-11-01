@@ -1,0 +1,135 @@
+.container {
+  color: #0071ce;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-image: linear-gradient(#fff, #ebf6ff);
+}
+
+.formContainer {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.formContainer form {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.welcome {
+  font-size: 48px; /* Reduced size for balance */
+  font-weight: 500;
+  margin-bottom: 20px; /* Adjusted margin */
+  text-align: center; /* Center text */
+}
+
+form > div {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+::placeholder {
+  color: #0071ce;
+  font-size: 16px;
+}
+.formContainer input:not([type="checkbox"]) {
+  width: 100%;
+  height: 45px;
+  padding: 0 40px 0 0px;
+  border: none;
+  border-bottom: 2px solid #0071ce;
+  background: transparent;
+  font-size: 16px;
+}
+
+.eyeIcon {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 10px;
+  top: 12px; /* Align with input field */
+  cursor: pointer; /* Make it clickable */
+}
+
+.saveForgot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px; /* Adjusted spacing */
+  padding: 0 15px;
+  width: 100%; /* Ensure alignment */
+}
+
+.save,
+.forgot {
+  display: inline-block;
+}
+
+.saveForgot label {
+  font-weight: 600;
+}
+
+.forgot > a {
+  text-decoration: none;
+  color: #0071ce;
+  font-weight: 600; /* Highlight the link */
+}
+
+.save {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.formContainer input[type="checkbox"] {
+  border: 1px solid #0071ce;
+  border-radius: 2px; /* Small radius for a modern look */
+}
+.submitButton {
+  width: 85%;
+  margin: 20px 40px 0;
+  background-color: #0071ce;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  height: 50px;
+  cursor: pointer; /* Show that it's clickable */
+  transition: background-color 0.3s ease; /* Add smooth transition */
+}
+
+.submitButton:hover {
+  background-color: #005bb5; /* Darken on hover */
+}
+
+.errorMessage {
+  font-size: 18px;
+  color: red;
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .formContainer {
+    width: 100%;
+    display: none;
+  }
+  .formContainer.showForm {
+    display: flex;
+    position: absolute;
+    background-image: linear-gradient(#fff, #ebf6ff);
+    top: 0;
+    bottom: 0;
+  }
+
+  form {
+    padding: 0;
+  }
+}

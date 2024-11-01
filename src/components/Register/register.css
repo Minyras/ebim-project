@@ -9,69 +9,8 @@
   color: #0071ce;
 }
 
-.registerWelcome {
-  font-size: 48px;
-  font-weight: 500;
-  margin-bottom: 20px;
-}
-
-.registerEmail label,
-.registerPassword label,
-.registerName label,
-.registerPage form div label {
-  position: absolute;
-  font-size: 16px;
-  top: 16px;
-  left: 15px;
-}
-
-.registerEmail,
-.registerPassword,
-.registerName,
-form div {
-  position: relative;
-  margin-bottom: 10px;
-}
-
-.registerPage form input {
-  padding: 0 0 0 20px;
-  width: 100%;
-  height: 50px;
-  border: none;
-  border-bottom: 2px solid #0071ce;
-  font-size: 16px;
-}
-
-.registerButton {
-  width: 80%;
-  margin: 60px 40px 0;
-  background-color: #0071ce;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  height: 50px;
-}
-
-.eyeIcon {
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  right: 10px;
-  top: 16px;
-}
-
-.errorMessage {
-  font-size: 18px;
-  color: red;
-}
-
 .goBack {
   display: none;
-}
-
-input {
-  background-color: transparent;
 }
 
 /* Responsive Styling for Mobile */

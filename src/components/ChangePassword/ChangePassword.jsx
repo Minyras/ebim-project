@@ -1,20 +1,17 @@
 import { useState } from "react";
-import axios from "axios";
-import "./changePassword.module.css";
 import LoginConfirm from "../LoginConfirm/LoginConfirm";
-import style from "./changePassword.module.css";
+import "./changePassword.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { ChangeUserPassword } from "../../redux/slices/changePasswordSlice";
 
-const ChangePassword = ({ setForgotPassword }) => {
+const ChangePassword = ({ setShowForms }) => {
   const [showLoginConfirm, setShowLoginConfirm] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleBack = () => {
-    setForgotPassword(false);
+    setShowForms("login");
   };
 
   const initialValues = {
@@ -41,37 +38,31 @@ const ChangePassword = ({ setForgotPassword }) => {
   }
 
   return (
-    <div className={style.changePassword}>
-      <p>
+    <div className="changePassword">
+      <h3>
         Parolu əldə etmək üçün <br /> emailini daxil et
-      </p>
+      </h3>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
       >
-        {({ isSubmitting }) => (
-          <Form className={style.changePasswordForm}>
-            <div className={style.email}>
+        {() => (
+          <Form className="changePasswordForm">
+            <div className="email">
               <Field type="email" name="email" placeholder="Email" />
               <ErrorMessage
                 name="email"
                 component="p"
-                className={style.errorMessage}
+                className="errorMessage"
               />
-              {errorMessage && (
-                <p className={style.errorMessage}>{errorMessage}</p>
-              )}
+              {errorMessage && <p className="errorMessage">{errorMessage}</p>}
             </div>
-            <div className={style.forwardBack}>
-              <button
-                type="submit"
-                className={style.forward}
-                disabled={isSubmitting || isLoading}
-              >
-                {isLoading ? "Göndərilir..." : "İrəli"}
+            <div className="forwardBack">
+              <button type="submit" className="forward">
+                İrəli
               </button>
-              <button type="button" className={style.back} onClick={handleBack}>
+              <button type="button" className="back" onClick={handleBack}>
                 Geri get
               </button>
             </div>

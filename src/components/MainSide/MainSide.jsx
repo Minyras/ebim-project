@@ -3,14 +3,16 @@ import logo1 from "../../../public/logo.svg";
 import logo2 from "../../../public/logo3.svg";
 import style from "./mainSide.module.css";
 
-const MainSide = ({ showLogin, setShowLogin, setShowOnMobile }) => {
+const MainSide = ({ showForms, setShowForms, setShowOnMobile }) => {
+  // const navigate = useNavigate();
   const handleLoginClick = () => {
-    setShowLogin(true);
+    // navigate("/");
+    setShowForms("login");
     setShowOnMobile(true);
   };
 
   const handleRegisterClick = () => {
-    setShowLogin(false);
+    setShowForms("register");
     setShowOnMobile(true);
   };
 
@@ -22,16 +24,22 @@ const MainSide = ({ showLogin, setShowLogin, setShowOnMobile }) => {
       </div>
       <div className={style.buttons}>
         <button
-          className={`${style.login} ${showLogin ? style.active : ""}`}
+          className={`${style.login} ${
+            showForms != "register" ? style.active : ""
+          }`}
           onClick={handleLoginClick}
         >
-          Daxİl ol
+          <span className={style.uppercase}>DAXİL OL</span>
+          <span className={style.lowercase}>Daxil ol</span>
         </button>
         <button
-          className={`${style.register} ${!showLogin ? style.active : ""}`}
+          className={`${style.register} ${
+            showForms == "register" ? style.active : ""
+          }`}
           onClick={handleRegisterClick}
         >
-          Qeydİyyatdan keç
+          <span className={style.lowercase}>Qeydiyyatdan keç</span>
+          <span className={style.uppercase}>QEYDİYYATDAN KEÇ</span>
         </button>
       </div>
     </div>

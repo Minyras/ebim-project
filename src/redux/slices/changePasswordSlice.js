@@ -24,25 +24,49 @@ export const ChangeUserPassword = createAsyncThunk(
     }
   }
 );
+
+export const ResetUserPassword = createAsyncThunk(
+  "user/resetPassword",
+  async (userData) => {
+    try {
+      const response = await toast.promise(
+        axios.post(
+          "https://ebim-mtk-dashboard.azurewebsites.net/api/User/ResetPassword",
+          userData
+        ),
+        {
+          pending: "Token yoxlanılır.",
+          success: "Şifrə uğurla dəyişdirildi.",
+          error: "Şifrə dəyişdirilən zaman problem yaşandı.",
+        }
+      );
+      return response.data;
+    } catch (error) {
+      return error;
+    }
+  }
+);
+
 export const changePasswordSlice = createSlice({
   name: "changePassword",
   initialState: {
     changePasswordInfo: {
       email: "",
+      status: null,
+      error: null,
     },
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(ChangeUserPassword.pending, (state) => {
-        state.status = "loading";
+        state.changePasswordInfo.status = "loading";
       })
       .addCase(ChangeUserPassword.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.loginInfo = action.payload;
+        state.changePasswordInfo.status = action.payload;
       })
       .addCase(ChangeUserPassword.rejected, (state, action) => {
-        state.status = "failed";
+        state.changePasswordInfo.status = "failed";
         state.error = action.payload;
       });
   },
