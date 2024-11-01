@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import LoginConfirm from "../LoginConfirm/LoginConfirm";
-import "./resetPassword.css";
+import "./resetpassword.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
