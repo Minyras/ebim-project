@@ -15,7 +15,8 @@ const Payment = () => {
           }}
           className={style.communal}
         >
-          Kommunal ödənişlər
+          Kommunal
+          <br /> ödənişlər
         </button>
         <button
           onClick={() => {
@@ -23,7 +24,8 @@ const Payment = () => {
           }}
           className={style.comendant}
         >
-          Komendant ödənişləri
+          Komendant
+          <br /> ödənişləri
         </button>
       </div>
     </div>

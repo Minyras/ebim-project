@@ -48,131 +48,133 @@ const UserAccount = () => {
   return (
     <div className={style.account}>
       <Header name={"Hesabım"} />
-      <div className={style.privateInformation}>
-        <p>Şəxsi məlumatlar</p>
-        <button
-          className={`${style.update} ${
-            !isEditingPersonalInfo ? style.fadeIn : style.fadeOut
-          }`}
-          onClick={handleEditingPersonalInfo}
-        >
-          <img src={updateSvg} alt="" />
-          <span>Redaktə et</span>
-        </button>
+      <div className={style.accountForms}>
+        <div className={style.privateInformation}>
+          <p>Şəxsi məlumatlar</p>
+          <button
+            className={`${style.update} ${
+              !isEditingPersonalInfo ? style.fadeIn : style.fadeOut
+            }`}
+            onClick={handleEditingPersonalInfo}
+          >
+            <img src={updateSvg} alt="" />
+            <span>Redaktə et</span>
+          </button>
 
-        <Formik
-          initialValues={{
-            name: userInfo?.name || "",
-            surname: userInfo?.surname || "",
-            phoneNumber: userInfo?.phoneNumber || "",
-            email: userInfo?.email || "",
-          }}
-          enableReinitialize={true}
-          validationSchema={validationSchema}
-          onSubmit={handleSavePersonalInfo}
-        >
-          {() => (
-            <Form>
-              <div>
-                <Field
-                  type="text"
-                  name="name"
-                  placeholder="Ad"
-                  disabled={!isEditingPersonalInfo}
-                  className={style.inputField}
-                />
-                <ErrorMessage
-                  name="name"
-                  component="div"
-                  className={style.error}
-                />
-              </div>
+          <Formik
+            initialValues={{
+              name: userInfo?.name || "",
+              surname: userInfo?.surname || "",
+              phoneNumber: userInfo?.phoneNumber || "",
+              email: userInfo?.email || "",
+            }}
+            enableReinitialize={true}
+            validationSchema={validationSchema}
+            onSubmit={handleSavePersonalInfo}
+          >
+            {() => (
+              <Form>
+                <div>
+                  <Field
+                    type="text"
+                    name="name"
+                    placeholder="Ad"
+                    disabled={!isEditingPersonalInfo}
+                    className={style.inputField}
+                  />
+                  <ErrorMessage
+                    name="name"
+                    component="div"
+                    className={style.error}
+                  />
+                </div>
 
-              <div>
-                <Field
-                  type="text"
-                  name="surname"
-                  placeholder="Soyadı"
-                  disabled={!isEditingPersonalInfo}
-                  className={style.inputField}
-                />
-                <ErrorMessage
-                  name="surname"
-                  component="div"
-                  className={style.error}
-                />
-              </div>
+                <div>
+                  <Field
+                    type="text"
+                    name="surname"
+                    placeholder="Soyadı"
+                    disabled={!isEditingPersonalInfo}
+                    className={style.inputField}
+                  />
+                  <ErrorMessage
+                    name="surname"
+                    component="div"
+                    className={style.error}
+                  />
+                </div>
 
-              <div>
-                <Field
-                  type="text"
-                  name="phoneNumber"
-                  placeholder="Telefon nömrəsi"
-                  disabled={!isEditingPersonalInfo}
-                  className={style.inputField}
-                />
-                <ErrorMessage
-                  name="phoneNumber"
-                  component="div"
-                  className={style.error}
-                />
-              </div>
+                <div>
+                  <Field
+                    type="text"
+                    name="phoneNumber"
+                    placeholder="Telefon nömrəsi"
+                    disabled={!isEditingPersonalInfo}
+                    className={style.inputField}
+                  />
+                  <ErrorMessage
+                    name="phoneNumber"
+                    component="div"
+                    className={style.error}
+                  />
+                </div>
 
-              <div>
-                <Field
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  disabled={!isEditingPersonalInfo}
-                  className={style.inputField}
-                />
-                <ErrorMessage
-                  name="email"
-                  component="div"
-                  className={style.error}
-                />
-              </div>
+                <div>
+                  <Field
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    disabled={!isEditingPersonalInfo}
+                    className={style.inputField}
+                  />
+                  <ErrorMessage
+                    name="email"
+                    component="div"
+                    className={style.error}
+                  />
+                </div>
 
-              {isEditingPersonalInfo && (
-                <button
-                  type="submit"
-                  className={`${style.updating} ${style.fadeIn}`}
-                >
-                  Saxla
-                </button>
-              )}
-            </Form>
-          )}
-        </Formik>
-      </div>
-      <div className={style.flatInformation}>
-        <p>Mənzil haqqında məlumatlar</p>
-        <form action="">
-          <input
-            type="text"
-            value={`MTK: ${userInfo?.mtk}`}
-            placeholder="MTK"
-            disabled
-          />
-          <input
-            type="text"
-            value={`Blok: ${userInfo?.blockNumber}`}
-            placeholder="Blok"
-            disabled
-          />
-          <input
-            type="text"
-            value={`Mərtəbə: ${userInfo?.floor}`}
-            placeholder="Mərtəbə"
-            disabled
-          />
-          <input
-            type="text"
-            value={`Mənzil: ${userInfo?.apartmentNumber}`}
-            placeholder="Mənzil"
-            disabled
-          />
-        </form>
+                {isEditingPersonalInfo && (
+                  <button
+                    type="submit"
+                    className={`${style.updating} ${style.fadeIn}`}
+                  >
+                    Saxla
+                  </button>
+                )}
+              </Form>
+            )}
+          </Formik>
+        </div>
+        <div className={style.flatInformation}>
+          <p>Mənzil haqqında məlumatlar</p>
+          <form action="">
+            <input
+              type="text"
+              value={`MTK: ${userInfo?.mtk}`}
+              placeholder="MTK"
+              disabled
+            />
+            <input
+              type="text"
+              value={`Blok: ${userInfo?.blockNumber}`}
+              placeholder="Blok"
+              disabled
+            />
+            <input
+              type="text"
+              value={`Mərtəbə: ${userInfo?.floor}`}
+              placeholder="Mərtəbə"
+              disabled
+            />
+            <input
+              type="text"
+              value={`Mənzil: ${userInfo?.apartmentNumber}`}
+              placeholder="Mənzil"
+              disabled
+            />
+          </form>
+        </div>
       </div>
     </div>
   );

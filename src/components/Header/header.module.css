@@ -26,7 +26,23 @@
 
 .account {
   background-color: transparent;
-  border: none;
+  border: 1px solid #0066b9;
+  border-radius: 50px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right .exit {
+  font-weight: 600;
+  color: #0066b9;
+  background-color: transparent;
+  border: 1px solid #0066b9;
+  font-size: 20px;
+  padding: 4px 14px 7px;
+  border-radius: 20px;
 }
 
 .dashboard {

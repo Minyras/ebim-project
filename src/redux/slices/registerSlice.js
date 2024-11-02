@@ -13,12 +13,11 @@ export const postUser = createAsyncThunk("user/postUser", async (userData) => {
       {
         pending: "İstifadəçi qeydiyyatdan keçirilir.",
         success: "Hesabınızı mail ünvanınıza göndərilən mesajla təsdiqləyin.",
-        error: "Qeydiyyatdan keçirilən zaman problem yaşandı.",
       }
     );
     return response.data;
   } catch (error) {
-    console.log(error);
+    toast.error(error.response?.data || "Naməlum xəta baş verdi.");
   }
 });
 export const registerSlice = createSlice({

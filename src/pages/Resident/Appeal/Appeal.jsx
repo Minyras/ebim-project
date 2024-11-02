@@ -1,10 +1,11 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Header from "../../../components/Header/Header";
 import style from "./appeal.module.css";
-import { Request } from "../../../redux/slices/requestSlice";
+import { GetRequests, Request } from "../../../redux/slices/requestSlice";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Cookies from "js-cookie";
+import { useEffect } from "react";
 
 const Appeal = () => {
   const dispatch = useDispatch();
@@ -12,10 +13,50 @@ const Appeal = () => {
   const userIdCookie = Cookies.get("userId");
   const userId = JSON.parse(userIdCookie);
 
+  useEffect(() => {
+    dispatch(GetRequests(userId));
+  }, [userId]);
+
+  const { requests } = useSelector((state) => state.request);
+
+  console.log(requests);
+
   const initialValues = {
     userId: userId,
     requestType: "complaint",
     message: "",
+  };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero-indexed
+    const year = date.getFullYear();
+    return `${day}.${month}.${year}`;
+  };
+
+  const formatStatus = (status) => {
+    switch (status) {
+      case "Pending":
+        return "Gözləmədədir";
+      case "Accepted":
+        return "Təsdiqlənib";
+      default:
+        return "Rədd olunub";
+    }
+  };
+
+  const formatType = (type) => {
+    switch (type) {
+      case "complaint":
+        return "Şikayət";
+      case "proposal":
+        return "Təklif";
+      case "card":
+        return "Giriş kartı";
+      default:
+        return "Digər";
+    }
   };
 
   const validationSchema = Yup.object({
@@ -27,6 +68,7 @@ const Appeal = () => {
     console.log(values);
     try {
       await dispatch(Request(values));
+      await dispatch(GetRequests(userId));
     } catch (error) {
       setSubmitting(false);
       if (error.response) {
@@ -126,16 +168,15 @@ const Appeal = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>05.07.2024</td>
-                <td>Şikayət</td>
-                <td>Gözləmədədir</td>
-              </tr>
-              <tr>
-                <td>05.07.2024</td>
-                <td>Şikayət</td>
-                <td>Gözləmədədir</td>
-              </tr>
+              {requests.data?.slice(0, 8).map((request) => {
+                return (
+                  <tr key={request.id}>
+                    <td>{formatDate(request.createdAt)}</td>
+                    <td>{formatType(request.requestType)}</td>
+                    <td>{formatStatus(request.status)}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

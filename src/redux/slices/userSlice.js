@@ -26,12 +26,11 @@ export const UpdateUserById = createAsyncThunk(
         {
           pending: "İstifadəçi məlumatları yenilənir.",
           success: "İstifadəçi məlumatları yeniləndi.",
-          error: "İstifadəçi məlumatları yenilənən zaman problem yaşandı.",
         }
       );
       return response.data;
     } catch (error) {
-      console.log(error);
+      toast.error(error.response?.data || "Naməlum xəta baş verdi.");
     }
   }
 );

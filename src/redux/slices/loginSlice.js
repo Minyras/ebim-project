@@ -15,12 +15,11 @@ export const LoginUser = createAsyncThunk(
         {
           pending: "İstifadəçi daxil olur.",
           success: "İstifadəçi daxil oldu.",
-          error: "Daxil olan zaman problem yaşandı.",
         }
       );
       return response.data;
     } catch (error) {
-      console.log(error);
+      toast.error(error.response?.data || "Naməlum xəta baş verdi.");
     }
   }
 );
@@ -34,12 +33,11 @@ export const VerifyUser = createAsyncThunk("user/verifyUser", async (token) => {
       {
         pending: "İstifadəçi təsdiqlənir.",
         success: "İstifadəçi təsdiqləndi.",
-        error: "İstifadəçi təsdiqlənən zaman problem yaşandı.",
       }
     );
     return response.data;
   } catch (error) {
-    console.log(error);
+    toast.error(error.response?.data || "Naməlum xəta baş verdi.");
   }
 });
 
@@ -55,12 +53,11 @@ export const ChangeUserPassword = createAsyncThunk(
         {
           pending: "İstifadəçi daxil olur.",
           success: "İstifadəçi daxil oldu.",
-          error: "Daxil olan zaman problem yaşandı.",
         }
       );
       return response.data;
     } catch (error) {
-      console.log(error);
+      toast.error(error.response?.data || "Naməlum xəta baş verdi.");
     }
   }
 );

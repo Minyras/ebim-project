@@ -13,19 +13,37 @@ export const Request = createAsyncThunk("user/request", async (requestData) => {
       {
         pending: "Müraciət göndərilir.",
         success: "Müraciət göndərildi.",
-        error: "Müraciət göndərilən zaman problem yaşandı.",
       }
     );
     return response.data;
   } catch (error) {
-    console.log(error);
+    toast.error(error.response?.data || "Naməlum xəta baş verdi.");
   }
 });
+
+export const GetRequests = createAsyncThunk(
+  "user/getRequests",
+  async (userId) => {
+    try {
+      const response = await axios.get(
+        `https://ebim-mtk-dashboard.azurewebsites.net/api/ApplicationRequests?userId=${userId}`
+      );
+      return response.data;
+    } catch (error) {
+      toast.error(error.response?.data || "Naməlum xəta baş verdi.");
+    }
+  }
+);
 
 export const requestSlice = createSlice({
   name: "request",
   initialState: {
     requestInfo: {
+      status: null,
+      error: null,
+    },
+    requests: {
+      data: [],
       status: null,
       error: null,
     },
@@ -42,6 +60,17 @@ export const requestSlice = createSlice({
       .addCase(Request.rejected, (state, action) => {
         state.requestInfo.status = "failed";
         state.requestInfo.error = action.payload;
+      })
+      .addCase(GetRequests.pending, (state) => {
+        state.requests.status = "loading";
+      })
+      .addCase(GetRequests.fulfilled, (state, action) => {
+        state.requests.status = "fullfilled";
+        state.requests.data = action.payload;
+      })
+      .addCase(GetRequests.rejected, (state, action) => {
+        state.requests.status = "failed";
+        state.requests.error = action.payload;
       });
   },
 });

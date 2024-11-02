@@ -1,15 +1,21 @@
 .account {
-  padding: 0 50px;
   color: #0066b9;
+}
+
+.accountForms {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 1px 20px 0 rgba(0, 0, 0, 0.1);
+
+  margin-top: 30px;
+  border-radius: 20px;
 }
 
 .privateInformation,
 .flatInformation {
-  width: 60%;
-  padding: 30px;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 1px 20px 0 rgba(0, 0, 0, 0.1);
-  margin-top: 30px;
-  border-radius: 20px;
+  width: 100%;
+  padding: 30px 30px;
+
   transition: 0.3s all;
 }
 
@@ -76,6 +82,7 @@
 
 .privateInformation form input,
 .flatInformation form input {
+  background-color: transparent;
   border: none;
   border-bottom: 2px solid #6db6ee;
   padding: 15px 10px 15px;

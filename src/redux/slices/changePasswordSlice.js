@@ -15,12 +15,11 @@ export const ChangeUserPassword = createAsyncThunk(
         {
           pending: "Email yoxlanılır.",
           success: "E-poçt qutunuza mail göndərildi.",
-          error: "Belə email ilə istifadəçi qeydiyyatdan keçməyib.",
         }
       );
       return response.data;
     } catch (error) {
-      console.log(error);
+      toast.error(error.response?.data || "Naməlum xəta baş verdi.");
     }
   }
 );
@@ -37,12 +36,11 @@ export const ResetUserPassword = createAsyncThunk(
         {
           pending: "Token yoxlanılır.",
           success: "Şifrə uğurla dəyişdirildi.",
-          error: "Şifrə dəyişdirilən zaman problem yaşandı.",
         }
       );
       return response.data;
     } catch (error) {
-      return error;
+      toast.error(error.response?.data || "Naməlum xəta baş verdi.");
     }
   }
 );

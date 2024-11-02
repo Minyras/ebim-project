@@ -1,11 +1,8 @@
-.payment {
-  padding: 0 50px;
-}
 .payment .container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 28px;
-  margin-top: 120px;
+  margin-top: 40px;
 }
 
 .payment .container button {
