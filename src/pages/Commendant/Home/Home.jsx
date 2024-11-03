@@ -1,6 +1,6 @@
 import Header from "../../../components/Header/Header";
 import style from "./home.module.css";
-import checkSvg from "../../../assets/svg/check.svg";
+import checkSvg from "../../../assets/svg/cheque.svg";
 
 const Home = () => {
   return (

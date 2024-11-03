@@ -4,7 +4,7 @@ import gassSvg from "../../../assets/svg/gass.svg";
 import lightSvg from "../../../assets/svg/light.svg";
 import waterSvg from "../../../assets/svg/water.svg";
 import equipmentSvg from "../../../assets/svg/equipment.svg";
-import checkSvg from "../../../assets/svg/check.svg";
+import checkSvg from "../../../assets/svg/cheque.svg";
 import millionSvg from "../../../assets/svg/million.svg";
 import anipaySvg from "../../../assets/svg/anipay.svg";
 import hesabazSvg from "../../../assets/svg/hesabAz.svg";

@@ -1,9 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import Header from "../../../components/Header/Header";
 import "./appeals.css";
 
 const Appeals = () => {
+  const navigate = useNavigate();
+
+  const handleAppealClick = () => {
+    navigate("/commendant/appeals/1");
+  };
+
   return (
-    <div>
+    <>
       <Header name={"Müraciətlər"} />
       <div className="commendantTable">
         <table>
@@ -16,7 +23,7 @@ const Appeals = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr onClick={handleAppealClick}>
               <td>44A</td>
               <td>Təklif</td>
               <td>28.09.2024</td>
@@ -24,7 +31,7 @@ const Appeals = () => {
                 <span className="status waiting">Gözləmədədir</span>
               </td>
             </tr>
-            <tr>
+            <tr onClick={handleAppealClick}>
               <td>99A</td>
               <td>Təklif</td>
               <td>28.09.2024</td>
@@ -32,7 +39,7 @@ const Appeals = () => {
                 <span className="status accepted">Təsdiqlənib</span>
               </td>
             </tr>
-            <tr>
+            <tr onClick={handleAppealClick}>
               <td>99A</td>
               <td>Təklif</td>
               <td>28.09.2024</td>
@@ -40,7 +47,7 @@ const Appeals = () => {
                 <span className="status accepted">Təsdiqlənib</span>
               </td>
             </tr>
-            <tr>
+            <tr onClick={handleAppealClick}>
               <td>99A</td>
               <td>Təklif</td>
               <td>28.09.2024</td>
@@ -48,7 +55,7 @@ const Appeals = () => {
                 <span className="status accepted">Təsdiqlənib</span>
               </td>
             </tr>
-            <tr>
+            <tr onClick={handleAppealClick}>
               <td>99A</td>
               <td>Təklif</td>
               <td>28.09.2024</td>
@@ -56,7 +63,7 @@ const Appeals = () => {
                 <span className="status denied">Rədd edilib</span>
               </td>
             </tr>
-            <tr>
+            <tr onClick={handleAppealClick}>
               <td>99A</td>
               <td>Təklif</td>
               <td>28.09.2024</td>
@@ -64,7 +71,7 @@ const Appeals = () => {
                 <span className="status waiting">Gözləmədədir</span>
               </td>
             </tr>
-            <tr>
+            <tr onClick={handleAppealClick}>
               <td>99A</td>
               <td>Təklif</td>
               <td>28.09.2024</td>
@@ -72,7 +79,7 @@ const Appeals = () => {
                 <span className="status waiting">Gözləmədədir</span>
               </td>
             </tr>
-            <tr>
+            <tr onClick={handleAppealClick}>
               <td>99A</td>
               <td>Təklif</td>
               <td>28.09.2024</td>
@@ -80,7 +87,7 @@ const Appeals = () => {
                 <span className="status waiting">Gözləmədədir</span>
               </td>
             </tr>
-            <tr>
+            <tr onClick={handleAppealClick}>
               <td>99A</td>
               <td>Təklif</td>
               <td>28.09.2024</td>
@@ -88,7 +95,7 @@ const Appeals = () => {
                 <span className="status waiting">Gözləmədədir</span>
               </td>
             </tr>
-            <tr>
+            <tr onClick={handleAppealClick}>
               <td>99A</td>
               <td>Təklif</td>
               <td>28.09.2024</td>
@@ -96,7 +103,7 @@ const Appeals = () => {
                 <span className="status waiting">Gözləmədədir</span>
               </td>
             </tr>
-            <tr>
+            <tr onClick={handleAppealClick}>
               <td>99A</td>
               <td>Təklif</td>
               <td>28.09.2024</td>
@@ -104,7 +111,7 @@ const Appeals = () => {
                 <span className="status waiting">Gözləmədədir</span>
               </td>
             </tr>
-            <tr>
+            <tr onClick={handleAppealClick}>
               <td>99A</td>
               <td>Təklif</td>
               <td>28.09.2024</td>
@@ -112,7 +119,7 @@ const Appeals = () => {
                 <span className="status waiting">Gözləmədədir</span>
               </td>
             </tr>
-            <tr>
+            <tr onClick={handleAppealClick}>
               <td>99A</td>
               <td>Təklif</td>
               <td>28.09.2024</td>
@@ -120,7 +127,7 @@ const Appeals = () => {
                 <span className="status waiting">Gözləmədədir</span>
               </td>
             </tr>
-            <tr>
+            <tr onClick={handleAppealClick}>
               <td>99A</td>
               <td>Təklif</td>
               <td>28.09.2024</td>
@@ -128,7 +135,7 @@ const Appeals = () => {
                 <span className="status waiting">Gözləmədədir</span>
               </td>
             </tr>
-            <tr>
+            <tr onClick={handleAppealClick}>
               <td>99A</td>
               <td>Təklif</td>
               <td>28.09.2024</td>
@@ -139,7 +146,7 @@ const Appeals = () => {
           </tbody>
         </table>
       </div>
-    </div>
+    </>
   );
 };
 

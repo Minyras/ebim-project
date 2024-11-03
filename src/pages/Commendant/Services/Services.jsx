@@ -3,7 +3,7 @@ import "./services.css";
 
 const Services = () => {
   return (
-    <div>
+    <>
       <Header name={"Xidmət təchizat"} />
       <div className="services commendantTable">
         <table>
@@ -43,7 +43,7 @@ const Services = () => {
           </tbody>
         </table>
       </div>
-    </div>
+    </>
   );
 };
 

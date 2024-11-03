@@ -1,0 +1,66 @@
+.commendantAppealContainer {
+  margin: 40px 86px 0;
+}
+
+.commendantAppealContainer .commendantTable {
+  padding-bottom: 0;
+  color: #0066b9;
+  box-shadow: unset;
+  border: 1px solid #e7e8e8;
+}
+
+.commendantAppealContainer table thead {
+  border-bottom: 1px solid #c3c5c6;
+}
+
+.commendantAppealContainer table tbody tr:hover {
+  background: transparent;
+  cursor: unset;
+  color: unset;
+}
+
+.commendantAppealContainer .message {
+  padding: 60px 24px;
+  font-weight: 600;
+  font-size: 20px;
+  color: #0066b9;
+  background-color: #fff;
+  border: 1px solid #e6e4e4;
+  border-radius: 16px;
+  margin-top: 20px;
+}
+
+.commendantAppealContainer .buttons {
+  display: flex;
+  gap: 20px;
+  margin-top: 13px;
+  justify-content: end;
+}
+
+.commendantAppealContainer .buttons .btn {
+  border-radius: 20px;
+  border: 1.5px solid;
+  padding: 9px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.commendantAppealContainer .buttons .btn-accept {
+  border-color: #04ad0f;
+  color: #04ad0f;
+}
+
+.commendantAppealContainer .buttons .btn-waiting {
+  border-color: #fcb61a;
+  color: #fcb61a;
+}
+
+.commendantAppealContainer .buttons .btn-decline {
+  border-color: #e70500;
+  color: #e70500;
+}

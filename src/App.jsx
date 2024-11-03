@@ -15,6 +15,7 @@ import CommendantLayout from "./components/CommendantLayout/CommendantLayout";
 import Appeals from "./pages/Commendant/Appeals/Appeals";
 import Services from "./pages/Commendant/Services/Services";
 import Apartments from "./pages/Commendant/Apartments/Apartments";
+import CommendantAppeal from "./pages/Commendant/CommendantAppeal/CommendantAppeal";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
             <Route path="apartments" element={<Apartments />} />
             <Route path="service" element={<Services />} />
             <Route path="appeals" element={<Appeals />} />
+            <Route path="appeals/:id" element={<CommendantAppeal />} />
           </Route>
           <Route path="/" element={<LoginRegister />} />
           <Route path="/verify" element={<LoginRegister />} />
