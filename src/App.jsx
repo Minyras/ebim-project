@@ -13,6 +13,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Home from "./pages/Commendant/Home/Home";
 import CommendantLayout from "./components/CommendantLayout/CommendantLayout";
 import Appeals from "./pages/Commendant/Appeals/Appeals";
+import Services from "./pages/Commendant/Services/Services";
+import Apartments from "./pages/Commendant/Apartments/Apartments";
 
 function App() {
   return (
@@ -36,6 +38,8 @@ function App() {
           </Route>
           <Route path="/commendant" element={<CommendantLayout />}>
             <Route path="" element={<Home />} />
+            <Route path="apartments" element={<Apartments />} />
+            <Route path="service" element={<Services />} />
             <Route path="appeals" element={<Appeals />} />
           </Route>
           <Route path="/" element={<LoginRegister />} />

@@ -4,6 +4,7 @@ import homeSvg from "../../assets/svg/home.svg";
 import paymentSvg from "../../assets/svg/payment.svg";
 import appealSvg from "../../assets/svg/appeal.svg";
 import briefCaseSvg from "../../assets/svg/briefcase.svg";
+import buildingSvg from "../../assets/svg/building.svg";
 import { Link, NavLink, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
@@ -63,7 +64,16 @@ const Sidebar = () => {
               <span>Ana səhifə</span>
             </NavLink>
             <NavLink
-              to={"/commendat/service"}
+              to={"/commendant/apartments"}
+              className={({ isActive }) =>
+                isActive ? `${style.navLink} ${style.active}` : style.navLink
+              }
+            >
+              <img src={buildingSvg} alt="Building" />
+              <span>Mənzillər</span>
+            </NavLink>
+            <NavLink
+              to={"/commendant/service"}
               className={({ isActive }) =>
                 isActive ? `${style.navLink} ${style.active}` : style.navLink
               }

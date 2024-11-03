@@ -1,0 +1,13 @@
+.services.commendantTable {
+  padding: 8px 16px;
+}
+
+.services.commendantTable table {
+  text-align: left;
+}
+
+.services.commendantTable table tbody tr:hover {
+  background: transparent;
+  cursor: unset;
+  color: #2899f6;
+}

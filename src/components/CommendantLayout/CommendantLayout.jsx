@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
-import style from "./commendantLayout.module.css";
+import "./commendantLayout.css";
 import Sidebar from "../Sidebar/Sidebar";
 
 const CommendantLayout = () => {
   return (
-    <div className={style.commendantLayout}>
+    <div className="commendantLayout">
       <Sidebar />
-      <div className={style.outletContainer}>
+      <div className="outletContainer">
         <Outlet />
       </div>
     </div>
