@@ -3,10 +3,10 @@ import Header from "../../../components/Header/Header";
 import style from "./userAccount.module.css";
 import updateSvg from "../../../assets/svg/NotePencil.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { GetUserById, UpdateUserById } from "../../../redux/slices/userSlice";
 import Cookies from "js-cookie";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { getUserById, updateUserById } from "../../../dashboard/user";
 
 const UserAccount = () => {
   const [isEditingPersonalInfo, setIsEditingPersonalInfo] = useState(false);
@@ -16,7 +16,7 @@ const UserAccount = () => {
   const userId = JSON.parse(userIdCookie);
 
   useEffect(() => {
-    dispatch(GetUserById(userId));
+    dispatch(getUserById(userId));
   }, [userId]);
 
   const { userInfo } = useSelector((state) => state.user);
@@ -27,7 +27,7 @@ const UserAccount = () => {
 
   const handleSavePersonalInfo = (values) => {
     console.log(values);
-    dispatch(UpdateUserById({ id: userId, userData: values }));
+    dispatch(updateUserById({ id: userId, userData: values }));
     setIsEditingPersonalInfo(false);
   };
 

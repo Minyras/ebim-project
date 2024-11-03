@@ -3,9 +3,9 @@ import { useState } from "react";
 import visibleSvg from "../../assets/svg/eyeVisible.svg"; // Icon for visible password
 import hiddenSvg from "../../assets/svg/eyeHidden.svg"; // Icon for hidden password
 import { useDispatch } from "react-redux";
-import { postUser } from "../../redux/slices/registerSlice";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { registerUser } from "../../dashboard/user";
 
 const Register = ({ setShowForms }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -79,7 +79,7 @@ const Register = ({ setShowForms }) => {
   const onSubmit = async (values) => {
     try {
       // console.log(values);
-      const result = await dispatch(postUser(values)).unwrap();
+      const result = await dispatch(registerUser(values)).unwrap();
       if (result) {
         setShowForms("login");
       }

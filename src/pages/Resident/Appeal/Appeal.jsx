@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import Header from "../../../components/Header/Header";
 import style from "./appeal.module.css";
-import { GetRequests, Request } from "../../../redux/slices/requestSlice";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Cookies from "js-cookie";
 import { useEffect } from "react";
+import { getRequests, request } from "../../../dashboard/request";
 
 const Appeal = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const Appeal = () => {
   const userId = JSON.parse(userIdCookie);
 
   useEffect(() => {
-    dispatch(GetRequests(userId));
+    dispatch(getRequests(userId));
   }, [userId]);
 
   const { requests } = useSelector((state) => state.request);
@@ -67,8 +67,8 @@ const Appeal = () => {
   const onSubmit = async (values, { setSubmitting, setErrors }) => {
     console.log(values);
     try {
-      await dispatch(Request(values));
-      await dispatch(GetRequests(userId));
+      await dispatch(request(values));
+      await dispatch(getRequests(userId));
     } catch (error) {
       setSubmitting(false);
       if (error.response) {

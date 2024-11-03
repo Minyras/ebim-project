@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import "./login.css";
 import visibleSvg from "../../assets/svg/eyeVisible.svg";
 import hiddenSvg from "../../assets/svg/eyeHidden.svg";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import { LoginUser } from "../../redux/slices/loginSlice";
 import Cookies from "js-cookie";
+import { loginUser } from "../../dashboard/user";
 
 const Login = ({ setShowForms, setShowOnMobile }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -32,7 +32,7 @@ const Login = ({ setShowForms, setShowOnMobile }) => {
   });
 
   const onSubmit = async (values) => {
-    const result = await dispatch(LoginUser(values)).unwrap();
+    const result = await dispatch(loginUser(values)).unwrap();
     if (result) {
       navigate("/dashboard");
       Cookies.set("token", JSON.stringify(result.token), {

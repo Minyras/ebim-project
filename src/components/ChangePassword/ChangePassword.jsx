@@ -4,7 +4,7 @@ import "./changePassword.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import { ChangeUserPassword } from "../../redux/slices/changePasswordSlice";
+import { forgotUserPassword } from "../../dashboard/user";
 
 const ChangePassword = ({ setShowForms }) => {
   const [showLoginConfirm, setShowLoginConfirm] = useState(false);
@@ -27,7 +27,7 @@ const ChangePassword = ({ setShowForms }) => {
   const dispatch = useDispatch();
 
   const onSubmit = async (values) => {
-    const result = await dispatch(ChangeUserPassword(values)).unwrap();
+    const result = await dispatch(forgotUserPassword(values)).unwrap();
     if (result) {
       setShowLoginConfirm(true);
     }

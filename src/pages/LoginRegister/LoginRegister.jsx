@@ -7,7 +7,6 @@ import ResetPassword from "../../components/ResetPassword/ResetPassword";
 import ChangePassword from "../../components/ChangePassword/ChangePassword";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { VerifyUser } from "../../redux/slices/loginSlice";
 import LoginConfirm from "../../components/LoginConfirm/LoginConfirm";
 
 const LoginRegister = () => {
@@ -21,7 +20,7 @@ const LoginRegister = () => {
   const dispatch = useDispatch();
 
   const verifyUser = async (token) => {
-    await dispatch(VerifyUser(token)).unwrap();
+    await dispatch(verifyUser(token)).unwrap();
   };
 
   const queryParams = new URLSearchParams(location.search);

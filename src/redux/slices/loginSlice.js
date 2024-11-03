@@ -1,66 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-import { toast } from "react-toastify";
+import { loginUser } from "../../dashboard/user";
 
-export const LoginUser = createAsyncThunk(
-  "user/loginUser",
-  async (userData) => {
-    try {
-      const response = await toast.promise(
-        axios.post(
-          "https://ebim-mtk-dashboard.azurewebsites.net/api/User/Login",
-          userData
-        ),
-        {
-          pending: "İstifadəçi daxil olur.",
-          success: "İstifadəçi daxil oldu.",
-        }
-      );
-      return response.data;
-    } catch (error) {
-      toast.error(error.response?.data || "Naməlum xəta baş verdi.");
-    }
-  }
-);
-
-export const VerifyUser = createAsyncThunk("user/verifyUser", async (token) => {
-  try {
-    const response = await toast.promise(
-      axios.get(
-        `https://ebim-mtk-dashboard.azurewebsites.net/api/User/verify?token=${token}`
-      ),
-      {
-        pending: "İstifadəçi təsdiqlənir.",
-        success: "İstifadəçi təsdiqləndi.",
-      }
-    );
-    return response.data;
-  } catch (error) {
-    toast.error(error.response?.data || "Naməlum xəta baş verdi.");
-  }
-});
-
-export const ChangeUserPassword = createAsyncThunk(
-  "user/changeUserPassword",
-  async (userData) => {
-    try {
-      const response = await toast.promise(
-        axios.post(
-          "https://ebim-mtk-dashboard.azurewebsites.net/api/User/ResetPassword",
-          userData
-        ),
-        {
-          pending: "İstifadəçi daxil olur.",
-          success: "İstifadəçi daxil oldu.",
-        }
-      );
-      return response.data;
-    } catch (error) {
-      toast.error(error.response?.data || "Naməlum xəta baş verdi.");
-    }
-  }
-);
 export const loginSlice = createSlice({
   name: "login",
   initialState: {
@@ -73,14 +13,14 @@ export const loginSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(LoginUser.pending, (state) => {
+      .addCase(loginUser.pending, (state) => {
         // state.loginInfo.status = "loading";
       })
-      .addCase(LoginUser.fulfilled, (state, action) => {
+      .addCase(loginUser.fulfilled, (state, action) => {
         // state.loginInfo.status = "succeeded";
         state.loginInfo = action.payload;
       })
-      .addCase(LoginUser.rejected, (state, action) => {
+      .addCase(loginUser.rejected, (state, action) => {
         // state.loginInfo.status = "failed";
         state.error = action.payload;
       });

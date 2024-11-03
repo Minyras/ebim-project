@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
-import LoginConfirm from "../LoginConfirm/LoginConfirm";
 import "./resetpassword.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import visibleSvg from "../../assets/svg/eyeVisible.svg";
 import hiddenSvg from "../../assets/svg/eyeHidden.svg";
-import { ResetUserPassword } from "../../redux/slices/changePasswordSlice";
 import { useLocation, useNavigate } from "react-router-dom";
+import { resetUserPassword } from "../../dashboard/user";
 
 const ResetPassword = ({ setShowForms, setShowOnMobile }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -47,7 +46,7 @@ const ResetPassword = ({ setShowForms, setShowOnMobile }) => {
   }, []);
 
   const onSubmit = async (values) => {
-    const result = await dispatch(ResetUserPassword(values)).unwrap();
+    const result = await dispatch(resetUserPassword(values)).unwrap();
     console.log(result.response?.data);
     if (result) {
       navigate("/");

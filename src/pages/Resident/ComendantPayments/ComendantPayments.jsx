@@ -3,7 +3,6 @@ import style from "./comendantPayments.module.css";
 import millionSvg from "../../../assets/svg/million.svg";
 import anipaySvg from "../../../assets/svg/anipay.svg";
 import hesabazSvg from "../../../assets/svg/hesabAz.svg";
-import copySvg from "../../../assets/svg/copy.svg";
 import { useRef, useState } from "react";
 
 const ComendantPaymentsUser = () => {
