@@ -1,5 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { request, getRequests } from "../../dashboard/request";
+import {
+  request,
+  getRequests,
+  getAllRequests,
+  getRequest,
+  approveRequest,
+  denyRequest,
+} from "../../dashboard/request";
 
 export const requestSlice = createSlice({
   name: "request",
@@ -11,6 +18,20 @@ export const requestSlice = createSlice({
     requests: {
       data: [],
       status: null,
+      error: null,
+    },
+    allRequests: {
+      data: [],
+      status: null,
+      error: null,
+    },
+    request: {
+      apartmentNumber: "",
+      requestType: "",
+      message: " ",
+      createdAt: "",
+      status: "",
+      requestStatus: null,
       error: null,
     },
   },
@@ -37,6 +58,36 @@ export const requestSlice = createSlice({
       .addCase(getRequests.rejected, (state, action) => {
         state.requests.status = "failed";
         state.requests.error = action.payload;
+      })
+      .addCase(getAllRequests.pending, (state) => {
+        state.allRequests.status = "loading";
+      })
+      .addCase(getAllRequests.fulfilled, (state, action) => {
+        state.allRequests.status = "fullfilled";
+        state.allRequests.data = action.payload;
+      })
+      .addCase(getAllRequests.rejected, (state, action) => {
+        state.allRequests.status = "failed";
+        state.allRequests.error = action.payload;
+      })
+      .addCase(getRequest.pending, (state) => {
+        state.request.requestStatus = "loading";
+      })
+      .addCase(getRequest.fulfilled, (state, action) => {
+        state.request.requestStatus = "fullfilled";
+        state.request = action.payload;
+      })
+      .addCase(getRequest.rejected, (state, action) => {
+        state.request.requestStatus = "failed";
+        state.request.error = action.payload;
+      })
+      .addCase(approveRequest.fulfilled, (state) => {
+        state.request.requestStatus = "fullfilled";
+        state.request.status = "Approved";
+      })
+      .addCase(denyRequest.fulfilled, (state) => {
+        state.request.requestStatus = "fullfilled";
+        state.request.status = "Denied";
       });
   },
 });

@@ -6,12 +6,12 @@
   min-width: 150px;
 }
 
-.status.waiting {
+.status.pending {
   color: #fcb61a;
   background-color: #fff9eb;
 }
 
-.status.accepted {
+.status.approved {
   color: #04ad0f;
   background-color: #effaef;
 }
@@ -30,11 +30,11 @@
   margin-right: 4px;
 }
 
-.status.waiting::before {
+.status.pending::before {
   background-color: #fcb61a;
 }
 
-.status.accepted::before {
+.status.approved::before {
   background-color: #04ad0f;
 }
 

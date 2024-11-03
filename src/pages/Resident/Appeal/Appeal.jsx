@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import Cookies from "js-cookie";
 import { useEffect } from "react";
 import { getRequests, request } from "../../../dashboard/request";
+import { formatDate, formatType, formatStatus } from "../../../utils/formatter";
 
 const Appeal = () => {
   const dispatch = useDispatch();
@@ -19,44 +20,10 @@ const Appeal = () => {
 
   const { requests } = useSelector((state) => state.request);
 
-  console.log(requests);
-
   const initialValues = {
     userId: userId,
     requestType: "complaint",
     message: "",
-  };
-
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const day = String(date.getDate()).padStart(2, "0");
-    const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero-indexed
-    const year = date.getFullYear();
-    return `${day}.${month}.${year}`;
-  };
-
-  const formatStatus = (status) => {
-    switch (status) {
-      case "Pending":
-        return "Gözləmədədir";
-      case "Accepted":
-        return "Təsdiqlənib";
-      default:
-        return "Rədd olunub";
-    }
-  };
-
-  const formatType = (type) => {
-    switch (type) {
-      case "complaint":
-        return "Şikayət";
-      case "proposal":
-        return "Təklif";
-      case "card":
-        return "Giriş kartı";
-      default:
-        return "Digər";
-    }
   };
 
   const validationSchema = Yup.object({

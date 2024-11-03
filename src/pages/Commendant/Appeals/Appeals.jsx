@@ -1,12 +1,24 @@
 import { useNavigate } from "react-router-dom";
 import Header from "../../../components/Header/Header";
 import "./appeals.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getAllRequests } from "../../../dashboard/request";
+import { formatDate, formatType, formatStatus } from "../../../utils/formatter";
 
 const Appeals = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleAppealClick = () => {
-    navigate("/commendant/appeals/1");
+  useEffect(() => {
+    dispatch(getAllRequests());
+  }, []);
+
+  const { allRequests } = useSelector((state) => state.request);
+
+  const handleAppealClick = (e) => {
+    const id = e.currentTarget.getAttribute("data-id");
+    navigate(`/commendant/appeals/${id}`);
   };
 
   return (
@@ -23,126 +35,24 @@ const Appeals = () => {
             </tr>
           </thead>
           <tbody>
-            <tr onClick={handleAppealClick}>
-              <td>44A</td>
-              <td>Təklif</td>
-              <td>28.09.2024</td>
-              <td>
-                <span className="status waiting">Gözləmədədir</span>
-              </td>
-            </tr>
-            <tr onClick={handleAppealClick}>
-              <td>99A</td>
-              <td>Təklif</td>
-              <td>28.09.2024</td>
-              <td>
-                <span className="status accepted">Təsdiqlənib</span>
-              </td>
-            </tr>
-            <tr onClick={handleAppealClick}>
-              <td>99A</td>
-              <td>Təklif</td>
-              <td>28.09.2024</td>
-              <td>
-                <span className="status accepted">Təsdiqlənib</span>
-              </td>
-            </tr>
-            <tr onClick={handleAppealClick}>
-              <td>99A</td>
-              <td>Təklif</td>
-              <td>28.09.2024</td>
-              <td>
-                <span className="status accepted">Təsdiqlənib</span>
-              </td>
-            </tr>
-            <tr onClick={handleAppealClick}>
-              <td>99A</td>
-              <td>Təklif</td>
-              <td>28.09.2024</td>
-              <td>
-                <span className="status denied">Rədd edilib</span>
-              </td>
-            </tr>
-            <tr onClick={handleAppealClick}>
-              <td>99A</td>
-              <td>Təklif</td>
-              <td>28.09.2024</td>
-              <td>
-                <span className="status waiting">Gözləmədədir</span>
-              </td>
-            </tr>
-            <tr onClick={handleAppealClick}>
-              <td>99A</td>
-              <td>Təklif</td>
-              <td>28.09.2024</td>
-              <td>
-                <span className="status waiting">Gözləmədədir</span>
-              </td>
-            </tr>
-            <tr onClick={handleAppealClick}>
-              <td>99A</td>
-              <td>Təklif</td>
-              <td>28.09.2024</td>
-              <td>
-                <span className="status waiting">Gözləmədədir</span>
-              </td>
-            </tr>
-            <tr onClick={handleAppealClick}>
-              <td>99A</td>
-              <td>Təklif</td>
-              <td>28.09.2024</td>
-              <td>
-                <span className="status waiting">Gözləmədədir</span>
-              </td>
-            </tr>
-            <tr onClick={handleAppealClick}>
-              <td>99A</td>
-              <td>Təklif</td>
-              <td>28.09.2024</td>
-              <td>
-                <span className="status waiting">Gözləmədədir</span>
-              </td>
-            </tr>
-            <tr onClick={handleAppealClick}>
-              <td>99A</td>
-              <td>Təklif</td>
-              <td>28.09.2024</td>
-              <td>
-                <span className="status waiting">Gözləmədədir</span>
-              </td>
-            </tr>
-            <tr onClick={handleAppealClick}>
-              <td>99A</td>
-              <td>Təklif</td>
-              <td>28.09.2024</td>
-              <td>
-                <span className="status waiting">Gözləmədədir</span>
-              </td>
-            </tr>
-            <tr onClick={handleAppealClick}>
-              <td>99A</td>
-              <td>Təklif</td>
-              <td>28.09.2024</td>
-              <td>
-                <span className="status waiting">Gözləmədədir</span>
-              </td>
-            </tr>
-            <tr onClick={handleAppealClick}>
-              <td>99A</td>
-              <td>Təklif</td>
-              <td>28.09.2024</td>
-              <td>
-                <span className="status waiting">Gözləmədədir</span>
-              </td>
-            </tr>
-            <tr onClick={handleAppealClick}>
-              <td>99A</td>
-              <td>Təklif</td>
-              <td>28.09.2024</td>
-              <td>
-                <span className="status waiting">Gözləmədədir</span>
-              </td>
-            </tr>
+            {allRequests.data?.map((request) => {
+              return (
+                <tr
+                  data-id={request.requestId}
+                  key={request.requestId}
+                  onClick={handleAppealClick}
+                >
+                  <td>{request.apartmentNumber}</td>
+                  <td>{formatType(request.requestType)}</td>
+                  <td>{formatDate(request.createdAt)}</td>
+                  <td>
+                    <span className={`status ${request.status.toLowerCase()}`}>
+                      {formatStatus(request.status)}
+                    </span>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
