@@ -16,6 +16,7 @@ import Appeals from "./pages/Commendant/Appeals/Appeals";
 import Services from "./pages/Commendant/Services/Services";
 import Apartments from "./pages/Commendant/Apartments/Apartments";
 import CommendantAppeal from "./pages/Commendant/CommendantAppeal/CommendantAppeal";
+import Payments from "./pages/Commendant/Payments/payments";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
             <Route path="service" element={<Services />} />
             <Route path="appeals" element={<Appeals />} />
             <Route path="appeals/:id" element={<CommendantAppeal />} />
+            <Route path="payments" element={<Payments />} />
           </Route>
           <Route path="/" element={<LoginRegister />} />
           <Route path="/verify" element={<LoginRegister />} />

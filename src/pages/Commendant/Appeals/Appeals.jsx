@@ -35,7 +35,7 @@ const Appeals = () => {
             </tr>
           </thead>
           <tbody>
-            {allRequests.data?.map((request) => {
+            {allRequests.data?.slice(0, 15).map((request) => {
               return (
                 <tr
                   data-id={request.requestId}
