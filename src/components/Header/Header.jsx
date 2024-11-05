@@ -22,6 +22,7 @@ const Header = ({ name }) => {
   const { pathname } = useLocation();
   const pathLocations = pathname.split("/");
   pathLocations?.shift();
+  console.log(pathLocations);
 
   return (
     <div
@@ -32,9 +33,12 @@ const Header = ({ name }) => {
       <div className={style.inHeader}>
         <h1 className={style.title}>{name}</h1>
         <div className={style.right}>
-          <button className={style.account} onClick={handleUserAccount}>
-            <img className={style.userImg} src={userImg} alt="" />
-          </button>
+          {pathLocations[0] != "commendant" && (
+            <button className={style.account} onClick={handleUserAccount}>
+              <img className={style.userImg} src={userImg} alt="" />
+            </button>
+          )}
+
           <button className={style.exit} onClick={handleUserExit}>
             çıxış et
           </button>

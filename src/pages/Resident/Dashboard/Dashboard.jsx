@@ -8,6 +8,7 @@ import checkSvg from "../../../assets/svg/cheque.svg";
 import millionSvg from "../../../assets/svg/million.svg";
 import anipaySvg from "../../../assets/svg/anipay.svg";
 import hesabazSvg from "../../../assets/svg/hesabAz.svg";
+import { Link } from "react-router-dom";
 const Dashboard = () => {
   return (
     <div className={style.dashboard}>
@@ -19,7 +20,7 @@ const Dashboard = () => {
             <span className={style.debt}>-60 AZN</span>
           </h4>
 
-          <button>Ödə</button>
+          <Link to={"/payment/comendant-payments"}>Ödə</Link>
         </div>
         <div className={style.paymentMethods}>
           <h4>Ödəniş üsulları:</h4>

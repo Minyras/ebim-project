@@ -185,85 +185,48 @@ const ComendantPaymentsUser = () => {
                   title="Ay"
                   defaultChecked
                 />
-                <input type="radio" name="month" id="january" title="Yanvar" />
-                <input type="radio" name="month" id="february" title="Fevral" />
-                <input type="radio" name="month" id="march" title="Mart" />
-                <input type="radio" name="month" id="april" title="Aprel" />
-                <input type="radio" name="month" id="may" title="May" />
-                <input type="radio" name="month" id="june" title="İyun" />
-                <input type="radio" name="month" id="july" title="İyul" />
-                <input type="radio" name="month" id="augst" title="Avqust" />
-                <input
-                  type="radio"
-                  name="month"
-                  id="september"
-                  title="Sentyabr"
-                />
-                <input type="radio" name="month" id="october" title="Oktyabr" />
-                <input type="radio" name="month" id="november" title="Noyabr" />
-                <input type="radio" name="month" id="december" title="Dekabr" />
+                {[
+                  "Yanvar",
+                  "Fevral",
+                  "Mart",
+                  "Aprel",
+                  "May",
+                  "İyun",
+                  "İyul",
+                  "Avqust",
+                  "Sentyabr",
+                  "Oktyabr",
+                  "Noyabr",
+                  "Dekabr",
+                ].map((month, index) => (
+                  <input
+                    key={index}
+                    type="radio"
+                    name="month"
+                    id={month.toLowerCase()}
+                    title={month}
+                  />
+                ))}
               </summary>
               <ul className={style.list}>
-                <li>
-                  <label htmlFor="january">
-                    Yanvar<span></span>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="february">
-                    Fevral<span></span>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="march">
-                    Mart<span></span>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="april">
-                    Aprel<span></span>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="may">
-                    May<span></span>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="june">
-                    İyun<span></span>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="july">
-                    İyul<span></span>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="august">
-                    Avqust<span></span>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="september">
-                    Sentyabr<span></span>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="october">
-                    Oktyabr<span></span>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="november">
-                    Noyabr<span></span>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="december">
-                    Dekabr<span></span>
-                  </label>
-                </li>
+                {[
+                  "Yanvar",
+                  "Fevral",
+                  "Mart",
+                  "Aprel",
+                  "May",
+                  "İyun",
+                  "İyul",
+                  "Avqust",
+                  "Sentyabr",
+                  "Oktyabr",
+                  "Noyabr",
+                  "Dekabr",
+                ].map((month, index) => (
+                  <li key={index}>
+                    <label htmlFor={month.toLowerCase()}>{month}</label>
+                  </li>
+                ))}
               </ul>
             </details>
             <details className={style.customSelect}>
@@ -293,86 +256,11 @@ const ComendantPaymentsUser = () => {
                 <input type="radio" name="year" id="2025" title="2025" />
               </summary>
               <ul className={style.list}>
-                <li>
-                  <label htmlFor="2010">
-                    2010<span></span>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="2011">
-                    2011<span></span>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="2012">
-                    2012<span></span>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="2013">
-                    2013<span></span>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="2014">
-                    2014<span></span>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="2015">
-                    2015<span></span>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="2016">
-                    2016<span></span>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="2017">
-                    2017<span></span>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="2018">
-                    2018<span></span>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="2019">
-                    2019<span></span>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="2020">
-                    2020<span></span>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="2021">
-                    2021<span></span>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="2022">
-                    2022<span></span>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="2023">
-                    2023<span></span>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="2024">
-                    2024<span></span>
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="2025">
-                    2025<span></span>
-                  </label>
-                </li>
+                {Array.from({ length: 16 }, (_, i) => 2010 + i).map((year) => (
+                  <li key={year}>
+                    <label htmlFor={year}>{year}</label>
+                  </li>
+                ))}
               </ul>
             </details>
           </div>
