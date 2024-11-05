@@ -11,11 +11,14 @@ import hesabazSvg from "../../../assets/svg/hesabAz.svg";
 const Dashboard = () => {
   return (
     <div className={style.dashboard}>
-      <Header name={"Dashboard"} />
+      <Header name={"Ana səhifə"} />
       <div className={style.top}>
         <div className={style.debtContainer}>
-          <h4>Ümumi Komendant Ödəniş Borcu</h4>
-          <span className={style.debt}>-60 AZN</span>
+          <h4>
+            Ümumi Komendant Ödəniş Borcu
+            <span className={style.debt}>-60 AZN</span>
+          </h4>
+
           <button>Ödə</button>
         </div>
         <div className={style.paymentMethods}>

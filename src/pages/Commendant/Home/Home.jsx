@@ -1,9 +1,11 @@
 import Header from "../../../components/Header/Header";
 import style from "./home.module.css";
 import checkSvg from "../../../assets/svg/cheque.svg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
-import { notifyUsers } from "../../../dashboard/commendant";
+import { getLastPayments, notifyUsers } from "../../../dashboard/commendant";
+import { useEffect } from "react";
+import { formatDate, formatStatus } from "../../../utils/formatter";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -17,6 +19,15 @@ const Home = () => {
       resetForm(); // Reset the form after submission
     },
   });
+
+  useEffect(() => {
+    const fetchRequests = async () => {
+      await dispatch(getLastPayments());
+    };
+    fetchRequests();
+  }, [dispatch]);
+
+  const { lastPayments } = useSelector((state) => state.payment);
 
   return (
     <div className={style.home}>
@@ -46,76 +57,20 @@ const Home = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>99A</td>
-                <td>07.09.2024</td>
-                <td>Sentyabr</td>
-                <td>30 AZN</td>
-                <td>Ödənilib</td>
-                <td>
-                  <img src={checkSvg} alt="Cheque" />
-                </td>
-              </tr>
-              <tr>
-                <td>99A</td>
-                <td>07.09.2024</td>
-                <td>Sentyabr</td>
-                <td>30 AZN</td>
-                <td>Ödənilib</td>
-                <td>
-                  <img src={checkSvg} alt="Cheque" />
-                </td>
-              </tr>
-              <tr>
-                <td>99A</td>
-                <td>07.09.2024</td>
-                <td>Sentyabr</td>
-                <td>30 AZN</td>
-                <td>Ödənilib</td>
-                <td>
-                  <img src={checkSvg} alt="Cheque" />
-                </td>
-              </tr>
-              <tr>
-                <td>99A</td>
-                <td>07.09.2024</td>
-                <td>Sentyabr</td>
-                <td>30 AZN</td>
-                <td>Ödənilib</td>
-                <td>
-                  <img src={checkSvg} alt="Cheque" />
-                </td>
-              </tr>
-              <tr>
-                <td>99A</td>
-                <td>07.09.2024</td>
-                <td>Sentyabr</td>
-                <td>30 AZN</td>
-                <td>Ödənilib</td>
-                <td>
-                  <img src={checkSvg} alt="Cheque" />
-                </td>
-              </tr>
-              <tr>
-                <td>99A</td>
-                <td>07.09.2024</td>
-                <td>Sentyabr</td>
-                <td>30 AZN</td>
-                <td>Ödənilib</td>
-                <td>
-                  <img src={checkSvg} alt="Cheque" />
-                </td>
-              </tr>
-              <tr>
-                <td>99A</td>
-                <td>07.09.2024</td>
-                <td>Sentyabr</td>
-                <td>30 AZN</td>
-                <td>Ödənilib</td>
-                <td>
-                  <img src={checkSvg} alt="Cheque" />
-                </td>
-              </tr>
+              {lastPayments.data?.slice(0, 12).map((payment, index) => {
+                return (
+                  <tr key={index}>
+                    <td>{payment.apartmentNumber}</td>
+                    <td>{formatDate(payment.paymentDate)}</td>
+                    <td>{payment.month}</td>
+                    <td>{payment.currentPayment} AZN</td>
+                    <td>{formatStatus(payment.status)}</td>
+                    <td>
+                      <img src={checkSvg} alt="Cheque" />
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

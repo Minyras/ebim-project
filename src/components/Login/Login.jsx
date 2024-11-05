@@ -34,11 +34,18 @@ const Login = ({ setShowForms, setShowOnMobile }) => {
   const onSubmit = async (values) => {
     const result = await dispatch(loginUser(values)).unwrap();
     if (result) {
-      navigate("/dashboard");
+      if (result.role === "Resident") {
+        navigate("/dashboard");
+      } else if (result.role === "Commendant") {
+        navigate("/commendant");
+      }
       Cookies.set("token", JSON.stringify(result.token), {
         expires: 1,
       });
       Cookies.set("userId", JSON.stringify(result.userId), {
+        expires: 1,
+      });
+      Cookies.set("role", JSON.stringify(result.role), {
         expires: 1,
       });
     }

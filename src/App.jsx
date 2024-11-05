@@ -27,6 +27,7 @@ function App() {
           <Route element={<Layout />}>
             <Route path="/payment" element={<Payment />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/service" element={<Services />} />
             <Route path="/appeal" element={<Appeal />} />
             <Route path="/user-account" element={<UserAccount />} />
             <Route

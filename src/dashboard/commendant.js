@@ -20,4 +20,28 @@ const notifyUsers = createAsyncThunk(
   }
 );
 
-export { notifyUsers };
+const getAllApartments = createAsyncThunk(
+  "commendant/getAllApartments",
+  async () => {
+    try {
+      const response = await instance.get(`KamendantProfile/Apartments`);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+const getLastPayments = createAsyncThunk(
+  "commendant/getLastPayments",
+  async () => {
+    try {
+      const response = await instance.get(`KamendantProfile/LastPayments`);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+export { notifyUsers, getAllApartments, getLastPayments };

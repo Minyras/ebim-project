@@ -37,9 +37,6 @@
   font-size: 32px;
   font-weight: 700;
 }
-.flatInformation p {
-  margin-bottom: 15px;
-}
 .update {
   display: flex;
   align-items: center;
@@ -52,29 +49,43 @@
   margin-top: 10px;
 }
 
-.privateInformation form {
+.accountForms form {
   margin: 10px 0 0;
 }
-
+/* 
 .privateInformation form,
 .flatInformation form {
   display: flex;
   flex-direction: column;
   gap: 30px;
+} */
+
+.flatInformation {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.privateInformation form {
+.flatInformation.editing {
+  justify-content: unset;
+}
+
+.flatInformation form > input {
+  margin-bottom: 20px;
+}
+
+.accountForms form {
   display: block;
   text-align: end;
 }
 
-.privateInformation form input {
+.accountForms form input {
   width: 100%;
 }
 
-.privateInformation form input:not(:first-child) {
+/* .accountForms form input:not(:first-child) {
   margin-top: 30px;
-}
+} */
 
 .privateInformation form button {
   margin-top: 30px;

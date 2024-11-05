@@ -171,7 +171,11 @@ const UserAccount = () => {
           </Formik>
         </div>
 
-        <div className={style.flatInformation}>
+        <div
+          className={`${style.flatInformation} ${
+            isEditingPersonalInfo && style.editing
+          }`}
+        >
           <p>Mənzil haqqında məlumatlar</p>
           <form action="">
             {loading ? (

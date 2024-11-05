@@ -33,6 +33,15 @@ const Sidebar = () => {
               <span>Ana səhifə</span>
             </NavLink>
             <NavLink
+              to={"/service"}
+              className={({ isActive }) =>
+                isActive ? `${style.navLink} ${style.active}` : style.navLink
+              }
+            >
+              <img src={briefCaseSvg} alt="Briefcase" />
+              <span>Xidmət təchizat</span>
+            </NavLink>
+            <NavLink
               to={"/appeal"}
               className={({ isActive }) =>
                 isActive ? `${style.navLink} ${style.active}` : style.navLink
