@@ -7,17 +7,25 @@ import Cookies from "js-cookie";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { getUserById, updateUserById } from "../../../dashboard/user";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const UserAccount = () => {
   const [isEditingPersonalInfo, setIsEditingPersonalInfo] = useState(false);
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
 
   const userIdCookie = Cookies.get("userId");
   const userId = JSON.parse(userIdCookie);
 
   useEffect(() => {
-    dispatch(getUserById(userId));
-  }, [userId]);
+    const fetchUserData = async () => {
+      setLoading(true);
+      await dispatch(getUserById(userId));
+      setLoading(false);
+    };
+    fetchUserData();
+  }, [userId, dispatch]);
 
   const { userInfo } = useSelector((state) => state.user);
 
@@ -75,13 +83,17 @@ const UserAccount = () => {
             {() => (
               <Form>
                 <div>
-                  <Field
-                    type="text"
-                    name="name"
-                    placeholder="Ad"
-                    disabled={!isEditingPersonalInfo}
-                    className={style.inputField}
-                  />
+                  {loading ? (
+                    <Skeleton height={50} />
+                  ) : (
+                    <Field
+                      type="text"
+                      name="name"
+                      placeholder="Ad"
+                      disabled={!isEditingPersonalInfo}
+                      className={style.inputField}
+                    />
+                  )}
                   <ErrorMessage
                     name="name"
                     component="div"
@@ -90,13 +102,17 @@ const UserAccount = () => {
                 </div>
 
                 <div>
-                  <Field
-                    type="text"
-                    name="surname"
-                    placeholder="Soyadı"
-                    disabled={!isEditingPersonalInfo}
-                    className={style.inputField}
-                  />
+                  {loading ? (
+                    <Skeleton height={50} />
+                  ) : (
+                    <Field
+                      type="text"
+                      name="surname"
+                      placeholder="Soyadı"
+                      disabled={!isEditingPersonalInfo}
+                      className={style.inputField}
+                    />
+                  )}
                   <ErrorMessage
                     name="surname"
                     component="div"
@@ -105,13 +121,17 @@ const UserAccount = () => {
                 </div>
 
                 <div>
-                  <Field
-                    type="text"
-                    name="phoneNumber"
-                    placeholder="Telefon nömrəsi"
-                    disabled={!isEditingPersonalInfo}
-                    className={style.inputField}
-                  />
+                  {loading ? (
+                    <Skeleton height={50} />
+                  ) : (
+                    <Field
+                      type="text"
+                      name="phoneNumber"
+                      placeholder="Telefon nömrəsi"
+                      disabled={!isEditingPersonalInfo}
+                      className={style.inputField}
+                    />
+                  )}
                   <ErrorMessage
                     name="phoneNumber"
                     component="div"
@@ -120,13 +140,17 @@ const UserAccount = () => {
                 </div>
 
                 <div>
-                  <Field
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    disabled={!isEditingPersonalInfo}
-                    className={style.inputField}
-                  />
+                  {loading ? (
+                    <Skeleton height={50} />
+                  ) : (
+                    <Field
+                      type="email"
+                      name="email"
+                      placeholder="Email"
+                      disabled={!isEditingPersonalInfo}
+                      className={style.inputField}
+                    />
+                  )}
                   <ErrorMessage
                     name="email"
                     component="div"
@@ -146,33 +170,45 @@ const UserAccount = () => {
             )}
           </Formik>
         </div>
+
         <div className={style.flatInformation}>
           <p>Mənzil haqqında məlumatlar</p>
           <form action="">
-            <input
-              type="text"
-              value={`MTK: ${userInfo?.mtk}`}
-              placeholder="MTK"
-              disabled
-            />
-            <input
-              type="text"
-              value={`Blok: ${userInfo?.blockNumber}`}
-              placeholder="Blok"
-              disabled
-            />
-            <input
-              type="text"
-              value={`Mərtəbə: ${userInfo?.floor}`}
-              placeholder="Mərtəbə"
-              disabled
-            />
-            <input
-              type="text"
-              value={`Mənzil: ${userInfo?.apartmentNumber}`}
-              placeholder="Mənzil"
-              disabled
-            />
+            {loading ? (
+              <>
+                <Skeleton height={50} />
+                <Skeleton height={50} />
+                <Skeleton height={50} />
+                <Skeleton height={50} />
+              </>
+            ) : (
+              <>
+                <input
+                  type="text"
+                  value={`MTK: ${userInfo?.mtk}`}
+                  placeholder="MTK"
+                  disabled
+                />
+                <input
+                  type="text"
+                  value={`Blok: ${userInfo?.blockNumber}`}
+                  placeholder="Blok"
+                  disabled
+                />
+                <input
+                  type="text"
+                  value={`Mərtəbə: ${userInfo?.floor}`}
+                  placeholder="Mərtəbə"
+                  disabled
+                />
+                <input
+                  type="text"
+                  value={`Mənzil: ${userInfo?.apartmentNumber}`}
+                  placeholder="Mənzil"
+                  disabled
+                />
+              </>
+            )}
           </form>
         </div>
       </div>

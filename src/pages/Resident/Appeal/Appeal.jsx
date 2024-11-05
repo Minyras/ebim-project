@@ -4,19 +4,27 @@ import style from "./appeal.module.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Cookies from "js-cookie";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getRequests, request } from "../../../dashboard/request";
 import { formatDate, formatType, formatStatus } from "../../../utils/formatter";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Appeal = () => {
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
 
   const userIdCookie = Cookies.get("userId");
   const userId = JSON.parse(userIdCookie);
 
   useEffect(() => {
-    dispatch(getRequests(userId));
-  }, [userId]);
+    const fetchRequests = async () => {
+      setLoading(true);
+      await dispatch(getRequests(userId));
+      setLoading(false);
+    };
+    fetchRequests();
+  }, [userId, dispatch]);
 
   const { requests } = useSelector((state) => state.request);
 
@@ -135,15 +143,27 @@ const Appeal = () => {
               </tr>
             </thead>
             <tbody>
-              {requests.data?.slice(0, 8).map((request) => {
-                return (
-                  <tr key={request.id}>
-                    <td>{formatDate(request.createdAt)}</td>
-                    <td>{formatType(request.requestType)}</td>
-                    <td>{formatStatus(request.status)}</td>
-                  </tr>
-                );
-              })}
+              {loading
+                ? Array.from({ length: 8 }).map((_, index) => (
+                    <tr key={index}>
+                      <td>
+                        <Skeleton width={80} />
+                      </td>
+                      <td>
+                        <Skeleton width={100} />
+                      </td>
+                      <td>
+                        <Skeleton width={70} />
+                      </td>
+                    </tr>
+                  ))
+                : requests.data?.slice(0, 8).map((request) => (
+                    <tr key={request.id}>
+                      <td>{formatDate(request.createdAt)}</td>
+                      <td>{formatType(request.requestType)}</td>
+                      <td>{formatStatus(request.status)}</td>
+                    </tr>
+                  ))}
             </tbody>
           </table>
         </div>

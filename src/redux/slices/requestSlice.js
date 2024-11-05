@@ -6,6 +6,7 @@ import {
   getRequest,
   approveRequest,
   denyRequest,
+  pendRequest,
 } from "../../dashboard/request";
 
 export const requestSlice = createSlice({
@@ -88,6 +89,10 @@ export const requestSlice = createSlice({
       .addCase(denyRequest.fulfilled, (state) => {
         state.request.requestStatus = "fullfilled";
         state.request.status = "Denied";
+      })
+      .addCase(pendRequest.fulfilled, (state) => {
+        state.request.requestStatus = "fullfilled";
+        state.request.status = "Pending";
       });
   },
 });

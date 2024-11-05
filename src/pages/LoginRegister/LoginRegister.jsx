@@ -8,6 +8,7 @@ import ChangePassword from "../../components/ChangePassword/ChangePassword";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import LoginConfirm from "../../components/LoginConfirm/LoginConfirm";
+import { verifyUser } from "../../dashboard/user";
 
 const LoginRegister = () => {
   const [showForms, setShowForms] = useState("login");
@@ -17,25 +18,25 @@ const LoginRegister = () => {
   const pathLocations = pathname.split("/");
   pathLocations?.shift();
 
-  const dispatch = useDispatch();
-
-  const verifyUser = async (token) => {
-    await dispatch(verifyUser(token)).unwrap();
-  };
-
   const queryParams = new URLSearchParams(location.search);
   const token = queryParams.get("token");
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    if (pathLocations[0] == "verify") {
-      if (token) {
-        verifyUser(token);
+    const verifyUserAsync = async () => {
+      try {
+        if (pathLocations[0] === "verify" && token) {
+          await dispatch(verifyUser(token));
+        } else if (pathLocations[0] === "resetpassword" && token) {
+          setShowForms("resetpassword");
+        }
+      } catch (error) {
+        console.error("Verification failed:", error);
       }
-    } else if (pathLocations[0] == "resetpassword") {
-      if (token) {
-        setShowForms("resetpassword");
-      }
-    }
+    };
+
+    verifyUserAsync();
   }, []);
 
   return (

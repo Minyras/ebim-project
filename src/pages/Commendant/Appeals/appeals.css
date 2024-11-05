@@ -41,3 +41,28 @@
 .status.denied::before {
   background: #e70500;
 }
+
+.skeleton-row {
+  background-color: #f0f0f0;
+  height: 40px; /* Adjust based on your row height */
+}
+
+.skeleton-cell {
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  height: 100%;
+  width: 100%;
+  animation: skeleton-loading 1.2s ease-in-out infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: #e0e0e0;
+  }
+  50% {
+    background-color: #f0f0f0;
+  }
+  100% {
+    background-color: #e0e0e0;
+  }
+}

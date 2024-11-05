@@ -1,15 +1,35 @@
 import Header from "../../../components/Header/Header";
 import style from "./home.module.css";
 import checkSvg from "../../../assets/svg/cheque.svg";
+import { useDispatch } from "react-redux";
+import { useFormik } from "formik";
+import { notifyUsers } from "../../../dashboard/commendant";
 
 const Home = () => {
+  const dispatch = useDispatch();
+
+  const formik = useFormik({
+    initialValues: {
+      message: "",
+    },
+    onSubmit: (values, { resetForm }) => {
+      dispatch(notifyUsers(values.message));
+      resetForm(); // Reset the form after submission
+    },
+  });
+
   return (
     <div className={style.home}>
       <Header name={"Ödənişlər"} />
-      <form className={style.mainAppeal}>
+      <form onSubmit={formik.handleSubmit} className={style.mainAppeal}>
         <h2>Bildiriş göndər</h2>
-        <textarea></textarea>
-        <button>Göndər</button>
+        <textarea
+          name="message"
+          value={formik.values.message}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+        />
+        <button type="submit">Göndər</button>
       </form>
       <div className={style.paymentHistory}>
         <h2>Son ödənişlər</h2>
