@@ -1,9 +1,10 @@
 import style from "./header.module.css";
-// import bellIcon from "../../assets/svg/bell.svg";
 import userImg from "../../assets/svg/user.svg";
+import profileCircleImg from "../../assets/svg/profile-circle.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import BreadCrumbs from "../BreadCrumbs/BreadCrumbs";
 import Cookies from "js-cookie";
+import exitSvg from "../../assets/svg/exit.svg";
 
 // eslint-disable-next-line react/prop-types
 const Header = ({ name }) => {
@@ -22,7 +23,6 @@ const Header = ({ name }) => {
   const { pathname } = useLocation();
   const pathLocations = pathname.split("/");
   pathLocations?.shift();
-  console.log(pathLocations);
 
   return (
     <div
@@ -36,11 +36,17 @@ const Header = ({ name }) => {
           {pathLocations[0] != "commendant" && (
             <button className={style.account} onClick={handleUserAccount}>
               <img className={style.userImg} src={userImg} alt="" />
+              <img
+                className={style.profileCircle}
+                src={profileCircleImg}
+                alt=""
+              />
             </button>
           )}
 
           <button className={style.exit} onClick={handleUserExit}>
-            çıxış et
+            <span>çıxış et</span>
+            <img src={exitSvg} alt="Exit Icon" />
           </button>
         </div>
       </div>

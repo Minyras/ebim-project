@@ -1,5 +1,4 @@
 import style from "./sidebar.module.css";
-import logo from "../../../public/logo4.svg";
 import homeSvg from "../../assets/svg/home.svg";
 import paymentSvg from "../../assets/svg/payment.svg";
 import appealSvg from "../../assets/svg/appeal.svg";
@@ -18,7 +17,8 @@ const Sidebar = () => {
   return (
     <div className={style.sidebar}>
       <Link to={link} className={style.logo}>
-        <img src={logo} alt="Logo" />
+        <img className={style.bigLogo} src="./logo4.svg" alt="Logo" />
+        <img className={style.smallLogo} src="./smallLogo.svg" alt="Logo" />
       </Link>
       <nav>
         {!isCommendant ? (

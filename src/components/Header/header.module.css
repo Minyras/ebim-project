@@ -2,7 +2,6 @@
   margin: auto;
   padding: 16px 45px;
   color: #0066b9;
-  margin-top: 20px;
   border-radius: 16px;
   box-shadow: 1px 1px 4px 0px #00000040;
   border: 1px solid #f5f5f5;
@@ -35,6 +34,10 @@
   align-items: center;
 }
 
+.profileCircle {
+  display: none;
+}
+
 .right .exit {
   font-weight: 600;
   color: #0066b9;
@@ -45,10 +48,60 @@
   border-radius: 20px;
 }
 
+.right .exit img {
+  display: none;
+}
+
 .dashboard {
-  box-shadow: 1px -3px 4px 0px #00000040;
+  box-shadow: 2px 0px 1px -1px #00000040;
   border-bottom: none;
   border-radius: 16px 16px 0 0;
   position: relative;
   margin-bottom: -10px;
+  border: none;
+}
+
+@media screen and (max-width: 900px) {
+  .header {
+    box-shadow: none;
+    padding: 8px 10px;
+  }
+  .header .right {
+    gap: 16px;
+  }
+
+  .right .exit {
+    padding: 0;
+    border: none;
+    height: 24px;
+  }
+
+  .right .exit span {
+    display: none;
+  }
+
+  .right .exit img {
+    display: inline-block;
+  }
+
+  .account .userImg {
+    display: none;
+  }
+
+  .account .profileCircle {
+    display: inline-block;
+  }
+
+  .account {
+    border: none;
+    width: 24px;
+    height: 24px;
+  }
+
+  .inHeader h1 {
+    font-size: 20px;
+  }
+  .dashboard {
+    margin-bottom: 0;
+  }
 }

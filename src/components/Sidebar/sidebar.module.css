@@ -49,3 +49,43 @@
   background-color: white;
   border-radius: 0 8px 8px 0;
 }
+.smallLogo {
+  display: none;
+}
+
+@media screen and (max-width: 900px) {
+  .sidebar {
+    width: 50px;
+    min-width: 50px;
+    padding: 72px 6px;
+  }
+  .bigLogo {
+    display: none;
+  }
+  .smallLogo {
+    display: inline-block;
+  }
+  .logo img {
+    width: 100%;
+  }
+  .sidebar nav {
+    gap: 8px;
+    align-items: center;
+  }
+  .sidebar nav a span {
+    display: none;
+  }
+  .active::before {
+    left: -26px;
+    height: 41px;
+    border-radius: 4px;
+    background-color: #ededed;
+  }
+  .active {
+    background-color: unset;
+  }
+  .navLink {
+    padding: 0;
+    height: 36px;
+  }
+}
