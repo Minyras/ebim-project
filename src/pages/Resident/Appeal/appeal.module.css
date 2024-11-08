@@ -5,9 +5,9 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  width: 60%;
+  width: 65%;
   max-width: 800px;
-  min-width: 400px;
+  min-width: 410px;
 }
 .select {
   display: flex;
@@ -63,9 +63,9 @@ input[type="radio"] {
   border-radius: 20px;
   color: #2899f6;
   background-color: white;
-  width: 60%;
+  width: 65%;
   max-width: 800px;
-  min-width: 400px;
+  min-width: 410px;
 }
 
 .historyTable table {
@@ -86,4 +86,52 @@ input[type="radio"] {
 .historyTable table td:last-child {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+}
+.select div label {
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 576px) {
+  .mainAppeal {
+    width: 100%;
+    max-width: unset;
+    min-width: unset;
+    padding: 0 10px;
+  }
+  .mainAppeal > div {
+    margin-bottom: 0;
+  }
+  .select {
+    width: 100%;
+    margin-top: 16px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-left: 2px;
+  }
+  .appeal .textArea {
+    box-shadow: none;
+    border: 1.5px solid #efefef;
+    height: 240px;
+  }
+  .appeal .mainAppeal .submitButton {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 21px;
+    line-height: 14.4px;
+  }
+  .Appealhistory {
+    margin-top: 35px;
+  }
+  .Appealhistory h2 {
+    display: none;
+  }
+  .historyTable {
+    min-width: unset;
+    width: 100%;
+    overflow-x: auto;
+    padding: 16px 8px;
+  }
+  .historyTable td {
+    white-space: nowrap;
+  }
 }

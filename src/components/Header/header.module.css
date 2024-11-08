@@ -63,6 +63,7 @@
 
 @media screen and (max-width: 900px) {
   .header {
+    border: none;
     box-shadow: none;
     padding: 8px 10px;
   }

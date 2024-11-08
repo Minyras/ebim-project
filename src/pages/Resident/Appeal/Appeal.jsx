@@ -66,7 +66,7 @@ const Appeal = () => {
         validationSchema={validationSchema}
         onSubmit={onSubmit}
       >
-        {({ isSubmitting, errors }) => (
+        {({ errors }) => (
           <Form className={style.mainAppeal}>
             <div className={style.select}>
               <div>
@@ -120,11 +120,7 @@ const Appeal = () => {
               <p className={style.errorMessage}>{errors.submit}</p>
             )}
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className={style.submitButton}
-            >
+            <button type="submit" className={style.submitButton}>
               Göndər
             </button>
           </Form>

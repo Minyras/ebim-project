@@ -10,26 +10,6 @@ const CommunalPayments = () => {
       <div className={style.header}>
         <Header name={"Ödənişlər"} />
       </div>
-      {/* <div className={style.container}>
-        <div className={style.communals}>
-          <a href="https://www.million.az/services/communal/Socar">
-            <img src={gassSvg} alt="" />
-            Azəriqaz
-          </a>
-          <a href="https://www.million.az/services/communal/Azerishig">
-            <img src={lightSvg} alt="" />
-            Azərişıq
-          </a>
-          <a href="https://www.million.az/services/communal/Azersu">
-            <img src={waterSvg} alt="" />
-            Azərsu
-          </a>
-          <a href="#">
-            <img src={equipmentSvg} alt="" />
-            Azəristilik təchizat
-          </a>
-        </div>
-      </div> */}
       <div className={style.communals}>
         <a href="https://www.million.az/services/communal/Socar">
           <img src={gassSvg} alt="" />
