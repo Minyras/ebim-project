@@ -1,6 +1,6 @@
 .payment .container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
   gap: 28px;
   margin-top: 40px;
 }
@@ -25,6 +25,13 @@
 .payment .container button:hover {
   background: #eaf6ff;
   font-size: 24px;
+}
+
+@media screen and (max-width: 1200px) {
+  .payment .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 @media screen and (max-width: 576px) {

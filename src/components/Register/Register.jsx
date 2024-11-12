@@ -10,8 +10,6 @@ import { registerUser } from "../../dashboard/user";
 const Register = ({ setShowForms }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [progress, setProgress] = useState(0);
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -79,14 +77,6 @@ const Register = ({ setShowForms }) => {
   });
 
   const onSubmit = async (values) => {
-    setLoading(true);
-    setProgress(0);
-
-    // Simulate progress bar fill-up
-    const interval = setInterval(() => {
-      setProgress((prev) => (prev < 90 ? prev + 10 : prev));
-    }, 100);
-
     try {
       const result = await dispatch(registerUser(values)).unwrap();
       if (result) {
@@ -94,12 +84,6 @@ const Register = ({ setShowForms }) => {
       }
     } catch (error) {
       console.error(error);
-    } finally {
-      clearInterval(interval);
-      setProgress(100);
-      setTimeout(() => {
-        setLoading(false);
-      }, 500);
     }
   };
 

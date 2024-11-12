@@ -1,5 +1,4 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { toast } from "react-toastify";
 import { instance } from ".";
 
 const getUserById = createAsyncThunk("user/getUserById", async (id) => {
@@ -13,18 +12,12 @@ const getUserById = createAsyncThunk("user/getUserById", async (id) => {
 
 const updateUserById = createAsyncThunk(
   "user/updateUserById",
-  async ({ id, userData }) => {
+  async ({ id, userData }, { rejectWithValue }) => {
     try {
-      const response = await toast.promise(
-        instance.put(`User/${id}`, userData),
-        {
-          pending: "İstifadəçi məlumatları yenilənir.",
-          success: "İstifadəçi məlumatları yeniləndi.",
-        }
-      );
+      const response = await instance.put(`User/${id}`, userData);
       return response.data;
     } catch (error) {
-      toast.error(error.response?.data || "Naməlum xəta baş verdi.");
+      rejectWithValue(error.response?.data || "Naməlum xəta baş verdi.");
     }
   }
 );
@@ -36,7 +29,7 @@ const registerUser = createAsyncThunk(
       const response = await instance.post("/User/Register", userData);
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.response?.data || "Registration failed");
+      return rejectWithValue(error.response?.data || "Naməlum xəta baş verdi.");
     }
   }
 );
@@ -53,71 +46,50 @@ const loginUser = createAsyncThunk(
   }
 );
 
-const verifyUser = createAsyncThunk("user/verifyUser", async (token) => {
-  try {
-    const response = await toast.promise(
-      instance.get(`User/verify?token=${token}`),
-      {
-        pending: "İstifadəçi təsdiqlənir.",
-        success: "İstifadəçi təsdiqləndi.",
-      }
-    );
-    return response.data;
-  } catch (error) {
-    toast.error(error.response?.data || "Naməlum xəta baş verdi.");
+const verifyUser = createAsyncThunk(
+  "user/verifyUser",
+  async (token, { rejectWithValue }) => {
+    try {
+      const response = await instance.get(`User/verify?token=${token}`);
+      return response.data;
+    } catch (error) {
+      rejectWithValue(error.response?.data || "Naməlum xəta baş verdi.");
+    }
   }
-});
+);
 
 const changeUserPassword = createAsyncThunk(
   "user/changeUserPassword",
-  async (userData) => {
+  async (userData, { rejectWithValue }) => {
     try {
-      const response = await toast.promise(
-        instance.post("User/ResetPassword", userData),
-        {
-          pending: "İstifadəçi daxil olur.",
-          success: "İstifadəçi daxil oldu.",
-        }
-      );
+      const response = await instance.post("User/ResetPassword", userData);
       return response.data;
     } catch (error) {
-      toast.error(error.response?.data || "Naməlum xəta baş verdi.");
+      rejectWithValue(error.response?.data || "Naməlum xəta baş verdi.");
     }
   }
 );
 
 const forgotUserPassword = createAsyncThunk(
   "user/forgotUserPassword",
-  async (userData) => {
+  async (userData, { rejectWithValue }) => {
     try {
-      const response = await toast.promise(
-        instance.post("User/ForgotPassword", userData),
-        {
-          pending: "Email yoxlanılır.",
-          success: "E-poçt qutunuza mail göndərildi.",
-        }
-      );
+      const response = await instance.post("User/ForgotPassword", userData);
       return response.data;
     } catch (error) {
-      toast.error(error.response?.data || "Naməlum xəta baş verdi.");
+      rejectWithValue(error.response?.data || "Naməlum xəta baş verdi.");
     }
   }
 );
 
 const resetUserPassword = createAsyncThunk(
   "user/resetUserPassword",
-  async (userData) => {
+  async (userData, { rejectWithValue }) => {
     try {
-      const response = await toast.promise(
-        instance.post("User/ResetPassword", userData),
-        {
-          pending: "Token yoxlanılır.",
-          success: "Şifrə uğurla dəyişdirildi.",
-        }
-      );
+      const response = await instance.post("User/ResetPassword", userData);
       return response.data;
     } catch (error) {
-      toast.error(error.response?.data || "Naməlum xəta baş verdi.");
+      rejectWithValue(error.response?.data || "Naməlum xəta baş verdi.");
     }
   }
 );

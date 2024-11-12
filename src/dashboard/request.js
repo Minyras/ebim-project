@@ -1,21 +1,17 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { toast } from "react-toastify";
 import { instance } from ".";
 
-const request = createAsyncThunk("request/request", async (requestData) => {
-  try {
-    const response = await toast.promise(
-      instance.post("ApplicationRequests", requestData),
-      {
-        pending: "Müraciət göndərilir.",
-        success: "Müraciət göndərildi.",
-      }
-    );
-    return response.data;
-  } catch (error) {
-    toast.error(error.response?.data || "Naməlum xəta baş verdi.");
+const request = createAsyncThunk(
+  "request/request",
+  async (requestData, { rejectWithValue }) => {
+    try {
+      const response = await instance.post("ApplicationRequests", requestData);
+      return response.data;
+    } catch (error) {
+      rejectWithValue(error.response?.data || "Naməlum xəta baş verdi.");
+    }
   }
-});
+);
 
 const getRequests = createAsyncThunk("request/getRequests", async (userId) => {
   try {
@@ -48,55 +44,43 @@ const getRequest = createAsyncThunk("request/getRequest", async (requestId) => {
 
 const approveRequest = createAsyncThunk(
   "request/approveRequest",
-  async (requestId) => {
+  async (requestId, { rejectWithValue }) => {
     try {
-      const response = await toast.promise(
-        instance.put(`KamendantProfile/ApproveApplicationRequest/${requestId}`),
-        {
-          pending: "Müraciət təsdiqlənir...",
-          success: "Müraciət təsdiqləndi.",
-        }
+      const response = await instance.put(
+        `KamendantProfile/ApproveApplicationRequest/${requestId}`
       );
 
       return response.data;
     } catch (error) {
-      toast.error(error.response?.data || "Naməlum xəta baş verdi.");
+      rejectWithValue(error.response?.data || "Naməlum xəta baş verdi.");
     }
   }
 );
 
 const denyRequest = createAsyncThunk(
   "request/denyRequest",
-  async (requestId) => {
+  async (requestId, { rejectWithValue }) => {
     try {
-      const response = await toast.promise(
-        instance.put(`KamendantProfile/DeniedApplicationRequest/${requestId}`),
-        {
-          pending: "Müraciət rədd olunur...",
-          success: "Müraciət rədd olundu.",
-        }
+      const response = await instance.put(
+        `KamendantProfile/DeniedApplicationRequest/${requestId}`
       );
       return response.data;
     } catch (error) {
-      toast.error(error.response?.data || "Naməlum xəta baş verdi.");
+      rejectWithValue(error.response?.data || "Naməlum xəta baş verdi.");
     }
   }
 );
 
 const pendRequest = createAsyncThunk(
   "request/pendRequest",
-  async (requestId) => {
+  async (requestId, { rejectWithValue }) => {
     try {
-      const response = await toast.promise(
-        instance.put(`KamendantProfile/PendingApplicationRequest/${requestId}`),
-        {
-          pending: "Müraciət gözlədilir...",
-          success: "Müraciət gözlədilir.",
-        }
+      const response = await instance.put(
+        `KamendantProfile/PendingApplicationRequest/${requestId}`
       );
       return response.data;
     } catch (error) {
-      toast.error(error.response?.data || "Naməlum xəta baş verdi.");
+      rejectWithValue(error.response?.data || "Naməlum xəta baş verdi.");
     }
   }
 );

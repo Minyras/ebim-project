@@ -82,17 +82,38 @@ export const requestSlice = createSlice({
         state.request.requestStatus = "failed";
         state.request.error = action.payload;
       })
+      .addCase(approveRequest.pending, (state) => {
+        state.request.requestStatus = "loading";
+      })
       .addCase(approveRequest.fulfilled, (state) => {
         state.request.requestStatus = "fullfilled";
         state.request.status = "Approved";
+      })
+      .addCase(approveRequest.rejected, (state, action) => {
+        state.request.requestStatus = "failed";
+        state.request.error = action.payload;
+      })
+      .addCase(denyRequest.pending, (state) => {
+        state.request.requestStatus = "loading";
       })
       .addCase(denyRequest.fulfilled, (state) => {
         state.request.requestStatus = "fullfilled";
         state.request.status = "Denied";
       })
+      .addCase(denyRequest.rejected, (state, action) => {
+        state.request.requestStatus = "failed";
+        state.request.error = action.payload;
+      })
+      .addCase(pendRequest.pending, (state) => {
+        state.request.requestStatus = "loading";
+      })
       .addCase(pendRequest.fulfilled, (state) => {
         state.request.requestStatus = "fullfilled";
         state.request.status = "Pending";
+      })
+      .addCase(pendRequest.rejected, (state, action) => {
+        state.request.requestStatus = "failed";
+        state.request.error = action.payload;
       });
   },
 });

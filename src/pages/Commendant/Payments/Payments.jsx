@@ -68,6 +68,13 @@ const Payments = () => {
 
   return (
     <>
+      <div
+        className={`loadingScreenOverlay ${
+          allPayments?.status === "loading" ? "active" : ""
+        }`}
+      >
+        <div className="infiniteProgressBar"></div>
+      </div>
       <Header name={"Ödənişlər"} />
       <div className="button-group">
         <div

@@ -46,6 +46,13 @@ const CommendantAppeal = () => {
 
   return (
     <>
+      <div
+        className={`loadingScreenOverlay ${
+          request?.requestStatus === "loading" ? "active" : ""
+        }`}
+      >
+        <div className="infiniteProgressBar"></div>
+      </div>
       <Header name={"Müraciətlər"} />
       <div className="commendantAppealContainer">
         <div className="commendantTable">

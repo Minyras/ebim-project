@@ -1,6 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { instance } from ".";
-import { toast } from "react-toastify";
 
 const getAllPayments = createAsyncThunk("payment/getAllPayments", async () => {
   try {
@@ -13,54 +12,42 @@ const getAllPayments = createAsyncThunk("payment/getAllPayments", async () => {
 
 const approvePayment = createAsyncThunk(
   "payment/approvePayment",
-  async (paymentId) => {
+  async (paymentId, { rejectWithValue }) => {
     try {
-      const response = await toast.promise(
-        instance.put(`KamendantProfile/ApprovePayment/${paymentId}`),
-        {
-          pending: "Ödəniş təsdiqlənir...",
-          success: "Ödəniş təsdiqləndi.",
-        }
+      const response = await instance.put(
+        `KamendantProfile/ApprovePayment/${paymentId}`
       );
       return response.data;
     } catch (error) {
-      toast.error(error.response?.data || "Naməlum xəta baş verdi.");
+      rejectWithValue(error.response?.data || "Naməlum xəta baş verdi.");
     }
   }
 );
 
 const pendPayment = createAsyncThunk(
   "payment/pendPayment",
-  async (paymentId) => {
+  async (paymentId, { rejectWithValue }) => {
     try {
-      const response = await toast.promise(
-        instance.put(`KamendantProfile/PendingPayment/${paymentId}`),
-        {
-          pending: "Ödəniş gözlədilir...",
-          success: "Ödəniş gözlədilir.",
-        }
+      const response = await instance.put(
+        `KamendantProfile/PendingPayment/${paymentId}`
       );
       return response.data;
     } catch (error) {
-      toast.error(error.response?.data || "Naməlum xəta baş verdi.");
+      rejectWithValue(error.response?.data || "Naməlum xəta baş verdi.");
     }
   }
 );
 
 const denyPayment = createAsyncThunk(
   "payment/denyPayment",
-  async (paymentId) => {
+  async (paymentId, { rejectWithValue }) => {
     try {
-      const response = await toast.promise(
-        instance.put(`KamendantProfile/DeniedPayment/${paymentId}`),
-        {
-          pending: "Ödəniş rədd olunur...",
-          success: "Ödəniş rədd olundu.",
-        }
+      const response = await instance.put(
+        `KamendantProfile/DeniedPayment/${paymentId}`
       );
       return response.data;
     } catch (error) {
-      toast.error(error.response?.data || "Naməlum xəta baş verdi.");
+      rejectWithValue(error.response?.data || "Naməlum xəta baş verdi.");
     }
   }
 );

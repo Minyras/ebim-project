@@ -6,6 +6,7 @@ import userSlice from "../slices/userSlice";
 import requestSlice from "../slices/requestSlice";
 import apartmentSlice from "../slices/apartmentSlice";
 import paymentSlice from "../slices/paymentSlice";
+import serviceSupplySlice from "../slices/serviceSupplySlice";
 
 export default configureStore({
   reducer: {
@@ -16,5 +17,6 @@ export default configureStore({
     request: requestSlice,
     apartment: apartmentSlice,
     payment: paymentSlice,
+    serviceSupply: serviceSupplySlice,
   },
 });

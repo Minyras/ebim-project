@@ -12,8 +12,7 @@ ul li {
 
 button {
   cursor: pointer;
-}
-/* Loading screen overlay with darkening effect */
+} /* Loading screen overlay with darkening effect and smooth transition */
 .loadingScreenOverlay {
   position: fixed;
   top: 0;
@@ -25,11 +24,20 @@ button {
   justify-content: center;
   align-items: flex-start;
   z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Active state for showing the loading screen */
+.loadingScreenOverlay.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* Infinite progress bar */
 .infiniteProgressBar {
-  width: 30%; /* Adjust width if needed */
+  width: 30%;
   height: 5px;
   background-color: #4caf50;
   border-radius: 5px;
@@ -49,22 +57,6 @@ button {
   100% {
     transform: translateX(100%);
     opacity: 0.7;
-  }
-}
-
-/* Keyframes for infinite loading animation */
-@keyframes loadingAnimation {
-  0% {
-    transform: translateX(-100%);
-    opacity: 0.5;
-  }
-  50% {
-    transform: translateX(50%);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(100%);
-    opacity: 0.5;
   }
 }
 

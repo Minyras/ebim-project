@@ -11,7 +11,6 @@ import { loginUser } from "../../dashboard/user";
 
 const Login = ({ setShowForms, setShowOnMobile }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [progress, setProgress] = useState(0);
 
   const dispatch = useDispatch();
   const { loginInfo } = useSelector((state) => state.login);
@@ -34,13 +33,6 @@ const Login = ({ setShowForms, setShowOnMobile }) => {
   });
 
   const onSubmit = async (values) => {
-    setProgress(0);
-
-    // Simulate progress bar fill-up
-    const interval = setInterval(() => {
-      setProgress((prev) => (prev < 90 ? prev + 10 : prev));
-    }, 100);
-
     try {
       const result = await dispatch(loginUser(values)).unwrap();
       if (result) {
@@ -56,9 +48,6 @@ const Login = ({ setShowForms, setShowOnMobile }) => {
       }
     } catch (error) {
       console.error("Error: ", error);
-    } finally {
-      clearInterval(interval);
-      setProgress(100);
     }
   };
 
@@ -72,11 +61,13 @@ const Login = ({ setShowForms, setShowOnMobile }) => {
 
   return (
     <div className="loginPage">
-      {loginInfo?.status == "loading" && (
-        <div className="loadingScreenOverlay">
-          <div className="infiniteProgressBar"></div>
-        </div>
-      )}
+      <div
+        className={`loadingScreenOverlay ${
+          loginInfo?.status === "loading" ? "active" : ""
+        }`}
+      >
+        <div className="infiniteProgressBar"></div>
+      </div>
 
       <h1 className="welcome">Xoş gəldin!</h1>
       <Formik

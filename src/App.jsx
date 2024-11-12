@@ -8,8 +8,6 @@ import Appeal from "./pages/Resident/Appeal/Appeal";
 import CommunalPayments from "./pages/Resident/CommunalPayments/CommunalPayments";
 import ComendantPayments from "./pages/Resident/ComendantPayments/ComendantPayments";
 import UserAccount from "./pages/Resident/UserAccount/UserAccount";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Home from "./pages/Commendant/Home/Home";
 import CommendantLayout from "./components/CommendantLayout/CommendantLayout";
 import Appeals from "./pages/Commendant/Appeals/Appeals";
@@ -21,7 +19,6 @@ import Payments from "./pages/Commendant/Payments/payments";
 function App() {
   return (
     <div className="App">
-      <ToastContainer />
       <Router>
         <Routes>
           <Route element={<Layout />}>
