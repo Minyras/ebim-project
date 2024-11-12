@@ -8,25 +8,26 @@ export const loginSlice = createSlice({
       email: "",
       password: "",
       status: null,
+      error: null,
     },
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(loginUser.pending, (state) => {
-        // state.loginInfo.status = "loading";
+        state.loginInfo.status = "loading";
+        state.loginInfo.error = null;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
-        // state.loginInfo.status = "succeeded";
         state.loginInfo = action.payload;
+        state.loginInfo.status = "succeeded";
+        state.loginInfo.error = null;
       })
       .addCase(loginUser.rejected, (state, action) => {
-        // state.loginInfo.status = "failed";
-        state.error = action.payload;
+        state.loginInfo.status = "failed";
+        state.loginInfo.error = action.payload;
       });
   },
 });
-
-export const {} = loginSlice.actions;
 
 export default loginSlice.reducer;

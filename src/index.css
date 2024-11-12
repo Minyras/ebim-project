@@ -13,3 +13,64 @@ ul li {
 button {
   cursor: pointer;
 }
+/* Loading screen overlay with darkening effect */
+.loadingScreenOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Darken the screen */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 1000;
+}
+
+/* Infinite progress bar */
+.infiniteProgressBar {
+  width: 30%; /* Adjust width if needed */
+  height: 5px;
+  background-color: #4caf50;
+  border-radius: 5px;
+  animation: loadingAnimation 1.5s infinite ease-in-out;
+}
+
+/* Keyframes for the infinite loading animation */
+@keyframes loadingAnimation {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateX(50%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0.7;
+  }
+}
+
+/* Keyframes for infinite loading animation */
+@keyframes loadingAnimation {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateX(50%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0.5;
+  }
+}
+
+.errorMessage {
+  color: #ff4d4f;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}

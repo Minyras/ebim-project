@@ -2,7 +2,7 @@ import "./register.css";
 import { useState } from "react";
 import visibleSvg from "../../assets/svg/eyeVisible.svg"; // Icon for visible password
 import hiddenSvg from "../../assets/svg/eyeHidden.svg"; // Icon for hidden password
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { registerUser } from "../../dashboard/user";
@@ -10,7 +10,8 @@ import { registerUser } from "../../dashboard/user";
 const Register = ({ setShowForms }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
-  const [registrationError, setRegistrationError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -25,6 +26,7 @@ const Register = ({ setShowForms }) => {
   };
 
   const dispatch = useDispatch();
+  const { registerInfo } = useSelector((state) => state.register);
 
   const initialValues = {
     name: "",
@@ -77,23 +79,37 @@ const Register = ({ setShowForms }) => {
   });
 
   const onSubmit = async (values) => {
+    setLoading(true);
+    setProgress(0);
+
+    // Simulate progress bar fill-up
+    const interval = setInterval(() => {
+      setProgress((prev) => (prev < 90 ? prev + 10 : prev));
+    }, 100);
+
     try {
-      // console.log(values);
       const result = await dispatch(registerUser(values)).unwrap();
       if (result) {
         setShowForms("login");
       }
     } catch (error) {
-      if (error.response) {
-        setRegistrationError(error.response.data || "Registration failed");
-      } else {
-        setRegistrationError("Network error, please try again later.");
-      }
+      console.error(error);
+    } finally {
+      clearInterval(interval);
+      setProgress(100);
+      setTimeout(() => {
+        setLoading(false);
+      }, 500);
     }
   };
 
   return (
     <div className="registerPage">
+      {registerInfo?.status == "loading" && (
+        <div className="loadingScreenOverlay">
+          <div className="infiniteProgressBar"></div>
+        </div>
+      )}
       <h1 className="welcome">Xoş gəldin!</h1>
       <Formik
         initialValues={initialValues}
@@ -250,13 +266,13 @@ const Register = ({ setShowForms }) => {
               />
             </div>
 
-            {registrationError && (
-              <p className="errorMessage">{registrationError}</p>
-            )}
-
             <button type="submit" className="submitButton">
               Qeydiyyatdan keç
             </button>
+            {/* Display error message */}
+            {registerInfo?.error && (
+              <p className="errorMessage">{registerInfo.error}</p>
+            )}
           </Form>
         )}
       </Formik>

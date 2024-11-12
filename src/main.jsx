@@ -4,11 +4,14 @@ import App from "./App";
 import store from "./redux/store/store";
 import { Provider } from "react-redux";
 import "./assets/fonts/lato/stylesheet.css";
+import { Suspense } from "react";
 
 const root = createRoot(document.getElementById("root"));
 
 root.render(
   <Provider store={store}>
-    <App />
+    <Suspense fallback="...">
+      <App />
+    </Suspense>
   </Provider>
 );

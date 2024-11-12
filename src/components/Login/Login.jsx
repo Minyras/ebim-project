@@ -5,14 +5,16 @@ import hiddenSvg from "../../assets/svg/eyeHidden.svg";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
 import { loginUser } from "../../dashboard/user";
 
 const Login = ({ setShowForms, setShowOnMobile }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   const dispatch = useDispatch();
+  const { loginInfo } = useSelector((state) => state.login);
   const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
@@ -32,22 +34,31 @@ const Login = ({ setShowForms, setShowOnMobile }) => {
   });
 
   const onSubmit = async (values) => {
-    const result = await dispatch(loginUser(values)).unwrap();
-    if (result) {
-      if (result.role === "Resident") {
-        navigate("/dashboard");
-      } else if (result.role === "Commendant") {
-        navigate("/commendant");
+    setProgress(0);
+
+    // Simulate progress bar fill-up
+    const interval = setInterval(() => {
+      setProgress((prev) => (prev < 90 ? prev + 10 : prev));
+    }, 100);
+
+    try {
+      const result = await dispatch(loginUser(values)).unwrap();
+      if (result) {
+        Cookies.set("token", JSON.stringify(result.token), { expires: 1 });
+        Cookies.set("userId", JSON.stringify(result.userId), { expires: 1 });
+        Cookies.set("role", JSON.stringify(result.role), { expires: 1 });
+
+        if (result.role === "Resident") {
+          navigate("/dashboard");
+        } else if (result.role === "Commendant") {
+          navigate("/commendant");
+        }
       }
-      Cookies.set("token", JSON.stringify(result.token), {
-        expires: 1,
-      });
-      Cookies.set("userId", JSON.stringify(result.userId), {
-        expires: 1,
-      });
-      Cookies.set("role", JSON.stringify(result.role), {
-        expires: 1,
-      });
+    } catch (error) {
+      console.error("Error: ", error);
+    } finally {
+      clearInterval(interval);
+      setProgress(100);
     }
   };
 
@@ -61,6 +72,12 @@ const Login = ({ setShowForms, setShowOnMobile }) => {
 
   return (
     <div className="loginPage">
+      {loginInfo?.status == "loading" && (
+        <div className="loadingScreenOverlay">
+          <div className="infiniteProgressBar"></div>
+        </div>
+      )}
+
       <h1 className="welcome">Xoş gəldin!</h1>
       <Formik
         initialValues={initialValues}
@@ -109,6 +126,10 @@ const Login = ({ setShowForms, setShowOnMobile }) => {
             <button type="submit" className="submitButton">
               Daxil ol
             </button>
+            {/* Display error message */}
+            {loginInfo?.error && (
+              <p className="errorMessage">{loginInfo.error}</p>
+            )}
           </Form>
         )}
       </Formik>

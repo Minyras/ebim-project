@@ -29,35 +29,29 @@ const updateUserById = createAsyncThunk(
   }
 );
 
-const registerUser = createAsyncThunk("user/registerUser", async (userData) => {
-  try {
-    const response = await toast.promise(
-      instance.post("User/Register", userData),
-      {
-        pending: "İstifadəçi qeydiyyatdan keçirilir.",
-        success: "Hesabınızı mail ünvanınıza göndərilən mesajla təsdiqləyin.",
-      }
-    );
-    return response.data;
-  } catch (error) {
-    toast.error(error.response?.data || "Naməlum xəta baş verdi.");
+const registerUser = createAsyncThunk(
+  "user/registerUser",
+  async (userData, { rejectWithValue }) => {
+    try {
+      const response = await instance.post("/User/Register", userData);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data || "Registration failed");
+    }
   }
-});
+);
 
-const loginUser = createAsyncThunk("user/loginUser", async (userData) => {
-  try {
-    const response = await toast.promise(
-      instance.post("User/Login", userData),
-      {
-        pending: "İstifadəçi daxil olur.",
-        success: "İstifadəçi daxil oldu.",
-      }
-    );
-    return response.data;
-  } catch (error) {
-    toast.error(error.response?.data || "Naməlum xəta baş verdi.");
+const loginUser = createAsyncThunk(
+  "user/loginUser",
+  async (userData, { rejectWithValue }) => {
+    try {
+      const response = await instance.post("User/Login", userData);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data || "Naməlum xəta baş verdi.");
+    }
   }
-});
+);
 
 const verifyUser = createAsyncThunk("user/verifyUser", async (token) => {
   try {
