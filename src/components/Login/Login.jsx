@@ -6,11 +6,15 @@ import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import Cookies from "js-cookie";
 import { loginUser } from "../../dashboard/user";
 
 const Login = ({ setShowForms, setShowOnMobile }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
+
+  const handleRememberMeChange = (e) => {
+    setRememberMe(e.target.checked);
+  };
 
   const dispatch = useDispatch();
   const { loginInfo } = useSelector((state) => state.login);
@@ -36,9 +40,10 @@ const Login = ({ setShowForms, setShowOnMobile }) => {
     try {
       const result = await dispatch(loginUser(values)).unwrap();
       if (result) {
-        Cookies.set("token", JSON.stringify(result.token), { expires: 1 });
-        Cookies.set("userId", JSON.stringify(result.userId), { expires: 1 });
-        Cookies.set("role", JSON.stringify(result.role), { expires: 1 });
+        const storage = rememberMe ? localStorage : sessionStorage;
+        storage.setItem("token", result.token);
+        storage.setItem("userId", result.userId);
+        storage.setItem("role", result.role);
 
         if (result.role === "Resident") {
           navigate("/dashboard");
@@ -105,7 +110,12 @@ const Login = ({ setShowForms, setShowOnMobile }) => {
             </div>
             <div className="saveForgot">
               <div className="save">
-                <input type="checkbox" id="rememberme" />
+                <input
+                  type="checkbox"
+                  id="rememberme"
+                  checked={rememberMe}
+                  onChange={handleRememberMeChange}
+                />
                 <label htmlFor="rememberme">Yadda saxla</label>
               </div>
               <div className="forgot">

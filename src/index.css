@@ -19,7 +19,7 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* Darken the screen */
+  background-color: rgba(0, 0, 0, 0.3); /* Darken the screen */
   display: flex;
   justify-content: center;
   align-items: flex-start;

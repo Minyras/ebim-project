@@ -3,7 +3,6 @@ import Header from "../../../components/Header/Header";
 import style from "./userAccount.module.css";
 import updateSvg from "../../../assets/svg/NotePencil.svg";
 import { useDispatch, useSelector } from "react-redux";
-import Cookies from "js-cookie";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { getUserById, updateUserById } from "../../../dashboard/user";
@@ -15,8 +14,9 @@ const UserAccount = () => {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
 
-  const userIdCookie = Cookies.get("userId");
-  const userId = JSON.parse(userIdCookie);
+  const userId = sessionStorage.getItem("userId")
+    ? sessionStorage.getItem("userId")
+    : localStorage.getItem("userId");
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -180,10 +180,18 @@ const UserAccount = () => {
           <form action="">
             {loading ? (
               <>
-                <Skeleton height={50} />
-                <Skeleton height={50} />
-                <Skeleton height={50} />
-                <Skeleton height={50} />
+                <div>
+                  <Skeleton height={50} />
+                </div>
+                <div>
+                  <Skeleton height={50} />
+                </div>
+                <div>
+                  <Skeleton height={50} />
+                </div>
+                <div>
+                  <Skeleton height={50} />
+                </div>
               </>
             ) : (
               <>

@@ -3,19 +3,25 @@ import userImg from "../../assets/svg/user.svg";
 import profileCircleImg from "../../assets/svg/profile-circle.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import BreadCrumbs from "../BreadCrumbs/BreadCrumbs";
-import Cookies from "js-cookie";
+import { persistor } from "../../redux/store/store";
 import exitSvg from "../../assets/svg/exit.svg";
+import { logout } from "../../redux/slices/loginSlice";
+import { useDispatch } from "react-redux";
 
-// eslint-disable-next-line react/prop-types
 const Header = ({ name }) => {
   const navigate = useNavigate();
   const handleUserAccount = () => {
     navigate("/user-account");
   };
 
+  const dispatch = useDispatch();
+
   const handleUserExit = () => {
-    Cookies.remove("token");
-    Cookies.remove("userId");
+    persistor.purge();
+    dispatch(logout());
+
+    localStorage.clear();
+    sessionStorage.clear();
 
     navigate("/");
   };

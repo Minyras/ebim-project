@@ -118,6 +118,4 @@ export const requestSlice = createSlice({
   },
 });
 
-// export const {} = requestSlice.actions;
-
 export default requestSlice.reducer;

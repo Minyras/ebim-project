@@ -5,13 +5,24 @@ export const loginSlice = createSlice({
   name: "login",
   initialState: {
     loginInfo: {
-      email: "",
-      password: "",
       status: null,
       error: null,
+      token: null,
+      userId: null,
+      role: null,
     },
   },
-  reducers: {},
+  reducers: {
+    logout: (state) => {
+      state.loginInfo = {
+        token: null,
+        userId: null,
+        role: null,
+        status: null,
+        error: null,
+      };
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loginUser.pending, (state) => {
@@ -19,9 +30,11 @@ export const loginSlice = createSlice({
         state.loginInfo.error = null;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
-        state.loginInfo = action.payload;
-        state.loginInfo.status = "succeeded";
-        state.loginInfo.error = null;
+        state.loginInfo = {
+          ...action.payload,
+          status: "fulfilled",
+          error: null,
+        };
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loginInfo.status = "failed";
@@ -30,4 +43,5 @@ export const loginSlice = createSlice({
   },
 });
 
+export const { logout } = loginSlice.actions;
 export default loginSlice.reducer;

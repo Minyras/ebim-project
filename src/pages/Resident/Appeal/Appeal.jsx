@@ -3,7 +3,6 @@ import Header from "../../../components/Header/Header";
 import style from "./appeal.module.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import { getRequests, request } from "../../../dashboard/request";
 import { formatDate, formatType, formatStatus } from "../../../utils/formatter";
@@ -14,8 +13,9 @@ const Appeal = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
 
-  const userIdCookie = Cookies.get("userId");
-  const userId = JSON.parse(userIdCookie);
+  const userId = sessionStorage.getItem("userId")
+    ? sessionStorage.getItem("userId")
+    : localStorage.getItem("userId");
 
   useEffect(() => {
     const fetchRequests = async () => {
