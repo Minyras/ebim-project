@@ -17,8 +17,8 @@ const Sidebar = () => {
   return (
     <div className={style.sidebar}>
       <Link to={link} className={style.logo}>
-        <img className={style.bigLogo} src="./logo4.svg" alt="Logo" />
-        <img className={style.smallLogo} src="./smallLogo.svg" alt="Logo" />
+        <img className={style.bigLogo} src="/logo4.svg" alt="Logo" />
+        <img className={style.smallLogo} src="/smallLogo.svg" alt="Logo" />
       </Link>
       <nav>
         {!isCommendant ? (

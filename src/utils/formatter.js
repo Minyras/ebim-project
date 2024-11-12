@@ -17,6 +17,17 @@ const formatStatus = (status) => {
   }
 };
 
+const formatPaymentStatus = (status) => {
+  switch (status) {
+    case "Pending":
+      return "Gözləyir";
+    case "Approved":
+      return "Təsdiqlənib";
+    default:
+      return "İmtina edilib";
+  }
+};
+
 const formatType = (type) => {
   switch (type) {
     case "complaint":
@@ -30,4 +41,4 @@ const formatType = (type) => {
   }
 };
 
-export { formatDate, formatStatus, formatType };
+export { formatDate, formatStatus, formatType, formatPaymentStatus };

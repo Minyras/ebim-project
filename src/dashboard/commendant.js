@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { instance } from ".";
 
 const notifyUsers = createAsyncThunk(
-  "commendant/notufyUsers",
+  "commendant/notifyUsers",
   async (message) => {
     try {
       const response = await toast.promise(

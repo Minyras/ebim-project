@@ -79,8 +79,8 @@
     font-size: 16px;
   }
 
-  input[type="text"],
-  input[type="password"] {
+  .loginPage input[type="text"],
+  .loginPage input[type="password"] {
     height: 40px; /* Smaller input size */
     font-size: 14px; /* Adjust font size */
   }

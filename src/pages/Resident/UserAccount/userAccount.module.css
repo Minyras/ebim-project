@@ -171,3 +171,27 @@ form button.fadeOut {
     height: auto;
   }
 }
+
+@media screen and (max-width: 1050px) {
+  .accountForms {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .accountForms {
+    box-shadow: none;
+  }
+  .accountForms > div {
+    padding: 0 10px;
+  }
+  .privateInformation {
+    margin-bottom: 50px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .account p {
+    font-size: 20px;
+  }
+}

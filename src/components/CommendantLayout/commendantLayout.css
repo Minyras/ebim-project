@@ -10,7 +10,7 @@
 }
 
 .outletContainer {
-  padding: 0 25px;
+  padding: 25px 25px;
   flex-grow: 1;
   overflow-y: auto;
   background: linear-gradient(180deg, #ffffff 0%, #ebf6ff 100%);
