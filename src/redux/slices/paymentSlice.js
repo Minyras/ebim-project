@@ -1,6 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getLastPayments } from "../../dashboard/commendant";
-import { approvePayment, getAllPayments } from "../../dashboard/payment";
+import {
+  getAllPayments,
+  getCurrentPayment,
+  getPaymentHistory,
+} from "../../dashboard/payment";
 
 const sortPaymentsByStatus = (payments) => {
   const sorted = {
@@ -34,6 +38,16 @@ export const paymentSlice = createSlice({
       status: null,
       error: null,
     },
+    currentPayment: {
+      currentPayment: 0,
+      error: null,
+      status: null,
+    },
+    paymentHistory: {
+      all: [],
+      status: null,
+      error: null,
+    },
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -60,10 +74,30 @@ export const paymentSlice = createSlice({
       .addCase(getAllPayments.rejected, (state, action) => {
         state.allPayments.status = "failed";
         state.allPayments.error = action.payload;
+      })
+      .addCase(getCurrentPayment.pending, (state) => {
+        state.currentPayment.status = "loading";
+      })
+      .addCase(getCurrentPayment.fulfilled, (state, action) => {
+        state.currentPayment.status = "fullfilled";
+        state.currentPayment.currentPayment = action.payload.currentPayment;
+      })
+      .addCase(getCurrentPayment.rejected, (state, action) => {
+        state.currentPayment.status = "failed";
+        state.currentPayment.error = action.payload;
+      })
+      .addCase(getPaymentHistory.pending, (state) => {
+        state.paymentHistory.status = "loading";
+      })
+      .addCase(getPaymentHistory.fulfilled, (state, action) => {
+        state.paymentHistory.status = "fullfilled";
+        state.paymentHistory.all = action.payload;
+      })
+      .addCase(getPaymentHistory.rejected, (state, action) => {
+        state.paymentHistory.status = "failed";
+        state.paymentHistory.error = action.payload;
       });
   },
 });
-
-// export const {} = requestSlice.actions;
 
 export default paymentSlice.reducer;

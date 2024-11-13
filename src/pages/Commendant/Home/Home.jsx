@@ -48,7 +48,7 @@ const Home = () => {
   return (
     <div className={style.home}>
       {isModalOpen && (
-        <div className="modal-overlay">
+        <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <img
               src={selectedImage}

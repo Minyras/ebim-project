@@ -86,7 +86,7 @@ const Payments = () => {
   return (
     <>
       {isModalOpen && (
-        <div className="modal-overlay">
+        <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <img
               src={selectedImage}

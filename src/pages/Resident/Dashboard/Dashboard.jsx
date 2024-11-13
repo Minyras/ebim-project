@@ -8,16 +8,78 @@ import checkSvg from "../../../assets/svg/cheque.svg";
 import millionSvg from "../../../assets/svg/million.svg";
 import anipaySvg from "../../../assets/svg/anipay.svg";
 import hesabazSvg from "../../../assets/svg/hesabAz.svg";
+import goBackSvg from "../../../assets/svg/goBack.svg";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import {
+  getCurrentPayment,
+  getPaymentHistory,
+} from "../../../dashboard/payment";
+import { formatDate, formatPaymentStatus } from "../../../utils/formatter";
+
 const Dashboard = () => {
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isZoomed, setIsZoomed] = useState(false);
+  const dispatch = useDispatch();
+
+  const userId = sessionStorage.getItem("userId")
+    ? sessionStorage.getItem("userId")
+    : localStorage.getItem("userId");
+
+  useEffect(() => {
+    dispatch(getCurrentPayment(userId));
+    dispatch(getPaymentHistory(userId));
+  }, []);
+
+  const { currentPayment } = useSelector(
+    (state) => state.payment.currentPayment
+  );
+  const { paymentHistory } = useSelector((state) => state.payment);
+
+  console.log(paymentHistory);
+
+  const handlePicture = (imagePath) => {
+    if (imagePath) {
+      setSelectedImage(imagePath);
+      setIsModalOpen(true);
+      setIsZoomed(false);
+    }
+  };
+
+  const toggleZoom = () => {
+    setIsZoomed((prev) => !prev);
+  };
+
   return (
     <div className={style.dashboard}>
+      {isModalOpen && (
+        <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={selectedImage}
+              alt="Payment Proof"
+              className={`modal-image ${isZoomed ? "zoomed" : ""}`}
+              onClick={toggleZoom}
+              loading="lazy"
+            />
+
+            <button
+              className="close-button"
+              onClick={() => setIsModalOpen(false)}
+            >
+              <img src={goBackSvg} alt="Go Back" /> Geriyə get
+            </button>
+          </div>
+        </div>
+      )}
       <Header name={"Ana səhifə"} />
       <div className={style.top}>
         <div className={style.debtContainer}>
           <h4>
             Ümumi Komendant Ödəniş Borcu
-            <span className={style.debt}>-60 AZN</span>
+            <span className={style.debt}>-{currentPayment} AZN</span>
           </h4>
 
           <Link to={"/payment/comendant-payments"}>Ödə</Link>
@@ -73,60 +135,23 @@ const Dashboard = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>05.07.2024</td>
-                  <td>Sentyabr</td>
-                  <td>30 AZN</td>
-                  <td>Ödənilib</td>
-                  <td>
-                    <img src={checkSvg} alt="" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>05.07.2024</td>
-                  <td>Sentyabr</td>
-                  <td>30 AZN</td>
-                  <td>Ödənilib</td>
-                  <td>
-                    <img src={checkSvg} alt="" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>05.07.2024</td>
-                  <td>Sentyabr</td>
-                  <td>30 AZN</td>
-                  <td>Ödənilib</td>
-                  <td>
-                    <img src={checkSvg} alt="" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>05.07.2024</td>
-                  <td>Sentyabr</td>
-                  <td>30 AZN</td>
-                  <td>Ödənilib</td>
-                  <td>
-                    <img src={checkSvg} alt="" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>05.07.2024</td>
-                  <td>Sentyabr</td>
-                  <td>30 AZN</td>
-                  <td>Ödənilib</td>
-                  <td>
-                    <img src={checkSvg} alt="" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>05.07.2024</td>
-                  <td>Sentyabr</td>
-                  <td>30 AZN</td>
-                  <td>Ödənilib</td>
-                  <td>
-                    <img src={checkSvg} alt="" />
-                  </td>
-                </tr>
+                {paymentHistory.all?.map((payment, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>{formatDate(payment.paymentDate)}</td>
+                      <td>{payment.month}</td>
+                      <td>{payment.currentPayment} AZN</td>
+                      <td>{formatPaymentStatus(payment.status)}</td>
+                      <td>
+                        <button
+                          onClick={() => handlePicture(payment.imagePath)}
+                        >
+                          <img src={checkSvg} alt="" />
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>

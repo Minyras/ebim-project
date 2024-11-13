@@ -10,6 +10,32 @@ const getAllPayments = createAsyncThunk("payment/getAllPayments", async () => {
   }
 });
 
+const getCurrentPayment = createAsyncThunk(
+  "payment/getCurrentPayment",
+  async (userId) => {
+    try {
+      const response = await instance.get(
+        `Payment/GetCurrentPayment?userId=${userId}`
+      );
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+const getPaymentHistory = createAsyncThunk(
+  "payment/getPaymentHistory",
+  async (userId) => {
+    try {
+      const response = await instance.get(`Payment/History/${userId}`);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
 const approvePayment = createAsyncThunk(
   "payment/approvePayment",
   async (paymentId, { rejectWithValue }) => {
@@ -52,4 +78,11 @@ const denyPayment = createAsyncThunk(
   }
 );
 
-export { getAllPayments, approvePayment, pendPayment, denyPayment };
+export {
+  getAllPayments,
+  getCurrentPayment,
+  getPaymentHistory,
+  approvePayment,
+  pendPayment,
+  denyPayment,
+};
