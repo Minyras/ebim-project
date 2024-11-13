@@ -14,6 +14,7 @@
   border-radius: 4px;
   cursor: pointer;
   outline: none;
+  width: 125px;
 }
 
 .dropdown-icon {

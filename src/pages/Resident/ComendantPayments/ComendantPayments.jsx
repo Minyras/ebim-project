@@ -1,5 +1,5 @@
 import Header from "../../../components/Header/Header";
-import style from "./comendantPayments.module.css";
+import "./comendantPayments.css";
 import millionSvg from "../../../assets/svg/million.svg";
 import anipaySvg from "../../../assets/svg/anipay.svg";
 import hesabazSvg from "../../../assets/svg/hesabAz.svg";
@@ -68,19 +68,28 @@ const ComendantPaymentsUser = () => {
     fileInputRef.current.click();
   };
 
+  const [isUploaded, setIsUploaded] = useState(false);
+
+  const handleFileChange = (event) => {
+    if (event.target.files && event.target.files[0]) {
+      setIsUploaded(true);
+      setTimeout(() => setIsUploaded(false), 3000);
+    }
+  };
+
   const handleSelect = (id) => {
     console.log("Selected item ID:", id);
   };
 
   return (
-    <div className={style.comendantPayments}>
+    <div className="comendantPayments">
       <Header name={"Ödənişlər"} />
 
-      <div className={style.container}>
-        <div className={style.paymentForm}>
-          <div className={style.paymentMethods}>
+      <div className="container">
+        <div className="paymentForm">
+          <div className="paymentMethods">
             <p>Ödəniş üsulları:</p>
-            <div className={style.methodsContainer}>
+            <div className="methodsContainer">
               <a href="https://hesab.az/">
                 <img src={hesabazSvg} alt="" />
               </a>
@@ -92,10 +101,10 @@ const ComendantPaymentsUser = () => {
               </a>
             </div>
           </div>
-          <form className={style.form}>
+          <form className="form">
             <span>Bank kartı</span>
-            <div className={style.bankCard}>
-              <div className={style.card} ref={cardRef}>
+            <div className="bankCard">
+              <div className="card" ref={cardRef}>
                 4169 7388 1234 5566
               </div>
               <button
@@ -103,7 +112,7 @@ const ComendantPaymentsUser = () => {
                   e.preventDefault();
                   handleCopy(cardRef);
                 }}
-                className={style.copy}
+                className="copy"
               >
                 <svg
                   width="24"
@@ -111,7 +120,7 @@ const ComendantPaymentsUser = () => {
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className={copiedField === cardRef ? style.copied : ""}
+                  className={copiedField === cardRef ? "copied" : ""}
                 >
                   <path
                     d="M20.25 17.25V3.75H6.75"
@@ -130,14 +139,14 @@ const ComendantPaymentsUser = () => {
                 </svg>
               </button>
             </div>
-            <div className={style.anipay}>
+            <div className="anipay">
               <img src={anipaySvg} alt="" />
               <span>AniPay</span>
             </div>
             <div>
               <span htmlFor="">Telefon nömrəsi</span>
               <div className="phoneNumber">
-                <div className={style.card} ref={phoneRef}>
+                <div className="card" ref={phoneRef}>
                   +994 55 123 45 67
                 </div>
                 <button
@@ -145,7 +154,7 @@ const ComendantPaymentsUser = () => {
                     e.preventDefault();
                     handleCopy(phoneRef);
                   }}
-                  className={style.copy}
+                  className="copy"
                 >
                   <svg
                     width="24"
@@ -153,7 +162,7 @@ const ComendantPaymentsUser = () => {
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    className={copiedField === phoneRef ? style.copied : ""}
+                    className={copiedField === phoneRef ? "copied" : ""}
                   >
                     <path
                       d="M20.25 17.25V3.75H6.75"
@@ -174,7 +183,7 @@ const ComendantPaymentsUser = () => {
               </div>
               <span htmlFor="">Email</span>
               <div className="email">
-                <div className={style.card} ref={emailRef}>
+                <div className="card" ref={emailRef}>
                   hidayatalasgarli@mail.ru
                 </div>
                 <button
@@ -182,7 +191,7 @@ const ComendantPaymentsUser = () => {
                     e.preventDefault();
                     handleCopy(emailRef);
                   }}
-                  className={style.copy}
+                  className="copy"
                 >
                   <svg
                     width="24"
@@ -190,7 +199,7 @@ const ComendantPaymentsUser = () => {
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    className={copiedField === emailRef ? style.copied : ""}
+                    className={copiedField === emailRef ? "copied" : ""}
                   >
                     <path
                       d="M20.25 17.25V3.75H6.75"
@@ -212,9 +221,9 @@ const ComendantPaymentsUser = () => {
             </div>
           </form>
         </div>
-        <div className={style.newRequest}>
+        <div className="newRequest">
           <h2>Yeni sorğu</h2>
-          <div className={style.dates}>
+          <div className="dates">
             <Dropdown
               id="fruit-dropdown"
               title="Ay"
@@ -230,11 +239,39 @@ const ComendantPaymentsUser = () => {
               onSelect={handleSelect}
             />
           </div>
-          <button className={style.fileInput} onClick={handleFileInputClick}>
-            Şəkli seç
-          </button>
-          <input type="file" ref={fileInputRef} placeholder="Şəkli seç" />
-          <button className={style.send}>Göndər</button>
+          <div className="file-upload-container">
+            <button
+              className={`file-input-button ${isUploaded ? "uploaded" : ""}`}
+              onClick={handleFileInputClick}
+            >
+              {isUploaded ? (
+                <>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="checkmark"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  Şəkil yükləndi!
+                </>
+              ) : (
+                "Şəkli seç"
+              )}
+            </button>
+            <input
+              type="file"
+              ref={fileInputRef}
+              onChange={handleFileChange}
+              style={{ display: "none" }}
+            />
+          </div>
+          <button className="send">Göndər</button>
         </div>
       </div>
     </div>

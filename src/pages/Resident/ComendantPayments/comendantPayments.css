@@ -119,23 +119,53 @@ input[type="file"] {
 .newRequest button {
   font-size: 16px;
   align-self: flex-end;
-  padding: 7px;
   border-radius: 5px;
 }
 
 .newRequest button.send {
+  padding: 7px;
   background-color: #0071ce;
   font-weight: 600;
   border: none;
   color: white;
 }
 
-.fileInput {
+.file-upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.file-input-button {
   width: 100%;
-  background-color: transparent !important;
-  border: 1.5px solid #0071ce !important;
-  color: #0071ce !important;
-  padding: 10px !important;
+  background-color: transparent;
+  border: 1.5px solid #0071ce;
+  color: #0071ce;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.file-input-button:hover {
+  background-color: #0071ce;
+  color: #fff;
+}
+
+.uploaded {
+  background-color: #28a745;
+  color: #fff;
+  border-color: #28a745;
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
 }
 
 .anipay {
