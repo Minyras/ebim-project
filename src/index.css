@@ -39,7 +39,7 @@ button {
 .infiniteProgressBar {
   width: 30%;
   height: 5px;
-  background-color: #4caf50;
+  background-color: #0071ce;
   border-radius: 5px;
   animation: loadingAnimation 1.5s infinite ease-in-out;
 }
@@ -47,7 +47,7 @@ button {
 /* Keyframes for the infinite loading animation */
 @keyframes loadingAnimation {
   0% {
-    transform: translateX(-100%);
+    transform: translateX(-250%);
     opacity: 0.7;
   }
   50% {
@@ -55,7 +55,7 @@ button {
     opacity: 1;
   }
   100% {
-    transform: translateX(100%);
+    transform: translateX(250%);
     opacity: 0.7;
   }
 }

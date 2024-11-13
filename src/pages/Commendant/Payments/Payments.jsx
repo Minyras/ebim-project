@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import Header from "../../../components/Header/Header";
 import whiteCloseCircle from "../../../assets/svg/whiteCloseCircle.svg";
+import goBackSvg from "../../../assets/svg/goBack.svg";
 import "./payments.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -17,6 +18,9 @@ const Payments = () => {
   const [selectedRowId, setSelectedRowId] = useState(null);
   const [loading, setLoading] = useState(true);
   const statusesRef = useRef(null);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isZoomed, setIsZoomed] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -31,8 +35,9 @@ const Payments = () => {
 
   const { allPayments } = useSelector((state) => state.payment);
 
-  const handleFilterRowClick = (id) => {
-    setSelectedRowId(selectedRowId === id ? null : id);
+  const handleFilterRowClick = (e, id) => {
+    if (e.target.nodeName != "svg" && e.target.nodeName != "path")
+      setSelectedRowId(selectedRowId === id ? null : id);
   };
 
   const handleClickOutside = (event) => {
@@ -66,8 +71,41 @@ const Payments = () => {
     await dispatch(getAllPayments());
   };
 
+  const handlePicture = (imagePath) => {
+    if (imagePath) {
+      setSelectedImage(imagePath);
+      setIsModalOpen(true);
+      setIsZoomed(false);
+    }
+  };
+
+  const toggleZoom = () => {
+    setIsZoomed((prev) => !prev);
+  };
+
   return (
     <>
+      {isModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={selectedImage}
+              alt="Payment Proof"
+              className={`modal-image ${isZoomed ? "zoomed" : ""}`}
+              onClick={toggleZoom}
+              loading="lazy"
+            />
+
+            <button
+              className="close-button"
+              onClick={() => setIsModalOpen(false)}
+            >
+              <img src={goBackSvg} alt="Go Back" /> Geriyə get
+            </button>
+          </div>
+        </div>
+      )}
+
       <div
         className={`loadingScreenOverlay ${
           allPayments?.status === "loading" ? "active" : ""
@@ -161,7 +199,7 @@ const Payments = () => {
                     key={payment.id}
                     data-id={payment.id}
                     className={selectedRowId === payment.id ? "activeRow" : ""}
-                    onClick={() => handleFilterRowClick(payment.id)}
+                    onClick={(e) => handleFilterRowClick(e, payment.id)}
                   >
                     <td>{payment.fullName}</td>
                     <td>{payment.apartmentNumber}</td>
@@ -253,35 +291,37 @@ const Payments = () => {
                       </ul>
                     </td>
                     <td>
-                      <svg
-                        width="25"
-                        height="24"
-                        viewBox="0 0 25 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M14.9492 21.0001L10.7586 14.7189C10.7257 14.6666 10.68 14.6235 10.6259 14.5936C10.5718 14.5638 10.511 14.5481 10.4492 14.5481C10.3874 14.5481 10.3266 14.5638 10.2725 14.5936C10.2184 14.6235 10.1728 14.6666 10.1398 14.7189L8.18047 17.6626C8.14562 17.7143 8.09841 17.7566 8.04313 17.7855C7.98785 17.8143 7.92623 17.829 7.86387 17.828C7.8015 17.8271 7.74035 17.8106 7.68595 17.7801C7.63156 17.7496 7.58563 17.706 7.55234 17.6532L6.64297 16.2376C6.60779 16.1854 6.56032 16.1426 6.50474 16.1131C6.44916 16.0835 6.38717 16.068 6.32422 16.068C6.26126 16.068 6.19927 16.0835 6.1437 16.1131C6.08812 16.1426 6.04065 16.1854 6.00547 16.2376L2.94922 21.0001H14.9492Z"
-                          stroke="#2899F6"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M14.9492 3V8.25H20.1992"
-                          stroke="#2899F6"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M18.6992 21H19.4492C19.6481 21 19.8389 20.921 19.9795 20.7803C20.1202 20.6397 20.1992 20.4489 20.1992 20.25V8.25L14.9492 3H5.94922C5.75031 3 5.55954 3.07902 5.41889 3.21967C5.27824 3.36032 5.19922 3.55109 5.19922 3.75V12.75"
-                          stroke="#2899F6"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
+                      <button onClick={() => handlePicture(payment.imagePath)}>
+                        <svg
+                          width="25"
+                          height="24"
+                          viewBox="0 0 25 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M14.9492 21.0001L10.7586 14.7189C10.7257 14.6666 10.68 14.6235 10.6259 14.5936C10.5718 14.5638 10.511 14.5481 10.4492 14.5481C10.3874 14.5481 10.3266 14.5638 10.2725 14.5936C10.2184 14.6235 10.1728 14.6666 10.1398 14.7189L8.18047 17.6626C8.14562 17.7143 8.09841 17.7566 8.04313 17.7855C7.98785 17.8143 7.92623 17.829 7.86387 17.828C7.8015 17.8271 7.74035 17.8106 7.68595 17.7801C7.63156 17.7496 7.58563 17.706 7.55234 17.6532L6.64297 16.2376C6.60779 16.1854 6.56032 16.1426 6.50474 16.1131C6.44916 16.0835 6.38717 16.068 6.32422 16.068C6.26126 16.068 6.19927 16.0835 6.1437 16.1131C6.08812 16.1426 6.04065 16.1854 6.00547 16.2376L2.94922 21.0001H14.9492Z"
+                            stroke="#2899F6"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M14.9492 3V8.25H20.1992"
+                            stroke="#2899F6"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M18.6992 21H19.4492C19.6481 21 19.8389 20.921 19.9795 20.7803C20.1202 20.6397 20.1992 20.4489 20.1992 20.25V8.25L14.9492 3H5.94922C5.75031 3 5.55954 3.07902 5.41889 3.21967C5.27824 3.36032 5.19922 3.55109 5.19922 3.75V12.75"
+                            stroke="#2899F6"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </button>
                     </td>
                   </tr>
                 ))}

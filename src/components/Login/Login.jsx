@@ -7,6 +7,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../dashboard/user";
+import { clearError } from "../../redux/slices/loginSlice";
 
 const Login = ({ setShowForms, setShowOnMobile }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -40,10 +41,15 @@ const Login = ({ setShowForms, setShowOnMobile }) => {
     try {
       const result = await dispatch(loginUser(values)).unwrap();
       if (result) {
+        const otherStorage = !rememberMe ? localStorage : sessionStorage;
         const storage = rememberMe ? localStorage : sessionStorage;
         storage.setItem("token", result.token);
         storage.setItem("userId", result.userId);
         storage.setItem("role", result.role);
+
+        otherStorage.removeItem("token", result.token);
+        otherStorage.removeItem("userId", result.userId);
+        otherStorage.removeItem("role", result.role);
 
         if (result.role === "Resident") {
           navigate("/dashboard");
@@ -58,6 +64,7 @@ const Login = ({ setShowForms, setShowOnMobile }) => {
 
   useEffect(() => {
     setShowOnMobile(true);
+    dispatch(clearError());
   }, []);
 
   const handleForgotPassword = () => {

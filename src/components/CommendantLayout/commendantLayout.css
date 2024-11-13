@@ -43,3 +43,8 @@
 .commendantTable table tr td {
   padding: 9px;
 }
+
+.commendantTable table tbody tr td > button {
+  border: none;
+  background-color: transparent;
+}

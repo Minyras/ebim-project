@@ -3,7 +3,7 @@ import Header from "../../../components/Header/Header";
 import style from "./appeal.module.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getRequests, request } from "../../../dashboard/request";
 import { formatDate, formatType, formatStatus } from "../../../utils/formatter";
 import Skeleton from "react-loading-skeleton";
@@ -11,7 +11,6 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 const Appeal = () => {
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(true);
 
   const userId = sessionStorage.getItem("userId")
     ? sessionStorage.getItem("userId")
@@ -19,9 +18,7 @@ const Appeal = () => {
 
   useEffect(() => {
     const fetchRequests = async () => {
-      setLoading(true);
       await dispatch(getRequests(userId));
-      setLoading(false);
     };
     fetchRequests();
   }, [userId, dispatch]);
@@ -60,6 +57,13 @@ const Appeal = () => {
 
   return (
     <div className={style.appeal}>
+      <div
+        className={`loadingScreenOverlay ${
+          requests?.status === "loading" ? "active" : ""
+        }`}
+      >
+        <div className="infiniteProgressBar"></div>
+      </div>
       <Header name={"Müraciətlər"} />
       <Formik
         initialValues={initialValues}
@@ -139,7 +143,7 @@ const Appeal = () => {
               </tr>
             </thead>
             <tbody>
-              {loading
+              {requests?.status == "loading"
                 ? Array.from({ length: 8 }).map((_, index) => (
                     <tr key={index}>
                       <td>

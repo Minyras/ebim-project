@@ -37,6 +37,7 @@
   margin-bottom: 20px;
   margin-left: 27px;
 }
+
 .historyTable {
   box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 20px 0 rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -53,6 +54,10 @@
 }
 .historyTable table tr td {
   padding: 9px;
+}
+.historyTable table tr td > button {
+  background-color: transparent;
+  border: none;
 }
 .historyTable table thead {
   font-size: 20px;

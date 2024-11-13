@@ -22,6 +22,9 @@ export const loginSlice = createSlice({
         error: null,
       };
     },
+    clearError: (state) => {
+      state.loginInfo.error = null;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -43,5 +46,5 @@ export const loginSlice = createSlice({
   },
 });
 
-export const { logout } = loginSlice.actions;
+export const { logout, clearError } = loginSlice.actions;
 export default loginSlice.reducer;
