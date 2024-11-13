@@ -4,6 +4,41 @@ import millionSvg from "../../../assets/svg/million.svg";
 import anipaySvg from "../../../assets/svg/anipay.svg";
 import hesabazSvg from "../../../assets/svg/hesabAz.svg";
 import { useRef, useState } from "react";
+import Dropdown from "../../../components/Dropdown/Dropdown";
+
+const months = [
+  { id: "1", name: "Yanvar" },
+  { id: "2", name: "Fevral" },
+  { id: "3", name: "Mart" },
+  { id: "4", name: "Aprel" },
+  { id: "5", name: "May" },
+  { id: "6", name: "İyun" },
+  { id: "7", name: "İyul" },
+  { id: "8", name: "Avqust" },
+  { id: "9", name: "Sentyabr" },
+  { id: "10", name: "Oktyabr" },
+  { id: "11", name: "Noyabr" },
+  { id: "12", name: "Dekabr" },
+];
+
+const years = [
+  { id: "2010", name: "2010" },
+  { id: "2011", name: "2011" },
+  { id: "2012", name: "2012" },
+  { id: "2013", name: "2013" },
+  { id: "2014", name: "2014" },
+  { id: "2015", name: "2015" },
+  { id: "2016", name: "2016" },
+  { id: "2017", name: "2017" },
+  { id: "2018", name: "2018" },
+  { id: "2019", name: "2019" },
+  { id: "2020", name: "2020" },
+  { id: "2021", name: "2021" },
+  { id: "2022", name: "2022" },
+  { id: "2023", name: "2023" },
+  { id: "2024", name: "2024" },
+  { id: "2025", name: "2025" },
+];
 
 const ComendantPaymentsUser = () => {
   const cardRef = useRef(null);
@@ -31,6 +66,10 @@ const ComendantPaymentsUser = () => {
 
   const handleFileInputClick = () => {
     fileInputRef.current.click();
+  };
+
+  const handleSelect = (id) => {
+    console.log("Selected item ID:", id);
   };
 
   return (
@@ -176,93 +215,20 @@ const ComendantPaymentsUser = () => {
         <div className={style.newRequest}>
           <h2>Yeni sorğu</h2>
           <div className={style.dates}>
-            <details className={style.customSelect}>
-              <summary className={style.radios}>
-                <input
-                  type="radio"
-                  name="month"
-                  id="ay"
-                  title="Ay"
-                  defaultChecked
-                />
-                {[
-                  "Yanvar",
-                  "Fevral",
-                  "Mart",
-                  "Aprel",
-                  "May",
-                  "İyun",
-                  "İyul",
-                  "Avqust",
-                  "Sentyabr",
-                  "Oktyabr",
-                  "Noyabr",
-                  "Dekabr",
-                ].map((month, index) => (
-                  <input
-                    key={index}
-                    type="radio"
-                    name="month"
-                    id={month.toLowerCase()}
-                    title={month}
-                  />
-                ))}
-              </summary>
-              <ul className={style.list}>
-                {[
-                  "Yanvar",
-                  "Fevral",
-                  "Mart",
-                  "Aprel",
-                  "May",
-                  "İyun",
-                  "İyul",
-                  "Avqust",
-                  "Sentyabr",
-                  "Oktyabr",
-                  "Noyabr",
-                  "Dekabr",
-                ].map((month, index) => (
-                  <li key={index}>
-                    <label htmlFor={month.toLowerCase()}>{month}</label>
-                  </li>
-                ))}
-              </ul>
-            </details>
-            <details className={style.customSelect}>
-              <summary className={style.radios}>
-                <input
-                  type="radio"
-                  name="year"
-                  id="year"
-                  title="İl"
-                  defaultChecked
-                />
-                <input type="radio" name="year" id="2010" title="2010" />
-                <input type="radio" name="year" id="2011" title="2011" />
-                <input type="radio" name="year" id="2012" title="2012" />
-                <input type="radio" name="year" id="2013" title="2013" />
-                <input type="radio" name="year" id="2014" title="2014" />
-                <input type="radio" name="year" id="2015" title="2015" />
-                <input type="radio" name="year" id="2016" title="2016" />
-                <input type="radio" name="year" id="2017" title="2017" />
-                <input type="radio" name="year" id="2018" title="2018" />
-                <input type="radio" name="year" id="2019" title="2019" />
-                <input type="radio" name="year" id="2020" title="2020" />
-                <input type="radio" name="year" id="2021" title="2021" />
-                <input type="radio" name="year" id="2022" title="2022" />
-                <input type="radio" name="year" id="2023" title="2023" />
-                <input type="radio" name="year" id="2024" title="2024" />
-                <input type="radio" name="year" id="2025" title="2025" />
-              </summary>
-              <ul className={style.list}>
-                {Array.from({ length: 16 }, (_, i) => 2010 + i).map((year) => (
-                  <li key={year}>
-                    <label htmlFor={year}>{year}</label>
-                  </li>
-                ))}
-              </ul>
-            </details>
+            <Dropdown
+              id="fruit-dropdown"
+              title="Ay"
+              data={months}
+              position="bottom-left"
+              onSelect={handleSelect}
+            />
+            <Dropdown
+              id="fruit-dropdown"
+              title="İl"
+              data={years}
+              position="bottom-left"
+              onSelect={handleSelect}
+            />
           </div>
           <button className={style.fileInput} onClick={handleFileInputClick}>
             Şəkli seç
