@@ -13,7 +13,7 @@ import Appeals from "./pages/Commendant/Appeals/Appeals";
 import Services from "./pages/Commendant/Services/Services";
 import Apartments from "./pages/Commendant/Apartments/Apartments";
 import CommendantAppeal from "./pages/Commendant/CommendantAppeal/CommendantAppeal";
-import Payments from "./pages/Commendant/Payments/payments";
+import Payments from "./pages/Commendant/Payments/Payments";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
