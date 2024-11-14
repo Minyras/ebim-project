@@ -1,9 +1,11 @@
 import { useParams } from "react-router-dom";
 import Header from "../../../components/Header/Header";
+import Dropdown from "../../../components/Dropdown/Dropdown";
 import "./commendantAppeal.css";
 import acceptIcon from "../../../assets/svg/check.svg";
 import waitingIcon from "../../../assets/svg/waitingIcon.svg";
 import declineIcon from "../../../assets/svg/closeCircle.svg";
+import checkIcon from "../../../assets/svg/blueCheck.svg";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -16,10 +18,17 @@ import { formatDate, formatStatus, formatType } from "../../../utils/formatter";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
+const statuses = [
+  { id: "deny", name: "Rədd et" },
+  { id: "pend", name: "Baxılır" },
+  { id: "approve", name: "Təsdiq et" },
+];
+
 const CommendantAppeal = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
+  const [status, setStatus] = useState("deny");
 
   const { request } = useSelector((state) => state.request);
 
@@ -42,6 +51,23 @@ const CommendantAppeal = () => {
 
   const handlePendRequest = () => {
     dispatch(pendRequest(id));
+  };
+
+  const handleSelect = (id) => {
+    setStatus(id);
+  };
+
+  const handleStatus = () => {
+    switch (status) {
+      case "approve":
+        handleApproveRequest();
+        break;
+      case "deny":
+        handleDenyRequest();
+        break;
+      case "pend":
+        handlePendRequest();
+    }
   };
 
   return (
@@ -107,6 +133,15 @@ const CommendantAppeal = () => {
         </div>
 
         <div className="buttons">
+          <Dropdown
+            id="month-dropdown"
+            data={statuses}
+            position="bottom-left"
+            onSelect={handleSelect}
+          />
+          <button onClick={handleStatus}>
+            <img src={checkIcon} alt="Accept" />
+          </button>
           <button
             className="btn btn-accept"
             onClick={handleApproveRequest}

@@ -67,7 +67,7 @@ const Home = () => {
           </div>
         </div>
       )}
-      <Header name={"Ödənişlər"} />
+      <Header name={"Ana səhifə"} />
       <form onSubmit={formik.handleSubmit} className={style.mainAppeal}>
         <h2>Bildiriş göndər</h2>
         <textarea

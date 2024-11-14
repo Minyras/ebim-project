@@ -64,3 +64,41 @@
   border-color: #e70500;
   color: #e70500;
 }
+
+.commendantAppealContainer .buttons > button,
+.commendantAppealContainer .buttons > .dropdown-container {
+  display: none;
+}
+
+@media screen and (max-width: 900px) {
+  .commendantAppealContainer {
+    margin: 0;
+  }
+  .commendantAppealContainer table thead {
+    border-bottom: 3px solid #f4f5f5;
+  }
+
+  .commendantAppealContainer .buttons > button,
+  .commendantAppealContainer .buttons > .dropdown-container {
+    display: inline-block;
+  }
+
+  .commendantAppealContainer .buttons > button {
+    background-color: transparent;
+    border: none;
+  }
+
+  .commendantAppealContainer .buttons > .btn {
+    display: none;
+  }
+  .buttons .dropdown-button {
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 16px;
+    white-space: nowrap;
+  }
+
+  .buttons .dropdown-menu {
+    color: #0066b9;
+  }
+}

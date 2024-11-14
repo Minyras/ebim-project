@@ -130,6 +130,8 @@ input[type="radio"] {
     width: 100%;
     overflow-x: auto;
     padding: 16px 8px;
+    box-shadow: none;
+    border: 1.5px solid #efefef;
   }
   .historyTable td {
     white-space: nowrap;

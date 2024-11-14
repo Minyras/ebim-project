@@ -6,7 +6,7 @@ const getUserById = createAsyncThunk("user/getUserById", async (id) => {
     const response = await instance.get(`User/${id}`);
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 });
 

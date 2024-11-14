@@ -3,7 +3,6 @@ import arrowLeftSvg from "../../assets/svg/arrowLeft.svg";
 import "./loginConfirm.module.css";
 import style from "./loginConfirm.module.css";
 const LoginConfirm = ({ setShowForms, isPasswordChange }) => {
-  console.log("Geldim");
   return (
     <div className={style.loginConfirm}>
       <img src={confirmSvg} alt="confirm" />

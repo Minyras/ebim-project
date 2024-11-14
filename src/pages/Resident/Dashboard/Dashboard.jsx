@@ -17,6 +17,7 @@ import {
   getPaymentHistory,
 } from "../../../dashboard/payment";
 import { formatDate, formatPaymentStatus } from "../../../utils/formatter";
+import Skeleton from "react-loading-skeleton";
 
 const Dashboard = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -37,8 +38,6 @@ const Dashboard = () => {
     (state) => state.payment.currentPayment
   );
   const { paymentHistory } = useSelector((state) => state.payment);
-
-  console.log(paymentHistory);
 
   const handlePicture = (imagePath) => {
     if (imagePath) {
@@ -135,23 +134,43 @@ const Dashboard = () => {
                 </tr>
               </thead>
               <tbody>
-                {paymentHistory.all?.map((payment, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>{formatDate(payment.paymentDate)}</td>
-                      <td>{payment.month}</td>
-                      <td>{payment.currentPayment} AZN</td>
-                      <td>{formatPaymentStatus(payment.status)}</td>
-                      <td>
-                        <button
-                          onClick={() => handlePicture(payment.imagePath)}
-                        >
-                          <img src={checkSvg} alt="" />
-                        </button>
-                      </td>
-                    </tr>
-                  );
-                })}
+                {paymentHistory?.status == "loading"
+                  ? Array.from({ length: 5 }).map((_, index) => (
+                      <tr key={index}>
+                        <td>
+                          <Skeleton width={80} />
+                        </td>
+                        <td>
+                          <Skeleton width={60} />
+                        </td>
+                        <td>
+                          <Skeleton width={50} />
+                        </td>
+                        <td>
+                          <Skeleton width={100} />
+                        </td>
+                        <td>
+                          <Skeleton width={40} height={30} />
+                        </td>
+                      </tr>
+                    ))
+                  : paymentHistory.all?.map((payment, index) => {
+                      return (
+                        <tr key={index}>
+                          <td>{formatDate(payment.paymentDate)}</td>
+                          <td>{payment.month}</td>
+                          <td>{payment.currentPayment} AZN</td>
+                          <td>{formatPaymentStatus(payment.status)}</td>
+                          <td>
+                            <button
+                              onClick={() => handlePicture(payment.imagePath)}
+                            >
+                              <img src={checkSvg} alt="" />
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    })}
               </tbody>
             </table>
           </div>

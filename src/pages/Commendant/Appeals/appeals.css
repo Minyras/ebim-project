@@ -66,3 +66,23 @@
     background-color: #e0e0e0;
   }
 }
+
+@media screen and (max-width: 900px) {
+  .commendantTable {
+    min-width: unset;
+    width: 100%;
+    overflow-x: auto;
+    padding: 16px 8px;
+    box-shadow: none;
+    border: 1.5px solid #efefef;
+    margin: 0;
+  }
+
+  .commendantTable thead {
+    border-bottom: 3px solid #f4f5f5;
+  }
+
+  .commendantTable td:last-of-type {
+    white-space: nowrap;
+  }
+}

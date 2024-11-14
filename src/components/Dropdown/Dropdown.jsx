@@ -4,7 +4,7 @@ import "./dropdown.css";
 
 const Dropdown = ({
   id,
-  title = "Select",
+  title,
   data,
   position = "bottom-left",
   hasImage,
@@ -29,6 +29,9 @@ const Dropdown = ({
       newSelectedItem && setSelectedItem(newSelectedItem);
     } else {
       setSelectedItem(undefined);
+    }
+    if (!title) {
+      setSelectedItem(data[0]);
     }
   }, [selectedId, data]);
 
@@ -65,7 +68,6 @@ const Dropdown = ({
         className={`dropdown-button ${style}`}
       >
         <span>{selectedItem?.name || title}</span>
-        {/* SVG for the chevron icon */}
         <svg
           className={`dropdown-icon ${isOpen ? "open" : ""}`}
           xmlns="http://www.w3.org/2000/svg"

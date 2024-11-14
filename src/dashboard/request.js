@@ -18,7 +18,7 @@ const getRequests = createAsyncThunk("request/getRequests", async (userId) => {
     const response = await instance.get(`ApplicationRequests?userId=${userId}`);
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 });
 
@@ -27,7 +27,7 @@ const getAllRequests = createAsyncThunk("request/getAllRequests", async () => {
     const response = await instance.get(`KamendantProfile/ApplicationRequests`);
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 });
 
@@ -38,7 +38,7 @@ const getRequest = createAsyncThunk("request/getRequest", async (requestId) => {
     );
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 });
 

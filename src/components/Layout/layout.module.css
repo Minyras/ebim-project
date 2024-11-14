@@ -19,6 +19,7 @@
 @media screen and (max-width: 900px) {
   .outletContainer {
     background: unset;
-    padding: 30px 15px;
+    padding: 0 15px 30px;
+    margin-top: 65px;
   }
 }

@@ -34,6 +34,12 @@
   }
 }
 
+@media screen and (max-width: 900px) {
+  .payment .container {
+    margin-top: 30px;
+  }
+}
+
 @media screen and (max-width: 576px) {
   .payment .container {
     grid-template-columns: 1fr 1fr;

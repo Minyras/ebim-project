@@ -37,7 +37,6 @@ const Appeal = () => {
   });
 
   const onSubmit = async (values, { setSubmitting, setErrors }) => {
-    console.log(values);
     try {
       await dispatch(request(values));
       await dispatch(getRequests(userId));
@@ -143,9 +142,9 @@ const Appeal = () => {
               </tr>
             </thead>
             <tbody>
-              {requests?.status == "loading"
+              {requests?.status === "loading"
                 ? Array.from({ length: 8 }).map((_, index) => (
-                    <tr key={index}>
+                    <tr key={`skeleton-${index}`}>
                       <td>
                         <Skeleton width={80} />
                       </td>
@@ -157,8 +156,8 @@ const Appeal = () => {
                       </td>
                     </tr>
                   ))
-                : requests.data?.slice(0, 8).map((request) => (
-                    <tr key={request.id}>
+                : requests.data?.slice(0, 8).map((request, index) => (
+                    <tr key={`request-${index}`}>
                       <td>{formatDate(request.createdAt)}</td>
                       <td>{formatType(request.requestType)}</td>
                       <td>{formatStatus(request.status)}</td>

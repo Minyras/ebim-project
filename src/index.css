@@ -127,3 +127,9 @@ table tr td > button {
   background-color: transparent;
   border: none;
 }
+
+@media screen and (max-width: 900px) {
+  .outletContainer {
+    margin-top: 60px;
+  }
+}

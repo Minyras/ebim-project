@@ -12,6 +12,7 @@
   width: 100%;
   box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1), 0 4px 20px 0 rgba(0, 0, 0, 0.1);
   border-radius: 15px;
+  background: white;
 }
 
 .comendantPayments .container > div,
@@ -233,7 +234,8 @@ input[type="file"] {
   .comendantPayments .container {
     flex-direction: column;
   }
-  .comendantPayments .container > div {
+  .comendantPayments .container > div,
+  .comendantPayments .container > form {
     width: 100%;
   }
 }
@@ -242,16 +244,22 @@ input[type="file"] {
   .comendantPayments .container {
     padding: 0 10px;
     box-shadow: none;
+    margin-top: 0;
   }
 
   .paymentMethods {
+    margin: 0;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
   }
+  .newRequest {
+    max-width: 500px;
+    align-self: flex-start;
+  }
 }
 
-@media screen and (max-width: 578px) {
+@media screen and (max-width: 576px) {
   .form span {
     font-size: 16px;
     font-weight: 600;
@@ -278,5 +286,8 @@ input[type="file"] {
     font-size: 12px;
     padding: 5px 21px;
     border-radius: 20px;
+  }
+  .newRequest .dates {
+    flex-wrap: wrap;
   }
 }

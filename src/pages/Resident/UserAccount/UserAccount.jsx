@@ -34,7 +34,6 @@ const UserAccount = () => {
   };
 
   const handleSavePersonalInfo = (values) => {
-    console.log(values);
     dispatch(updateUserById({ id: userId, userData: values }));
     setIsEditingPersonalInfo(false);
   };
@@ -55,6 +54,13 @@ const UserAccount = () => {
 
   return (
     <div className={style.account}>
+      <div
+        className={`loadingScreenOverlay ${
+          userInfo?.status === "loading" ? "active" : ""
+        }`}
+      >
+        <div className="infiniteProgressBar"></div>
+      </div>
       <Header name={"Hesabım"} />
       <div className={style.accountForms}>
         <div className={style.privateInformation}>

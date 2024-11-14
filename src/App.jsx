@@ -38,8 +38,6 @@ function App() {
               />
             </Route>
           </Route>
-
-          {/* Commendant Protected Routes */}
           <Route element={<ProtectedRoute allowedRole="Commendant" />}>
             <Route path="/commendant" element={<CommendantLayout />}>
               <Route path="" element={<Home />} />

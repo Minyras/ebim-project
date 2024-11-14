@@ -181,7 +181,7 @@
 
 @media screen and (max-width: 900px) {
   .top {
-    margin-top: 16px;
+    margin-top: 0;
     box-shadow: none;
     padding: 0 10px;
     gap: 24px;

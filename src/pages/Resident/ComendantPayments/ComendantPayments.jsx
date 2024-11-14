@@ -293,14 +293,14 @@ const ComendantPaymentsUser = () => {
           <h2>Yeni sorğu</h2>
           <div className="dates">
             <Dropdown
-              id="fruit-dropdown"
+              id="month-dropdown"
               title="Ay"
               data={months}
               position="bottom-left"
               onSelect={handleSelect}
             />
             <Dropdown
-              id="fruit-dropdown"
+              id="year-dropdown"
               title="İl"
               data={years}
               position="bottom-left"
