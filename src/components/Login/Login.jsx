@@ -134,7 +134,7 @@ const Login = ({ setShowForms, setShowOnMobile }) => {
             <button type="submit" className="submitButton">
               Daxil ol
             </button>
-            {/* Display error message */}
+
             {loginInfo?.error && (
               <p className="errorMessage">{loginInfo.error}</p>
             )}

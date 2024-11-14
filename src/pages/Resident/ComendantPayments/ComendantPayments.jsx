@@ -5,6 +5,9 @@ import anipaySvg from "../../../assets/svg/anipay.svg";
 import hesabazSvg from "../../../assets/svg/hesabAz.svg";
 import { useRef, useState } from "react";
 import Dropdown from "../../../components/Dropdown/Dropdown";
+import imageCompression from "browser-image-compression";
+import { useDispatch, useSelector } from "react-redux";
+import { submitPayment } from "../../../dashboard/payment";
 
 const months = [
   { id: "1", name: "Yanvar" },
@@ -45,6 +48,20 @@ const ComendantPaymentsUser = () => {
   const phoneRef = useRef(null);
   const emailRef = useRef(null);
   const [copiedField, setCopiedField] = useState(null);
+  const [isUploaded, setIsUploaded] = useState(false);
+  const [compressedFile, setCompressedFile] = useState(null);
+  const [selectedMonth, setSelectedMonth] = useState(null);
+  const [selectedYear, setSelectedYear] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const { payment } = useSelector((state) => state.payment);
+
+  const dispatch = useDispatch();
+
+  const userId = sessionStorage.getItem("userId")
+    ? sessionStorage.getItem("userId")
+    : localStorage.getItem("userId");
 
   const handleCopy = (ref) => {
     const textToCopy = ref.current.textContent;
@@ -52,9 +69,9 @@ const ComendantPaymentsUser = () => {
     navigator.clipboard
       .writeText(textToCopy)
       .then(() => {
-        setCopiedField(ref); // Set the copied field reference
+        setCopiedField(ref);
         setTimeout(() => {
-          setCopiedField(null); // Remove border after 2 seconds
+          setCopiedField(null);
         }, 2000);
       })
       .catch((error) => {
@@ -64,25 +81,76 @@ const ComendantPaymentsUser = () => {
 
   const fileInputRef = useRef();
 
-  const handleFileInputClick = () => {
+  const handleFileInputClick = (e) => {
+    e.preventDefault();
     fileInputRef.current.click();
   };
 
-  const [isUploaded, setIsUploaded] = useState(false);
+  const handleFileChange = async (event) => {
+    const imageFile = event.target.files[0];
 
-  const handleFileChange = (event) => {
-    if (event.target.files && event.target.files[0]) {
-      setIsUploaded(true);
-      setTimeout(() => setIsUploaded(false), 3000);
+    const options = {
+      maxSizeMB: 2,
+      maxWidthOrHeight: 1920,
+      useWebWorker: true,
+    };
+
+    if (imageFile) {
+      try {
+        const compressedFile = await imageCompression(imageFile, options);
+        setCompressedFile(compressedFile);
+        setIsUploaded(true);
+        setTimeout(() => setIsUploaded(false), 3000);
+      } catch (error) {
+        console.error("Error compressing image:", error);
+      }
     }
   };
 
   const handleSelect = (id) => {
-    console.log("Selected item ID:", id);
+    if (id <= 12) {
+      setSelectedMonth(months.filter((m) => m.id == id)[0].name);
+    }
+    if (id >= 2010) {
+      setSelectedYear(id);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!selectedMonth || !selectedYear || !compressedFile) {
+      setErrorMessage("Zəhmət olmasa bütün məlumatları doldurun.");
+      return;
+    }
+
+    setErrorMessage("");
+
+    const formData = new FormData();
+    formData.append("UserId", userId);
+    formData.append("Month", selectedMonth);
+    formData.append("Year", selectedYear);
+    formData.append("Image", compressedFile);
+
+    try {
+      await dispatch(submitPayment(formData));
+      setIsUploaded(false);
+      setIsSubmitted(true);
+      setTimeout(() => setIsSubmitted(false), 3000);
+    } catch (error) {
+      console.error("Error submitting payment:", error);
+    }
   };
 
   return (
     <div className="comendantPayments">
+      <div
+        className={`loadingScreenOverlay ${
+          payment?.status === "loading" ? "active" : ""
+        }`}
+      >
+        <div className="infiniteProgressBar"></div>
+      </div>
       <Header name={"Ödənişlər"} />
 
       <div className="container">
@@ -221,7 +289,7 @@ const ComendantPaymentsUser = () => {
             </div>
           </form>
         </div>
-        <div className="newRequest">
+        <form className="newRequest" onSubmit={handleSubmit}>
           <h2>Yeni sorğu</h2>
           <div className="dates">
             <Dropdown
@@ -266,13 +334,39 @@ const ComendantPaymentsUser = () => {
             </button>
             <input
               type="file"
+              accept="image/*"
               ref={fileInputRef}
               onChange={handleFileChange}
               style={{ display: "none" }}
             />
           </div>
-          <button className="send">Göndər</button>
-        </div>
+          {errorMessage && <p className="errorMessage">{errorMessage}</p>}
+          {payment?.error && <p className="errorMessage">{payment.error}</p>}
+          <button
+            type="submit"
+            className={`send-button ${isSubmitted ? "submitted" : ""}`}
+          >
+            {isSubmitted ? (
+              <>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="checkmark"
+                >
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Göndərildi!
+              </>
+            ) : (
+              "Göndər"
+            )}
+          </button>
+        </form>
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import {
   getAllPayments,
   getCurrentPayment,
   getPaymentHistory,
+  submitPayment,
 } from "../../dashboard/payment";
 
 const sortPaymentsByStatus = (payments) => {
@@ -45,6 +46,10 @@ export const paymentSlice = createSlice({
     },
     paymentHistory: {
       all: [],
+      status: null,
+      error: null,
+    },
+    payment: {
       status: null,
       error: null,
     },
@@ -96,6 +101,16 @@ export const paymentSlice = createSlice({
       .addCase(getPaymentHistory.rejected, (state, action) => {
         state.paymentHistory.status = "failed";
         state.paymentHistory.error = action.payload;
+      })
+      .addCase(submitPayment.pending, (state) => {
+        state.payment.status = "loading";
+      })
+      .addCase(submitPayment.fulfilled, (state) => {
+        state.payment.status = "fullfilled";
+      })
+      .addCase(submitPayment.rejected, (state, action) => {
+        state.payment.status = "failed";
+        state.payment.error = action.payload;
       });
   },
 });

@@ -14,7 +14,8 @@
   border-radius: 15px;
 }
 
-.comendantPayments .container > div {
+.comendantPayments .container > div,
+.comendantPayments .container > form {
   width: 45%;
 }
 
@@ -122,12 +123,53 @@ input[type="file"] {
   border-radius: 5px;
 }
 
-.newRequest button.send {
+.newRequest button.send-button {
   padding: 7px;
   background-color: #0071ce;
   font-weight: 600;
   border: none;
   color: white;
+}
+
+.send-button {
+  background-color: #0071ce;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.send-button:hover {
+  background-color: #0056a3;
+}
+
+.send-button.submitted {
+  background-color: #28a745 !important;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transform: translateY(-3px);
+  animation: success-bounce 0.5s ease;
+}
+
+@keyframes success-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
 }
 
 .file-upload-container {
@@ -232,7 +274,7 @@ input[type="file"] {
   .methodsContainer a img {
     height: 12px;
   }
-  .newRequest button.send {
+  .newRequest button.send-button {
     font-size: 12px;
     padding: 5px 21px;
     border-radius: 20px;

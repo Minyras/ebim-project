@@ -78,6 +78,22 @@ const denyPayment = createAsyncThunk(
   }
 );
 
+const submitPayment = createAsyncThunk(
+  "payment/submitPayment",
+  async (payment, { rejectWithValue }) => {
+    try {
+      const response = await instance.post("/Payment/submit", payment, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data || "Naməlum xəta baş verdi.");
+    }
+  }
+);
+
 export {
   getAllPayments,
   getCurrentPayment,
@@ -85,4 +101,5 @@ export {
   approvePayment,
   pendPayment,
   denyPayment,
+  submitPayment,
 };
