@@ -2,7 +2,7 @@
   color: #0071ce;
 }
 
-.container {
+.comendantPayments .container {
   margin-top: 60px;
   display: flex;
   flex-direction: row;
@@ -14,7 +14,7 @@
   border-radius: 15px;
 }
 
-.container > div {
+.comendantPayments .container > div {
   width: 45%;
 }
 
@@ -75,7 +75,7 @@ input[type="file"] {
   display: none;
 }
 
-.container input::placeholder {
+.comendantPayments .container input::placeholder {
   font-size: 20px;
   font-weight: 300;
 }
@@ -191,13 +191,13 @@ input[type="file"] {
   .comendantPayments .container {
     flex-direction: column;
   }
-  .container > div {
+  .comendantPayments .container > div {
     width: 100%;
   }
 }
 
 @media screen and (max-width: 900px) {
-  .container {
+  .comendantPayments .container {
     padding: 0 10px;
     box-shadow: none;
   }
