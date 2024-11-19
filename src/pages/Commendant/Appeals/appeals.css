@@ -82,7 +82,7 @@
     border-bottom: 3px solid #f4f5f5;
   }
 
-  .commendantTable td:last-of-type {
+  .commendantTable td {
     white-space: nowrap;
   }
 }

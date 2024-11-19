@@ -109,6 +109,8 @@
   cursor: pointer;
   z-index: 1;
   position: relative;
+  flex: 1 1 0;
+  width: 0;
 }
 
 .filter-button.active {
@@ -124,4 +126,28 @@
   transition: left 0.4s ease, background-color 0.3s ease;
   z-index: 0;
   margin: 4px;
+}
+
+@media screen and (max-width: 576px) {
+  .button-group {
+    height: 30px;
+    margin: 4px 0;
+    box-shadow: none;
+    border: 1.5px solid #f4f5f5;
+    border-radius: 4px;
+  }
+  .filter-button {
+    padding: 3px 5px;
+    font-size: 12px;
+  }
+  .indicator {
+    border-radius: 4px;
+  }
+  .payments.commendantTable table tbody tr .statuses {
+    top: 5px;
+  }
+  .payments.commendantTable table tbody tr .statuses li {
+    gap: 5px;
+    padding: 4px 25px 4px 8px;
+  }
 }
