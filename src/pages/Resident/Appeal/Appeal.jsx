@@ -130,7 +130,13 @@ const Appeal = () => {
         )}
       </Formik>
 
-      <div className={style.Appealhistory}>
+      <div
+        className={`${style.Appealhistory} ${
+          requests?.status != "loading" && requests.data?.length == 0
+            ? style.hidden
+            : ""
+        }`}
+      >
         <h2>Tarixçə</h2>
         <div className={style.historyTable}>
           <table>

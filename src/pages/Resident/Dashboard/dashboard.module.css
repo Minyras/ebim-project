@@ -134,6 +134,10 @@
   margin-left: 15px;
 }
 
+.Appealhistory.hidden {
+  display: none;
+}
+
 @media screen and (max-width: 1200px) {
   .top {
     flex-direction: column;

@@ -10,6 +10,8 @@ import { registerUser } from "../../dashboard/user";
 const Register = ({ setShowForms }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
+  const [popupMessage, setPopupMessage] = useState(""); // Popup message state
+  const [isPopupVisible, setPopupVisible] = useState(false); // Popup visibility state
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -80,20 +82,29 @@ const Register = ({ setShowForms }) => {
     try {
       const result = await dispatch(registerUser(values)).unwrap();
       if (result) {
-        setShowForms("login");
+        setPopupMessage(result || "Qeydiyyat uğurla tamamlandı!"); // Set popup message
+        setPopupVisible(true); // Show popup
       }
     } catch (error) {
       console.error(error);
     }
   };
 
+  const closePopup = () => {
+    setPopupVisible(false); // Close popup
+    setPopupMessage("");
+    setShowForms("login"); // Navigate to login
+  };
+
   return (
     <div className="registerPage">
-      {registerInfo?.status == "loading" && (
-        <div className="loadingScreenOverlay">
-          <div className="infiniteProgressBar"></div>
-        </div>
-      )}
+      <div
+        className={`loadingScreenOverlay ${
+          registerInfo?.status === "loading" ? "active" : ""
+        }`}
+      >
+        <div className="infiniteProgressBar"></div>
+      </div>
       <h1 className="welcome">Xoş gəldin!</h1>
       <Formik
         initialValues={initialValues}
@@ -264,6 +275,16 @@ const Register = ({ setShowForms }) => {
       <a className="goBack" onClick={handleGoBack}>
         Geri dön
       </a>
+      {isPopupVisible && (
+        <div className="popup">
+          <div className="popupContent">
+            <p>{popupMessage}</p>
+            <button onClick={closePopup} className="closePopupButton">
+              Bağla
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

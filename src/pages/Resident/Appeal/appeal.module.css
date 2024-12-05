@@ -91,6 +91,10 @@ input[type="radio"] {
   white-space: nowrap;
 }
 
+.Appealhistory.hidden {
+  display: none;
+}
+
 @media screen and (max-width: 576px) {
   .mainAppeal {
     width: 100%;

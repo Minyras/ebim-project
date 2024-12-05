@@ -125,6 +125,8 @@ form > div {
     display: flex;
     position: absolute;
     background-image: linear-gradient(#fff, #ebf6ff);
+    overflow-y: auto;
+    overflow-x: hidden;
     top: 0;
     bottom: 0;
   }

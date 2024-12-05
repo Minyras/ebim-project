@@ -120,7 +120,14 @@ const Dashboard = () => {
             </a>
           </div>
         </div>
-        <div className={style.Appealhistory}>
+        <div
+          className={`${style.Appealhistory} ${
+            paymentHistory?.status != "loading" &&
+            paymentHistory.all?.length == 0
+              ? style.hidden
+              : ""
+          }`}
+        >
           <h2>Tarixçə</h2>
           <div className={style.historyTable}>
             <table>

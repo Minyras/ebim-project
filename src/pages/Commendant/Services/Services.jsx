@@ -21,17 +21,17 @@ const Services = () => {
     <>
       <Header name={"Xidmət təchizat"} />
       <div className="services commendantTable">
-        {status === "loading" && (
-          <table>
-            <thead>
-              <tr>
-                <td>Peşə</td>
-                <td>Ad, Soyadı</td>
-                <td>Əlaqə nöməsi</td>
-              </tr>
-            </thead>
-            <tbody>
-              {Array.from({ length: 5 }).map((_, index) => (
+        <table>
+          <thead>
+            <tr>
+              <td>Peşə</td>
+              <td>Ad, Soyadı</td>
+              <td>Əlaqə nöməsi</td>
+            </tr>
+          </thead>
+          <tbody>
+            {status === "loading" &&
+              Array.from({ length: 5 }).map((_, index) => (
                 <tr key={index}>
                   <td>
                     <Skeleton width={100} />
@@ -44,21 +44,9 @@ const Services = () => {
                   </td>
                 </tr>
               ))}
-            </tbody>
-          </table>
-        )}
-
-        {status === "fulfilled" && data.length > 0 && (
-          <table>
-            <thead>
-              <tr>
-                <td>Peşə</td>
-                <td>Ad, Soyadı</td>
-                <td>Əlaqə nöməsi</td>
-              </tr>
-            </thead>
-            <tbody>
-              {data.map((service, index) => (
+            {status === "fulfilled" &&
+              data.length > 0 &&
+              data.map((service, index) => (
                 <tr key={index}>
                   <td>{service.profession}</td>
                   <td>
@@ -67,9 +55,8 @@ const Services = () => {
                   <td>{service.phoneNumber}</td>
                 </tr>
               ))}
-            </tbody>
-          </table>
-        )}
+          </tbody>
+        </table>
 
         {status === "failed" && <p className="error">Error: {error}</p>}
       </div>
