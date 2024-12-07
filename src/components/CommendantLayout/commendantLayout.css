@@ -6,7 +6,6 @@
 
 .layout > * {
   height: 100%;
-  /* flex-shrink: 0; */
 }
 
 .outletContainer {

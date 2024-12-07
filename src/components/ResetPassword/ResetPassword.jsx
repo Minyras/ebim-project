@@ -47,7 +47,6 @@ const ResetPassword = ({ setShowForms, setShowOnMobile }) => {
 
   const onSubmit = async (values) => {
     const result = await dispatch(resetUserPassword(values)).unwrap();
-    console.log(result.response?.data);
     if (result) {
       navigate("/");
       setShowForms("successfullpasswordchange");

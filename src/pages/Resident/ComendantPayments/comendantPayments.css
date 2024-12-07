@@ -81,9 +81,6 @@ input[type="file"] {
   font-size: 20px;
   font-weight: 300;
 }
-/* .paymentForm div input[type="text"] {
-  width: 100%;
-} */
 .bankCard {
   position: relative;
 }

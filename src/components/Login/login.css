@@ -4,18 +4,18 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 100%; /* More reasonable width for larger screens */
+  width: 100%;
   margin: auto;
   color: #0071ce;
   font-size: 18px;
-  padding: 20px; /* Added padding for better spacing */
-  box-sizing: border-box; /* Ensures padding doesn't exceed width */
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .navigateRegister {
   text-align: center;
   margin-top: 10px;
-  font-size: 16px; /* Reduced font size for mobile */
+  font-size: 16px;
   position: absolute;
   bottom: 40px;
   display: none;
@@ -31,19 +31,18 @@
   text-decoration: underline;
 }
 
-/* Responsive Styling for Mobile */
 @media screen and (max-width: 900px) {
   .loginPage {
-    width: 90%; /* Full width for mobile screens */
-    padding: 20px; /* Add padding for breathing space */
+    width: 90%;
+    padding: 20px;
   }
 
   .welcome {
-    font-size: 28px; /* Reduce heading size for mobile */
+    font-size: 28px;
   }
 
   .loginButton {
-    width: 100%; /* Full-width button */
+    width: 100%;
   }
   .navigateRegister {
     display: block;
@@ -61,13 +60,13 @@
   }
 
   .welcome {
-    font-size: 36px; /* Smaller size for very small screens */
+    font-size: 36px;
   }
 
   .email,
   .password {
     position: relative;
-    margin-bottom: 36px; /* Reduced spacing */
+    margin-bottom: 36px;
   }
 
   .save {
@@ -81,13 +80,13 @@
 
   .loginPage input[type="text"],
   .loginPage input[type="password"] {
-    height: 40px; /* Smaller input size */
-    font-size: 14px; /* Adjust font size */
+    height: 40px;
+    font-size: 14px;
   }
 
   .loginButton {
     width: 90%;
-    font-size: 20px; /* Smaller button text */
-    height: 45px; /* Adjusted button height */
+    font-size: 20px;
+    height: 45px;
   }
 }

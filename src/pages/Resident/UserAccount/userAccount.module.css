@@ -52,13 +52,6 @@
 .accountForms form {
   margin: 10px 0 0;
 }
-/* 
-.privateInformation form,
-.flatInformation form {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-} */
 
 .flatInformation {
   display: flex;
@@ -83,10 +76,6 @@
   width: 100%;
 }
 
-/* .accountForms form input:not(:first-child) {
-  margin-top: 30px;
-} */
-
 .privateInformation form button {
   margin-top: 30px;
 }
@@ -110,7 +99,6 @@
   color: red;
 }
 
-/* Define fade-out animation for hiding the button */
 @keyframes fadeOut {
   0% {
     opacity: 1;
@@ -131,7 +119,6 @@
   }
 }
 
-/* Define fade-in animation for showing the button */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -144,12 +131,10 @@
   }
 }
 
-/* Hide button with fade-out animation */
 .update.fadeOut {
   animation: fadeOut 0.5s forwards;
 }
 
-/* Show "Saxla" button with fade-in animation */
 form button.fadeIn {
   animation: fadeIn 0.3s forwards;
 }
@@ -158,7 +143,6 @@ form button.fadeOut {
   animation: fadeOut 0.3s forwards;
 }
 
-/* Adjust height change for the privateInformation container */
 .privateInformation.expandHeight {
   animation: expandHeight 0.3s forwards;
 }

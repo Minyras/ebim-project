@@ -264,7 +264,6 @@ const Register = ({ setShowForms }) => {
             <button type="submit" className="submitButton">
               Qeydiyyatdan keç
             </button>
-            {/* Display error message */}
             {registerInfo?.error && (
               <p className="errorMessage">{registerInfo.error}</p>
             )}

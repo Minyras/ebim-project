@@ -34,7 +34,16 @@ const Login = ({ setShowForms, setShowOnMobile }) => {
     email: Yup.string()
       .email("E-mail yanlışdır.")
       .required("E-mail daxil edin."),
-    password: Yup.string().required("Parol daxil edin."),
+    password: Yup.string()
+      .required("Parol daxil edin.")
+      .min(8, "Parol ən azı 8 simvoldan ibarət olmalıdır.")
+      .matches(/[a-z]/, "Parol ən azı bir kiçik hərf olmalıdır.")
+      .matches(/[A-Z]/, "Parol ən azı bir böyük hərf olmalıdır.")
+      .matches(/\d/, "Parol ən azı bir rəqəm olmalıdır.")
+      .matches(
+        /[!@#$%^&*(),.?":{}|<>]/,
+        "Parol ən azı bir xüsusi simvol olmalıdır."
+      ),
   });
 
   const onSubmit = async (values) => {

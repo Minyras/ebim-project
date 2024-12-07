@@ -36,14 +36,13 @@
 .closePopupButton {
   margin-top: 15px;
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #0071ce;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
-/* Responsive Styling for Mobile */
 @media screen and (max-width: 900px) {
   input::placeholder {
     font-weight: 100;

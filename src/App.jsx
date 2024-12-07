@@ -38,7 +38,7 @@ function App() {
               />
             </Route>
           </Route>
-          <Route element={<ProtectedRoute allowedRole="Commendant" />}>
+          <Route element={<ProtectedRoute allowedRole="Komendant" />}>
             <Route path="/commendant" element={<CommendantLayout />}>
               <Route path="" element={<Home />} />
               <Route path="apartments" element={<Apartments />} />
