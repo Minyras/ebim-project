@@ -32,7 +32,7 @@ const LoginRegister = () => {
           setShowForms("resetpassword");
         }
       } catch (error) {
-        console.error("Verification failed:", error);
+        // console.error("Verification failed:", error);
       }
     };
 

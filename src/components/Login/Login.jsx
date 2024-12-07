@@ -67,7 +67,7 @@ const Login = ({ setShowForms, setShowOnMobile }) => {
         }
       }
     } catch (error) {
-      console.error("Error: ", error);
+      // console.error("Error: ", error);
     }
   };
 

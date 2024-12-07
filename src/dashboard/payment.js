@@ -19,7 +19,7 @@ const getCurrentPayment = createAsyncThunk(
       );
       return response.data;
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   }
 );
@@ -31,7 +31,7 @@ const getPaymentHistory = createAsyncThunk(
       const response = await instance.get(`Payment/History/${userId}`);
       return response.data;
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   }
 );

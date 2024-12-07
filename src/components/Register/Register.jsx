@@ -86,7 +86,7 @@ const Register = ({ setShowForms }) => {
         setPopupVisible(true); // Show popup
       }
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   };
 

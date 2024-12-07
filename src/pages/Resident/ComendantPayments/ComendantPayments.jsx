@@ -75,7 +75,7 @@ const ComendantPaymentsUser = () => {
         }, 2000);
       })
       .catch((error) => {
-        console.error("Failed to copy text: ", error);
+        // console.error("Failed to copy text: ", error);
       });
   };
 
@@ -109,7 +109,7 @@ const ComendantPaymentsUser = () => {
         setIsUploaded(true);
         setTimeout(() => setIsUploaded(false), 3000);
       } catch (error) {
-        console.error("Error compressing image:", error);
+        // console.error("Error compressing image:", error);
       }
     }
   };
@@ -145,7 +145,7 @@ const ComendantPaymentsUser = () => {
       setIsSubmitted(true);
       setTimeout(() => setIsSubmitted(false), 3000);
     } catch (error) {
-      console.error("Error submitting payment:", error);
+      // console.error("Error submitting payment:", error);
     }
   };
 

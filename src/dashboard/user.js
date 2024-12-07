@@ -41,6 +41,12 @@ const loginUser = createAsyncThunk(
       const response = await instance.post("User/Login", userData);
       return response.data;
     } catch (error) {
+      if (error.response?.data?.errors) {
+        const validationErrors = Object.entries(error.response.data.errors)
+          .map(([key, messages]) => messages.join(" "))
+          .join(" ");
+        return rejectWithValue(validationErrors);
+      }
       return rejectWithValue(error.response?.data || "Naməlum xəta baş verdi.");
     }
   }
