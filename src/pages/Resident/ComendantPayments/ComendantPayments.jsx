@@ -98,7 +98,14 @@ const ComendantPaymentsUser = () => {
     if (imageFile) {
       try {
         const compressedFile = await imageCompression(imageFile, options);
-        setCompressedFile(compressedFile);
+
+        const fileName = imageFile.name;
+        const fileType = compressedFile.type;
+        const finalFile = new File([compressedFile], fileName, {
+          type: fileType,
+        });
+
+        setCompressedFile(finalFile);
         setIsUploaded(true);
         setTimeout(() => setIsUploaded(false), 3000);
       } catch (error) {

@@ -62,7 +62,7 @@ const Login = ({ setShowForms, setShowOnMobile }) => {
 
         if (result.role === "Resident") {
           navigate("/dashboard");
-        } else if (result.role === "Commendant") {
+        } else if (result.role === "Komendant") {
           navigate("/commendant");
         }
       }

@@ -39,7 +39,6 @@ const loginUser = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const response = await instance.post("User/Login", userData);
-      console.log(response);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || "Naməlum xəta baş verdi.");
