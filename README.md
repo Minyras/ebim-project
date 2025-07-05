@@ -62,6 +62,7 @@ ebim-project/
    ```bash
    git clone https://github.com/<your-username>/ebim-project.git
    cd ebim-project
+   ```
 2. Install dependencies
 ```
 npm install
