@@ -59,14 +59,14 @@ ebim-project/
 ## 📦 Installation
 
 1. **Clone the repository**
-   ```bash
-   git clone https://github.com/<your-username>/ebim-project.git
-   cd ebim-project
-   ```
+```bash
+
+git clone https://github.com/<your-username>/ebim-project.git
+cd ebim-project
+```
 2. Install dependencies
 ```
 npm install
-
 ```
 3.Start the development server
 ```
