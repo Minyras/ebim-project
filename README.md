@@ -53,8 +53,8 @@ ebim-project/
 ├── vite.config.js # Vite configuration
 └── package.json # Project metadata
 ```
----
 
+---
 
 ## 📦 Installation
 
